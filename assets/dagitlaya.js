@@ -87,13 +87,9 @@ modalCloses.forEach((modalClose) => {
 
 /*======================= Portfolio Swiper ===================*/
 var swiper = new Swiper(".portfolio__container", {
+  cssMode: true,
   loop: true,
-  loopAdditionalSlides: 2,
-  slidesPerView: 1,
-  spaceBetween: 0,
-  speed: 800,
-  allowTouchMove: true,
-  
+
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
@@ -102,23 +98,7 @@ var swiper = new Swiper(".portfolio__container", {
     el: ".swiper-pagination",
     clickable: true,
   },
-  
-  // Add these to prevent stuck issues
-  on: {
-    init: function() {
-      console.log('Swiper initialized');
-    },
-    slideChange: function() {
-      console.log('Slide changed to:', this.realIndex);
-    }
-  }
 });
-
-// Force update after initialization
-setTimeout(function() {
-  swiper.update();
-  swiper.loopCreate();
-}, 100);
 
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 const sections = document.querySelectorAll("section[id]");
