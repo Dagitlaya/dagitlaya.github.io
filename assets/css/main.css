@@ -277,7 +277,7 @@ html[data-scroll-status=top] header.site-header-transparent.site-header .site-br
   display: none;
 }
 html[data-scroll-status=top] header.site-header-transparent.site-header .site-brand-inner, html[data-scroll-status=top] header.site-header-transparent.site-header .page-link {
-  color: #fff;
+  color: #d4af4e;
   transition: 0.1s color;
 }
 @media screen and (max-width: 800px) {
