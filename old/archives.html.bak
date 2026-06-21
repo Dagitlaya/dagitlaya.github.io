@@ -421,7 +421,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
             </span>
           </label>
 
-          <div class="trigger"><a class="page-link" href="/">DAGITLAYA</a><a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery.html">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a>
+          <div class="trigger"><a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery.html">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a>
 
 
 
@@ -874,11 +874,21 @@ function googleTranslateElementInit() {
   <data class="u-url" href="/"></data>
 
   <div class="wrapper">
-    <div class="site-footer-inner"><div>Unpublished Work <span class="copyleft">&copy;</span> 2017-2026 BCNSSO45</div>
-      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
-      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
-      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
-      <!-- <div class="footer-col rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a></div> -->
+    <div class="site-footer-inner">
+      <div class="site-footer-left"><div>Unpublished Work <span class="copyleft">&copy;</span> 2017-2026 BCNSSO45</div>
+
+        <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+        generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+        another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      </div><div class="site-footer-links"><nav class="site-footer-nav" aria-label="Footer navigation"><a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery.html">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a></nav><div class="site-footer-social" aria-label="Social links"><a class="social-link" href="https://fb.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  <i class="fa fa-facebook"></i>
+                </a><a class="social-link" href="mailto:dagitlaya@gmail.com" aria-label="Email">
+                  <i class="fa fa-envelope"></i>
+                </a><a class="social-link" href="tel:0999838383" aria-label="Phone">
+                  <i class="fa fa-phone"></i>
+                </a><a class="social-link" href="https:// m.me" target="_blank" rel="noopener noreferrer" aria-label="Messenger">
+                  <i class="fa fa-comment"></i>
+                </a></div></div><!-- <div class="footer-col rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a></div> -->
     </div>
   </div>
 </footer>

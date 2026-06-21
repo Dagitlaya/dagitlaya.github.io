@@ -437,6 +437,49 @@ html[data-scroll-status=down] .framework .sidebar {
 .site-footer .site-footer-inner {
   transition: border-top 0.2s;
   padding: 54px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 45px;
+}
+.site-footer .site-footer-left {
+  flex: 1;
+}
+.site-footer .site-footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: left;
+  margin-left: auto;
+  gap: 0.5rem;
+}
+.site-footer .site-footer-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.site-footer .site-footer-nav .page-link {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+.site-footer .site-footer-social {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.site-footer .site-footer-social .social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.12);
+  transition: background-color 0.2s ease;
+}
+.site-footer .site-footer-social .social-link:hover {
+  background-color: rgba(255, 255, 255, 0.22);
 }
 .site-footer a {
   color: #d4af4e;
@@ -642,7 +685,6 @@ html[data-scroll-status=down] .framework .sidebar {
 }
 .post .post-content img:not(.emoji), .post .post-content svg, .post .post-content iframe {
   display: block;
-  max-height: 50vh;
 }
 .post .post-content h2, .post .post-content h3, .post .post-content h4, .post .post-content h5, .post .post-content h6 {
   margin: 60px 0 19px;
