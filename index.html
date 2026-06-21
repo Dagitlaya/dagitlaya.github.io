@@ -827,15 +827,48 @@ function googleTranslateElementInit() {
   .page-content {
     margin-top: 0;
   }
-</style>
-<script src="/%20/assets/js/index-page.js"></script><section class="qualification__section service__section" id="qualification">
-  <h1 class="section__title">Our Journey</h1>
 
+  .video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+</style>
+<script src="/%20/assets/js/index-page.js"></script>
+
+<!-- YouTube Video Section -->
+<div class="youtube-video-section">
+  <div class="container">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/-31VzjC50dY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- Batch Photo Section -->
+<div class="batch-photo-section">
+  <div class="container">
+    <img src="/assets/images/batchphoto.webp" alt="Class Batch Photo" class="batch-photo">
+    <h1 style="text-align: center;">Batch Photo</h1>
+  </div>
+</div>
+<section class="qualification__section service__section" id="qualification">
   <div class="qualification__container container grid services__container">
     <div class="qualification__tabs">
       <div class="qualification__button button--flex qualification__active" data-target="#education">
         <i class="uil uil-graduation-cap qualification__icon"></i>
-        Journey
+        <h1>Our Journey</h1>
       </div>
     </div>
 

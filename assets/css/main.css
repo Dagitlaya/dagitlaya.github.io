@@ -36,7 +36,7 @@ body {
   font-size: 14px;
   font-display: swap;
   line-height: 1.6;
-  color: #454545;
+  color: #D4AF4E;
   background-color: #fff;
   background-color: #00295d;
   -webkit-text-size-adjust: 100%;
@@ -161,7 +161,7 @@ blockquote > :last-child {
 pre,
 code {
   font-size: 13.125px;
-  color: #454545;
+  color: #D4AF4E;
 }
 
 *:not(pre) > code {
@@ -217,7 +217,7 @@ table {
   margin-bottom: 30px;
   width: 100%;
   text-align: left;
-  color: #525252;
+  color: #d9b863;
   border-collapse: collapse;
   overflow: auto;
 }
@@ -955,6 +955,9 @@ html[data-theme=dark] body {
 html[data-theme=dark] b {
   color: #d4af43;
 }
+html[data-theme=dark] h1, html[data-theme=dark] h2 {
+  color: #d4af43;
+}
 html[data-theme=dark] *:not(pre) > code {
   color: #ebebeb;
   background-color: #454545;
@@ -1122,14 +1125,14 @@ html[data-theme=dark] .post-menu .post-menu-content ul a:hover {
 .post-menu .post-menu-content ul a {
   display: flex;
   padding: 2px 8px;
-  color: #2c2c2c;
+  color: #c0982f;
 }
 .post-menu .post-menu-content ul a * {
   pointer-events: none;
 }
 .post-menu .post-menu-content ul a:hover {
   text-decoration: none;
-  color: #787878 !important;
+  color: #e8d4a0 !important;
 }
 .post-menu .post-menu-content ul .active {
   background-color: #ecebec;
@@ -1167,7 +1170,7 @@ html[data-theme=dark] .post-menu .post-menu-content ul a:hover {
   padding: 8px 12px;
   text-decoration: none;
   font-weight: normal;
-  color: #454545;
+  color: #D4AF4E;
   transition: background 0.2s;
 }
 .common-list li a:hover {
@@ -1438,9 +1441,9 @@ html[data-theme=dark] .click-to-top {
   --h3-font-size: 1.125rem;
   /*=========== Fluid typography using clamp() ===========*/
   /* Fonts scale smoothly between min and max based on viewport width */
-  --normal-font-size: clamp(0.85rem, 2.5vw, 5rem);
-  --small-font-size: clamp(0.75rem, 1.5vw, 1.8rem);
-  --smaller-font-size: clamp(0.65rem, 1vw, 1.6rem);
+  --normal-font-size: clamp(0.85rem, 2vw, 5rem);
+  --small-font-size: clamp(0.75rem, 1vw, 1.8rem);
+  --smaller-font-size: clamp(0.65rem, 0.8vw, 1.6rem);
   /*=========== Font weight ==========*/
   --font-medium: 500;
   --font-semi-bold: 600;
@@ -1637,6 +1640,7 @@ body.no-scroll {
   font-family: "Bebas Neue", cursive;
   font-weight: 400;
   letter-spacing: 0.5px;
+  font-size: calc(var(--h3-font-size) * 0.85);
 }
 
 .qualification__tabs {
@@ -1742,6 +1746,8 @@ body.no-scroll {
   background-color: var(--container-color);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 /* Expandable content styles */
