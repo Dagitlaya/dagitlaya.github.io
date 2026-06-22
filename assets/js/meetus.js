@@ -1,5 +1,5 @@
 
-function() {
+(function() {
 // Helper function to stop all videos
 function stopAllVideos() {
 document.querySelectorAll('.trainee-media-container').forEach(function(container) {
@@ -72,4 +72,4 @@ container.classList.add('playing');
 }
 });
 });
-}();
+})();
