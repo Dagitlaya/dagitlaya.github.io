@@ -281,7 +281,15 @@ document.addEventListener('DOMContentLoaded', function(event) {
 </head>
 <body>
 
-    <div class="parallax-background"></div>
+    <!-- Parallax Container -->
+    <div class="parallax-container">
+      <!-- Background Layer (moves slower) -->
+      <div class="parallax-layer parallax-back">
+        <img src="/assets/images/bgf.webp" alt="" />
+      </div>
+
+      <!-- Front Layer (normal scroll) -->
+      <div class="parallax-layer parallax-front">
 
 
 
@@ -820,8 +828,8 @@ function googleTranslateElementInit() {
   })();
 </script>
 <main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <div class="framework">
+          <div class="wrapper">
+            <div class="framework">
   <section class="main">
 
      
@@ -864,8 +872,8 @@ function googleTranslateElementInit() {
 </section>
 </div>
 
-      </div>
-    </main><footer class="site-footer h-card">
+          </div>
+        </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
 
   <div class="wrapper">
@@ -887,5 +895,8 @@ function googleTranslateElementInit() {
     </div>
   </div>
 </footer>
-</body>
+</div>
+    </div>
+
+  </body>
 </html>

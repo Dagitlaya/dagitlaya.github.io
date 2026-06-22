@@ -264,7 +264,15 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
-    <div class="parallax-background"></div>
+    <!-- Parallax Container -->
+    <div class="parallax-container">
+      <!-- Background Layer (moves slower) -->
+      <div class="parallax-layer parallax-back">
+        <img src="/assets/images/bgf.webp" alt="">
+      </div>
+
+      <!-- Front Layer (normal scroll) -->
+      <div class="parallax-layer parallax-front">
 
 
 
@@ -760,7 +768,8 @@ function googleTranslateElementInit() {
       <div class="gold-line"></div>
 
       <!-- Batch Information -->
-      <p class="batch-info">Basic Communication Navigation Surveillance System Officer Batch 45</p>
+      <p class="batch-info">Basic Communication Navigation Surveillance System Officer</p>
+      <p class="batch-info">Batch 45</p>
     </div>
 
     <!-- Right Side Logo -->
@@ -791,7 +800,7 @@ function googleTranslateElementInit() {
 .banner-content {
   position: relative;
   width: 100%;
-  padding: 40px 20px;
+  padding: 40px 0px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -804,8 +813,9 @@ function googleTranslateElementInit() {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-shrink: 1;
   gap: 2px;
-  flex: 1;
+  margin-left: 5rem;
 }
 
 .banner-logo {
@@ -816,6 +826,7 @@ flex-shrink: 0;
 margin-left: auto;
 margin-right: 5rem;
 display: block;
+flex: 1;
 }
 
 .baybayin-image {
@@ -985,8 +996,8 @@ order: -1;
   })();
 </script>
 <main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <style>
+          <div class="wrapper">
+            <style>
 .page-content {
 margin-top: 0;
 }
@@ -1417,8 +1428,8 @@ margin-bottom: 3rem;
   </div>
 </div>
 
-      </div>
-    </main><footer class="site-footer h-card">
+          </div>
+        </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
 
   <div class="wrapper">
@@ -1447,6 +1458,9 @@ margin-bottom: 3rem;
     </div>
   </div>
 </footer>
+</div>
+    </div>
 
+  
 </body>
 </html>

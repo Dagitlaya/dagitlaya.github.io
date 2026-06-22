@@ -59,14 +59,16 @@ function smoothScrollTo(y, time) {
 // Parallax scrolling effect
 (function() {
   var parallaxBg = document.querySelector('.parallax-background');
-  
+
   if (!parallaxBg) return;
-  
+
   var parallaxSpeed = 0.5; // Background moves at 50% of scroll speed
-  
+
   function updateParallax() {
     var scrollPos = getScrollPos();
-    var yPos = scrollPos.y * parallaxSpeed;
+    // Use negative value so background moves opposite to scroll direction
+    // This creates the parallax effect where background appears to move slower
+    var yPos = -(scrollPos.y * parallaxSpeed);
     parallaxBg.style.transform = 'translateY(' + yPos + 'px)';
   }
   
