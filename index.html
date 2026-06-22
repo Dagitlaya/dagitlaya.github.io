@@ -739,22 +739,185 @@ function googleTranslateElementInit() {
 
 
 
-<section class="page-banner">
-    <div class="page-banner-img">
-<div style="background-image: url(/assets/images/banners/banner.webp)"></div>
-        <img class="img-placeholder" src="/assets/images/banners/banner.webp">
-</div>
-    <div class="wrapper">
-      <div class="page-banner-inner"><div class="page-banner-default">
-            <h1 class="page-banner-heading">
-               
-            </h1>
-            <h2 class="page-banner-subheading">
-               
-            </h2>
-          </div></div>
+<div class="dagitlaya-banner">
+  <!-- Top Banner Image -->
+  <img src="/assets/images/topbanner.webp" alt="Top Banner" class="banner-top-image">
+  
+  <!-- Main Content Container -->
+  <div class="banner-content">
+    <!-- Left/Center Content -->
+    <div class="banner-text-content">
+      <!-- Centered Baybayin Image -->
+      <img src="/assets/images/baybayin.webp" alt="Baybayin" class="baybayin-image">
+
+      <!-- DAGITLAYA Text -->
+      <div class="dagitlaya-vertical-text">DAGITLAYA</div>
+
+      <!-- Subtitle -->
+      <p class="banner-subtitle">Dagitab ng Pag-asa tungo sa Ligtas at Malayang Paggabay sa Himpapawid</p>
+
+      <!-- Gold Line -->
+      <div class="gold-line"></div>
+
+      <!-- Batch Information -->
+      <p class="batch-info">Basic Communication Navigation Surveillance System Officer Batch 45</p>
     </div>
-  </section><script>
+
+    <!-- Right Side Logo -->
+    <img src="/assets/images/logo.webp" alt="Logo" class="banner-logo">
+  </div>
+  
+  <!-- Bottom Banner Image -->
+  <img src="/assets/images/bottombanner.webp" alt="Bottom Banner" class="banner-bottom-image">
+</div>
+
+<style>
+.dagitlaya-banner {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+}
+
+.banner-top-image,
+.banner-bottom-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.banner-content {
+  position: relative;
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.banner-text-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex: 1;
+}
+
+.banner-logo {
+max-width: 500px;
+width: 50%;
+height: auto;
+flex-shrink: 0;
+margin-left: auto;
+margin-right: 5rem;
+display: block;
+}
+
+.baybayin-image {
+max-width: 200px;
+height: auto;
+margin-bottom: 2px;
+}
+
+.dagitlaya-vertical-text {
+font-family: 'Bebas Neue', sans-serif;
+font-weight: bold;
+font-size: 145px;
+background: linear-gradient(0deg, #e4d78b 0%, #D4AF4E 50%, #e4d78b 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+filter: drop-shadow(10px 4px 0px #121d2e);
+letter-spacing: 10px;
+margin: 2px 0;
+}
+
+.banner-subtitle {
+  font-family: 'Gotham', sans-serif;
+  font-size: 23px;
+  color: white;
+  text-align: center;
+  margin: 0;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+.gold-line {
+width: 80%;
+max-width: 600px;
+height: 3px;
+background-color: #D4AF4E;
+margin: 2px 0;
+}
+
+.batch-info {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 23px;
+  color: white;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+/* Responsive Design */
+@media (max-aspect-ratio: 4/3) {
+.banner-logo {
+max-width: 250px;
+width: 35%;
+}
+}
+
+@media (max-width: 768px) {
+    .banner-content {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .banner-logo {
+      max-width: 300px;
+      margin-right: auto;
+      order: -1;
+    }
+
+  .dagitlaya-vertical-text {
+    font-size: 80px;
+  }
+
+  .banner-subtitle {
+    font-size: 12px;
+  }
+
+  .batch-info {
+    font-size: 14px;
+  }
+
+  .baybayin-image {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+.dagitlaya-vertical-text {
+font-size: 60px;
+}
+
+.banner-content {
+padding: 20px 10px;
+}
+
+.banner-logo {
+max-width: 300px;
+margin-right: auto;
+order: -1;
+}
+}
+</style>
+<script>
   function hashLocate(hashValue) {
     hashValue = hashValue.replace(/^.*#h-/, '');
     hashValue = decodeURIComponent(hashValue);
@@ -824,32 +987,31 @@ function googleTranslateElementInit() {
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <style>
-  .page-content {
-    margin-top: 0;
-  }
+.page-content {
+margin-top: 0;
+}
 
-  .video-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 720px;
-  aspect-ratio: 16 / 9;
-  margin: 0 auto;
+.video-wrapper {
+position: relative;
+width: 100%;
+max-width: 720px;
+aspect-ratio: 16 / 9;
+margin: 0 auto;
 }
 
 .video-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
 }
 
 .youtube-video-section {
-  margin-bottom: 3rem;
+margin-bottom: 3rem;
 }
-
 </style>
-<script src="/%20/assets/js/index-page.js"></script>
+<script src="/assets/js/index-page.js"></script>
 
 <!-- YouTube Video Section -->
 <div class="youtube-video-section">
@@ -867,6 +1029,12 @@ function googleTranslateElementInit() {
     <h1 style="text-align: center;">Batch Photo</h1>
   </div>
 </div>
+
+
+<div class="container">
+  <div class="journey-with-cards">
+    <div class="journey-section">
+      <div class="journey">
 <script src="https://kit.fontawesome.com/d5775d112f.js" crossorigin="anonymous"></script>
 
 <section class="qualification__section service__section" id="qualification">
@@ -1218,6 +1386,37 @@ function googleTranslateElementInit() {
     </div>
   </div>
 </section>
+</div>
+    </div>
+    
+    <div class="sidebar-cards">
+      <a href="/about" class="sidebar-card">
+        <div class="sidebar-card-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3 class="sidebar-card-title">About Us</h3>
+        <p class="sidebar-card-description">Learn more about our organization, mission, and the people behind Dagitlaya.</p>
+      </a>
+      
+      <a href="/gallery" class="sidebar-card">
+        <div class="sidebar-card-icon">
+          <i class="fas fa-images"></i>
+        </div>
+        <h3 class="sidebar-card-title">Gallery</h3>
+        <p class="sidebar-card-description">Browse through photos and memories from our journey and events.</p>
+      </a>
+      
+      <a href="/meetus" class="sidebar-card">
+        <div class="sidebar-card-icon">
+          <i class="fas fa-handshake"></i>
+        </div>
+        <h3 class="sidebar-card-title">Meet Us</h3>
+        <p class="sidebar-card-description">Get to know our team members and trainees personally.</p>
+      </a>
+    </div>
+  </div>
+</div>
+
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
