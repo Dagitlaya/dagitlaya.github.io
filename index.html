@@ -1,5 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- Old parallax structure (CSS-only parallax using perspective)
+<div class="parallax-container">
+  <div class="parallax-layer parallax-back">
+    <img src="/assets/images/bgf.webp" alt="" />
+  </div>
+  <div class="parallax-layer parallax-front">
+    ...content...
+  </div>
+</div>
+--><html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -264,15 +273,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
-    <!-- Parallax Container -->
-    <div class="parallax-container">
-      <!-- Background Layer (moves slower) -->
-      <div class="parallax-layer parallax-back">
-        <img src="/assets/images/bgf.webp" alt="">
-      </div>
+    <!-- Parallax Background Element (scroll-timeline based) -->
+    <div class="parallax-element" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; pointer-events: none;">
+      <img src="/assets/images/bgf.webp" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
 
-      <!-- Front Layer (normal scroll) -->
-      <div class="parallax-layer parallax-front">
+    <!-- Main Content -->
 
 
 
@@ -996,8 +1002,8 @@ order: -1;
   })();
 </script>
 <main class="page-content" aria-label="Content">
-          <div class="wrapper">
-            <style>
+      <div class="wrapper">
+        <style>
 .page-content {
 margin-top: 0;
 }
@@ -1428,8 +1434,8 @@ margin-bottom: 3rem;
   </div>
 </div>
 
-          </div>
-        </main><footer class="site-footer h-card">
+      </div>
+    </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
 
   <div class="wrapper">
@@ -1458,9 +1464,6 @@ margin-bottom: 3rem;
     </div>
   </div>
 </footer>
-</div>
-    </div>
 
-  
 </body>
 </html>
