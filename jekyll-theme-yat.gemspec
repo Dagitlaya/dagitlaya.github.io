@@ -27,4 +27,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "jekyll-spaceship", "~> 0.2"
   spec.add_runtime_dependency "bigdecimal"
   spec.add_runtime_dependency "ostruct"
+  spec.add_runtime_dependency "jekyll-gallery-generator"
 end
