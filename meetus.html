@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
           </label>
 
           <div class="trigger">
-<a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery/">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a>
+<a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery.html">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a>
 
 
 
@@ -2447,19 +2447,168 @@ flex-shrink: 0;
 
 <div class="trainee-profile-hoverable" data-trainee-index="10">
   <div class="trainee-media-container" id="media-container-10">
-    <img src="/assets/images/class/dizon.webp" alt="Christian Gabriel M. Dizon" id="static-img-10">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Christian" id="static-img-10"> -->
+    <img src="/assets/images/class/delosangeles.webp" alt="Julie Rica B. Delos Angeles" id="static-img-10">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Julie" id="static-img-10"> -->
     
     
     
     <video muted loop playsinline preload="metadata" id="video-10">
-      <source src="/assets/clips/Dizon_Christian.mp4" type="video/mp4">
+      <source src="/assets/clips/Delos_Angeles_Julie.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
   <div class="trainee-info" data-trainee-index="10">
+    <h2 data-toc-text="Delos Angeles, J.">
+      Delos Angeles, Julie
+      <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
+        Rica B.
+      </span>
+    </h2>
+    <p style="text-align: justify;">
+      <strong>School:</strong> Ateneo de Naga University |
+      <strong>Course:</strong> BS in Electronics Engineering |
+      <strong>Testing Center:</strong> Clark
+    </p>
+    <p style="text-align: justify;"></p>
+<p>This journey has reminded me that it is never too late to pursue a new direction. Coming from a different industry, I stepped into the unfamiliar with faith, hard work, and determination. As I complete my CNSSO training, I am grateful for the lessons and growth along the way. This is not the end, but the takeoff point of a new mission in aviation.</p>
+
+  </div>
+  
+  <div style="clear: both;"></div>
+</div>
+
+
+<script src="/assets/js/meetus.js"></script>
+<style>
+  h2 {
+    color: {
+        {
+        site.brand_color
+      }
+    }
+
+    ;
+  }
+
+  .toc-ignore {
+    color:hsl(from {
+          {
+          site.brand_color
+        }
+      }
+
+      h s calc(l + 100%));
+  }
+
+.trainee-profile-hoverable {
+/* cursor: pointer; */
+transition: background-color 0.2s ease;
+display: flex;
+flex-wrap: nowrap;
+align-items: flex-start;
+}
+
+  .trainee-profile-hoverable:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+.trainee-media-container {
+position: relative;
+width: 45%;
+min-width: 200px;
+max-width: 350px;
+aspect-ratio: 9/16;
+margin: -1rem 20px 50px 15px;
+overflow: hidden;
+border-radius: 8px;
+background-color: #f4f4f4;
+flex-shrink: 0;
+}
+
+  .trainee-media-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    shape-outside: margin-box;
+    transition: opacity 0.3s ease-in-out;
+    background-color: #f4f4f4;
+  }
+
+  .trainee-media-container video,
+  .trainee-media-container img.animated-webp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 8px;
+  }
+
+  .trainee-media-container.playing video,
+  .trainee-media-container.playing img.animated-webp {
+    opacity: 1;
+  }
+
+  .trainee-media-container.playing>img:not(.animated-webp) {
+    opacity: 0;
+  }
+
+  .trainee-profile-hoverable p {
+    text-align: justify;
+  }
+
+  .trainee-info {
+    flex: 1 1 auto;
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  @media (max-width: 768px) {
+    .trainee-profile-hoverable {
+      flex-wrap: wrap;
+    }
+
+    .trainee-media-container {
+      width: 100%;
+      max-width: 300px;
+      margin: 5rem auto 1rem auto;
+      flex-shrink: 1;
+    }
+
+    .trainee-info {
+      width: 100%;
+      margin-top: -4rem;
+    }
+  }
+</style>
+
+
+
+<div class="trainee-profile-hoverable" data-trainee-index="11">
+  <div class="trainee-media-container" id="media-container-11">
+    <img src="/assets/images/class/dizon.webp" alt="Christian Gabriel M. Dizon" id="static-img-11">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Christian" id="static-img-11"> -->
+    
+    
+    
+    <video muted loop playsinline preload="metadata" id="video-11">
+      <source src="/assets/clips/Dizon_Christian.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </source></video>
+    
+    
+  </div>
+  <div class="trainee-info" data-trainee-index="11">
     <h2 data-toc-text="Dizon, C.">
       Dizon, Christian
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -2594,21 +2743,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="11">
-  <div class="trainee-media-container" id="media-container-11">
-    <img src="/assets/images/class/fernandez.webp" alt="Matt Asley D. Fernandez" id="static-img-11">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Matt" id="static-img-11"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="12">
+  <div class="trainee-media-container" id="media-container-12">
+    <img src="/assets/images/class/fernandez.webp" alt="Matt Asley D. Fernandez" id="static-img-12">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Matt" id="static-img-12"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-11">
+    <video muted loop playsinline preload="metadata" id="video-12">
       <source src="/assets/clips/Fernandez_Matt.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="11">
+  <div class="trainee-info" data-trainee-index="12">
     <h2 data-toc-text="Fernandez, M.">
       Fernandez, Matt
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -2743,21 +2892,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="12">
-  <div class="trainee-media-container" id="media-container-12">
-    <img src="/assets/images/class/francisco.webp" alt="Eric John, M Francisco" id="static-img-12">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Eric" id="static-img-12"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="13">
+  <div class="trainee-media-container" id="media-container-13">
+    <img src="/assets/images/class/francisco.webp" alt="Eric John, M Francisco" id="static-img-13">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Eric" id="static-img-13"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-12">
+    <video muted loop playsinline preload="metadata" id="video-13">
       <source src="/assets/clips/Francisco_Eric.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="12">
+  <div class="trainee-info" data-trainee-index="13">
     <h2 data-toc-text="Francisco, E.">
       Francisco, Eric
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -2892,21 +3041,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="13">
-  <div class="trainee-media-container" id="media-container-13">
-    <img src="/assets/images/class/franco_j.webp" alt="Jericho Martin C. Franco" id="static-img-13">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Jericho" id="static-img-13"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="14">
+  <div class="trainee-media-container" id="media-container-14">
+    <img src="/assets/images/class/franco_j.webp" alt="Jericho Martin C. Franco" id="static-img-14">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Jericho" id="static-img-14"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-13">
+    <video muted loop playsinline preload="metadata" id="video-14">
       <source src="/assets/clips/Franco_Jericho.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="13">
+  <div class="trainee-info" data-trainee-index="14">
     <h2 data-toc-text="Franco, J.">
       Franco, Jericho
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -3041,21 +3190,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="14">
-  <div class="trainee-media-container" id="media-container-14">
-    <img src="/assets/images/class/franco_m.webp" alt="Ma. Cristina S. Franco" id="static-img-14">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Ma." id="static-img-14"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="15">
+  <div class="trainee-media-container" id="media-container-15">
+    <img src="/assets/images/class/franco_m.webp" alt="Ma. Cristina S. Franco" id="static-img-15">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Ma." id="static-img-15"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-14">
+    <video muted loop playsinline preload="metadata" id="video-15">
       <source src="/assets/clips/Franco_Ma_.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="14">
+  <div class="trainee-info" data-trainee-index="15">
     <h2 data-toc-text="Franco, M.">
       Franco, Ma.
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -3190,21 +3339,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="15">
-  <div class="trainee-media-container" id="media-container-15">
-    <img src="/assets/images/class/fuentes.webp" alt="Albert Anthony O. Fuentes" id="static-img-15">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Albert" id="static-img-15"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="16">
+  <div class="trainee-media-container" id="media-container-16">
+    <img src="/assets/images/class/fuentes.webp" alt="Albert Anthony O. Fuentes" id="static-img-16">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Albert" id="static-img-16"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-15">
+    <video muted loop playsinline preload="metadata" id="video-16">
       <source src="/assets/clips/Fuentes_Albert.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="15">
+  <div class="trainee-info" data-trainee-index="16">
     <h2 data-toc-text="Fuentes, A.">
       Fuentes, Albert
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -3339,21 +3488,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="16">
-  <div class="trainee-media-container" id="media-container-16">
-    <img src="/assets/images/class/go.webp" alt="Eiderf John C. Go" id="static-img-16">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Eiderf" id="static-img-16"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="17">
+  <div class="trainee-media-container" id="media-container-17">
+    <img src="/assets/images/class/go.webp" alt="Eiderf John C. Go" id="static-img-17">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Eiderf" id="static-img-17"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-16">
+    <video muted loop playsinline preload="metadata" id="video-17">
       <source src="/assets/clips/Go_Eiderf.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="16">
+  <div class="trainee-info" data-trainee-index="17">
     <h2 data-toc-text="Go, E.">
       Go, Eiderf
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -3488,21 +3637,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="17">
-  <div class="trainee-media-container" id="media-container-17">
-    <img src="/assets/images/class/gratol.webp" alt="Junjie N. Gratol" id="static-img-17">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Junjie" id="static-img-17"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="18">
+  <div class="trainee-media-container" id="media-container-18">
+    <img src="/assets/images/class/gratol.webp" alt="Junjie N. Gratol" id="static-img-18">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Junjie" id="static-img-18"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-17">
+    <video muted loop playsinline preload="metadata" id="video-18">
       <source src="/assets/clips/Gratol_Junjie.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="17">
+  <div class="trainee-info" data-trainee-index="18">
     <h2 data-toc-text="Gratol, J.">
       Gratol, Junjie
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -3637,21 +3786,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="18">
-  <div class="trainee-media-container" id="media-container-18">
-    <img src="/assets/images/class/jalique.webp" alt="Caroline T. Jalique" id="static-img-18">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Caroline" id="static-img-18"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="19">
+  <div class="trainee-media-container" id="media-container-19">
+    <img src="/assets/images/class/jalique.webp" alt="Caroline T. Jalique" id="static-img-19">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Caroline" id="static-img-19"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-18">
+    <video muted loop playsinline preload="metadata" id="video-19">
       <source src="/assets/clips/Jalique_Caroline.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="18">
+  <div class="trainee-info" data-trainee-index="19">
     <h2 data-toc-text="Jalique, C.">
       Jalique, Caroline
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -3786,21 +3935,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="19">
-  <div class="trainee-media-container" id="media-container-19">
-    <img src="/assets/images/class/jamora.webp" alt="Jethro S. Jamora" id="static-img-19">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Jethro" id="static-img-19"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="20">
+  <div class="trainee-media-container" id="media-container-20">
+    <img src="/assets/images/class/jamora.webp" alt="Jethro S. Jamora" id="static-img-20">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Jethro" id="static-img-20"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-19">
+    <video muted loop playsinline preload="metadata" id="video-20">
       <source src="/assets/clips/Jamora_Jethro.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="19">
+  <div class="trainee-info" data-trainee-index="20">
     <h2 data-toc-text="Jamora, J.">
       Jamora, Jethro
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -3935,21 +4084,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="20">
-  <div class="trainee-media-container" id="media-container-20">
-    <img src="/assets/images/class/jamoyot.webp" alt="Danica Rose V. Jamoyot" id="static-img-20">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Danica" id="static-img-20"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="21">
+  <div class="trainee-media-container" id="media-container-21">
+    <img src="/assets/images/class/jamoyot.webp" alt="Danica Rose V. Jamoyot" id="static-img-21">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Danica" id="static-img-21"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-20">
+    <video muted loop playsinline preload="metadata" id="video-21">
       <source src="/assets/clips/Jamoyot_Danica.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="20">
+  <div class="trainee-info" data-trainee-index="21">
     <h2 data-toc-text="Jamoyot, D.">
       Jamoyot, Danica
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -4084,21 +4233,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="21">
-  <div class="trainee-media-container" id="media-container-21">
-    <img src="/assets/images/class/jarin.webp" alt="Marc Ernestine S. Jarin" id="static-img-21">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Marc" id="static-img-21"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="22">
+  <div class="trainee-media-container" id="media-container-22">
+    <img src="/assets/images/class/jarin.webp" alt="Marc Ernestine S. Jarin" id="static-img-22">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Marc" id="static-img-22"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-21">
+    <video muted loop playsinline preload="metadata" id="video-22">
       <source src="/assets/clips/Jarin_Marc.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="21">
+  <div class="trainee-info" data-trainee-index="22">
     <h2 data-toc-text="Jarin, M.">
       Jarin, Marc
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -4233,21 +4382,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="22">
-  <div class="trainee-media-container" id="media-container-22">
-    <img src="/assets/images/class/laguerta.webp" alt="Brenan S. Laguerta" id="static-img-22">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Brenan" id="static-img-22"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="23">
+  <div class="trainee-media-container" id="media-container-23">
+    <img src="/assets/images/class/laguerta.webp" alt="Brenan S. Laguerta" id="static-img-23">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Brenan" id="static-img-23"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-22">
+    <video muted loop playsinline preload="metadata" id="video-23">
       <source src="/assets/clips/Laguerta_Brenan.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="22">
+  <div class="trainee-info" data-trainee-index="23">
     <h2 data-toc-text="Laguerta, B.">
       Laguerta, Brenan
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -4382,21 +4531,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="23">
-  <div class="trainee-media-container" id="media-container-23">
-    <img src="/assets/images/class/lin.webp" alt="Jan Emernik Cyrus A. Lin" id="static-img-23">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Jan" id="static-img-23"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="24">
+  <div class="trainee-media-container" id="media-container-24">
+    <img src="/assets/images/class/lin.webp" alt="Jan Emernik Cyrus A. Lin" id="static-img-24">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Jan" id="static-img-24"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-23">
+    <video muted loop playsinline preload="metadata" id="video-24">
       <source src="/assets/clips/Lin_Jan.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="23">
+  <div class="trainee-info" data-trainee-index="24">
     <h2 data-toc-text="Lin, J.">
       Lin, Jan
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -4531,21 +4680,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="24">
-  <div class="trainee-media-container" id="media-container-24">
-    <img src="/assets/images/class/lu.webp" alt="John Joseph V. Lu" id="static-img-24">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="John" id="static-img-24"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="25">
+  <div class="trainee-media-container" id="media-container-25">
+    <img src="/assets/images/class/lu.webp" alt="John Joseph V. Lu" id="static-img-25">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="John" id="static-img-25"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-24">
+    <video muted loop playsinline preload="metadata" id="video-25">
       <source src="/assets/clips/Lu_John.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="24">
+  <div class="trainee-info" data-trainee-index="25">
     <h2 data-toc-text="Lu, J.">
       Lu, John
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -4680,21 +4829,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="25">
-  <div class="trainee-media-container" id="media-container-25">
-    <img src="/assets/images/class/maasin.webp" alt="Aladdin V. Maasin" id="static-img-25">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Aladdin" id="static-img-25"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="26">
+  <div class="trainee-media-container" id="media-container-26">
+    <img src="/assets/images/class/maasin.webp" alt="Aladdin V. Maasin" id="static-img-26">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Aladdin" id="static-img-26"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-25">
+    <video muted loop playsinline preload="metadata" id="video-26">
       <source src="/assets/clips/Maasin_Aladdin.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="25">
+  <div class="trainee-info" data-trainee-index="26">
     <h2 data-toc-text="Maasin, A.">
       Maasin, Aladdin
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -4829,21 +4978,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="26">
-  <div class="trainee-media-container" id="media-container-26">
-    <img src="/assets/images/class/manansala.webp" alt="Francis Miguel B. Manansala" id="static-img-26">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Francis" id="static-img-26"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="27">
+  <div class="trainee-media-container" id="media-container-27">
+    <img src="/assets/images/class/manansala.webp" alt="Francis Miguel B. Manansala" id="static-img-27">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Francis" id="static-img-27"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-26">
+    <video muted loop playsinline preload="metadata" id="video-27">
       <source src="/assets/clips/Manansala_Francis.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="26">
+  <div class="trainee-info" data-trainee-index="27">
     <h2 data-toc-text="Manansala, F.">
       Manansala, Francis
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -4978,21 +5127,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="27">
-  <div class="trainee-media-container" id="media-container-27">
-    <img src="/assets/images/class/musa.webp" alt="Adzhar A. Musa" id="static-img-27">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Adzhar" id="static-img-27"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="28">
+  <div class="trainee-media-container" id="media-container-28">
+    <img src="/assets/images/class/musa.webp" alt="Adzhar A. Musa" id="static-img-28">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Adzhar" id="static-img-28"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-27">
+    <video muted loop playsinline preload="metadata" id="video-28">
       <source src="/assets/clips/Musa_Adzhar.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="27">
+  <div class="trainee-info" data-trainee-index="28">
     <h2 data-toc-text="Musa, A.">
       Musa, Adzhar
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -5127,21 +5276,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="28">
-  <div class="trainee-media-container" id="media-container-28">
-    <img src="/assets/images/class/namoco.webp" alt="Pepe II S. Namoco" id="static-img-28">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Pepe" id="static-img-28"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="29">
+  <div class="trainee-media-container" id="media-container-29">
+    <img src="/assets/images/class/namoco.webp" alt="Pepe II S. Namoco" id="static-img-29">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Pepe" id="static-img-29"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-28">
+    <video muted loop playsinline preload="metadata" id="video-29">
       <source src="/assets/clips/Namoco_Pepe.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="28">
+  <div class="trainee-info" data-trainee-index="29">
     <h2 data-toc-text="Namoco, P.">
       Namoco, Pepe
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -5276,21 +5425,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="29">
-  <div class="trainee-media-container" id="media-container-29">
-    <img src="/assets/images/class/ochoa.webp" alt="Alyanna Mari B. Ochoa" id="static-img-29">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Alyanna" id="static-img-29"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="30">
+  <div class="trainee-media-container" id="media-container-30">
+    <img src="/assets/images/class/ochoa.webp" alt="Alyanna Mari B. Ochoa" id="static-img-30">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Alyanna" id="static-img-30"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-29">
+    <video muted loop playsinline preload="metadata" id="video-30">
       <source src="/assets/clips/Ochoa_Alyanna.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="29">
+  <div class="trainee-info" data-trainee-index="30">
     <h2 data-toc-text="Ochoa, A.">
       Ochoa, Alyanna
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -5425,21 +5574,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="30">
-  <div class="trainee-media-container" id="media-container-30">
-    <img src="/assets/images/class/omar.webp" alt="Abdulrafy G. Omar" id="static-img-30">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Abdulrafy" id="static-img-30"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="31">
+  <div class="trainee-media-container" id="media-container-31">
+    <img src="/assets/images/class/omar.webp" alt="Abdulrafy G. Omar" id="static-img-31">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Abdulrafy" id="static-img-31"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-30">
+    <video muted loop playsinline preload="metadata" id="video-31">
       <source src="/assets/clips/Omar_Abdulrafy.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="30">
+  <div class="trainee-info" data-trainee-index="31">
     <h2 data-toc-text="Omar, A.">
       Omar, Abdulrafy
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -5574,21 +5723,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="31">
-  <div class="trainee-media-container" id="media-container-31">
-    <img src="/assets/images/class/ong.webp" alt="Patrick Miles A. Ong" id="static-img-31">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Patrick" id="static-img-31"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="32">
+  <div class="trainee-media-container" id="media-container-32">
+    <img src="/assets/images/class/ong.webp" alt="Patrick Miles A. Ong" id="static-img-32">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Patrick" id="static-img-32"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-31">
+    <video muted loop playsinline preload="metadata" id="video-32">
       <source src="/assets/clips/Ong_Patrick.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="31">
+  <div class="trainee-info" data-trainee-index="32">
     <h2 data-toc-text="Ong, P.">
       Ong, Patrick
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -5723,21 +5872,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="32">
-  <div class="trainee-media-container" id="media-container-32">
-    <img src="/assets/images/class/pena.webp" alt="Jana Beatrice T. Peña" id="static-img-32">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Jana" id="static-img-32"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="33">
+  <div class="trainee-media-container" id="media-container-33">
+    <img src="/assets/images/class/pena.webp" alt="Jana Beatrice T. Peña" id="static-img-33">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Jana" id="static-img-33"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-32">
+    <video muted loop playsinline preload="metadata" id="video-33">
       <source src="/assets/clips/Pe_a_Jana.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="32">
+  <div class="trainee-info" data-trainee-index="33">
     <h2 data-toc-text="Peña, J.">
       Peña, Jana
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -5872,21 +6021,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="33">
-  <div class="trainee-media-container" id="media-container-33">
-    <img src="/assets/images/class/pinote.webp" alt="Elijah Ray R. Pinote" id="static-img-33">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Elijah" id="static-img-33"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="34">
+  <div class="trainee-media-container" id="media-container-34">
+    <img src="/assets/images/class/pinote.webp" alt="Elijah Ray R. Pinote" id="static-img-34">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Elijah" id="static-img-34"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-33">
+    <video muted loop playsinline preload="metadata" id="video-34">
       <source src="/assets/clips/Pinote_Elijah.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="33">
+  <div class="trainee-info" data-trainee-index="34">
     <h2 data-toc-text="Pinote, E.">
       Pinote, Elijah
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -6021,21 +6170,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="34">
-  <div class="trainee-media-container" id="media-container-34">
-    <img src="/assets/images/class/rabaja.webp" alt="Ibrahim Cedrick T. Rabaja" id="static-img-34">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Ibrahim" id="static-img-34"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="35">
+  <div class="trainee-media-container" id="media-container-35">
+    <img src="/assets/images/class/rabaja.webp" alt="Ibrahim Cedrick T. Rabaja" id="static-img-35">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Ibrahim" id="static-img-35"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-34">
+    <video muted loop playsinline preload="metadata" id="video-35">
       <source src="/assets/clips/Rabaja_Ibrahim.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="34">
+  <div class="trainee-info" data-trainee-index="35">
     <h2 data-toc-text="Rabaja, I.">
       Rabaja, Ibrahim
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -6170,21 +6319,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="35">
-  <div class="trainee-media-container" id="media-container-35">
-    <img src="/assets/images/class/reburiano.webp" alt="Anton Jude Seki T. Reburiano" id="static-img-35">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Anton" id="static-img-35"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="36">
+  <div class="trainee-media-container" id="media-container-36">
+    <img src="/assets/images/class/reburiano.webp" alt="Anton Jude Seki T. Reburiano" id="static-img-36">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Anton" id="static-img-36"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-35">
+    <video muted loop playsinline preload="metadata" id="video-36">
       <source src="/assets/clips/Reburiano_Anton.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="35">
+  <div class="trainee-info" data-trainee-index="36">
     <h2 data-toc-text="Reburiano, A.">
       Reburiano, Anton
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -6319,21 +6468,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="36">
-  <div class="trainee-media-container" id="media-container-36">
-    <img src="/assets/images/class/recio.webp" alt="John Francis T. Recio" id="static-img-36">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="John" id="static-img-36"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="37">
+  <div class="trainee-media-container" id="media-container-37">
+    <img src="/assets/images/class/recio.webp" alt="John Francis T. Recio" id="static-img-37">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="John" id="static-img-37"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-36">
+    <video muted loop playsinline preload="metadata" id="video-37">
       <source src="/assets/clips/Recio_John.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="36">
+  <div class="trainee-info" data-trainee-index="37">
     <h2 data-toc-text="Recio, J.">
       Recio, John
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -6468,21 +6617,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="37">
-  <div class="trainee-media-container" id="media-container-37">
-    <img src="/assets/images/class/rivas.webp" alt="Patricia V. Rivas" id="static-img-37">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Patricia" id="static-img-37"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="38">
+  <div class="trainee-media-container" id="media-container-38">
+    <img src="/assets/images/class/rivas.webp" alt="Patricia V. Rivas" id="static-img-38">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Patricia" id="static-img-38"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-37">
+    <video muted loop playsinline preload="metadata" id="video-38">
       <source src="/assets/clips/Rivas_Patricia.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="37">
+  <div class="trainee-info" data-trainee-index="38">
     <h2 data-toc-text="Rivas, P.">
       Rivas, Patricia
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -6617,21 +6766,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="38">
-  <div class="trainee-media-container" id="media-container-38">
-    <img src="/assets/images/class/santiago.webp" alt="John Ryan C. Santiago" id="static-img-38">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="John" id="static-img-38"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="39">
+  <div class="trainee-media-container" id="media-container-39">
+    <img src="/assets/images/class/santiago.webp" alt="John Ryan C. Santiago" id="static-img-39">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="John" id="static-img-39"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-38">
+    <video muted loop playsinline preload="metadata" id="video-39">
       <source src="/assets/clips/Santiago_John.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="38">
+  <div class="trainee-info" data-trainee-index="39">
     <h2 data-toc-text="Santiago, J.">
       Santiago, John
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -6766,21 +6915,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="39">
-  <div class="trainee-media-container" id="media-container-39">
-    <img src="/assets/images/class/saul.webp" alt="Mary Claire S. Saul" id="static-img-39">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Mary" id="static-img-39"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="40">
+  <div class="trainee-media-container" id="media-container-40">
+    <img src="/assets/images/class/saul.webp" alt="Mary Claire S. Saul" id="static-img-40">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Mary" id="static-img-40"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-39">
+    <video muted loop playsinline preload="metadata" id="video-40">
       <source src="/assets/clips/Saul_Mary.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="39">
+  <div class="trainee-info" data-trainee-index="40">
     <h2 data-toc-text="Saul, M.">
       Saul, Mary
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -6915,21 +7064,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="40">
-  <div class="trainee-media-container" id="media-container-40">
-    <img src="/assets/images/class/sevilla.webp" alt="Jonas G. Sevilla" id="static-img-40">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Jonas" id="static-img-40"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="41">
+  <div class="trainee-media-container" id="media-container-41">
+    <img src="/assets/images/class/sevilla.webp" alt="Jonas G. Sevilla" id="static-img-41">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Jonas" id="static-img-41"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-40">
+    <video muted loop playsinline preload="metadata" id="video-41">
       <source src="/assets/clips/Sevilla_Jonas.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="40">
+  <div class="trainee-info" data-trainee-index="41">
     <h2 data-toc-text="Sevilla, J.">
       Sevilla, Jonas
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -7064,21 +7213,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="41">
-  <div class="trainee-media-container" id="media-container-41">
-    <img src="/assets/images/class/suguitan.webp" alt="Lourvie Gay L. Suguitan" id="static-img-41">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Lourvie" id="static-img-41"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="42">
+  <div class="trainee-media-container" id="media-container-42">
+    <img src="/assets/images/class/suguitan.webp" alt="Lourvie Gay L. Suguitan" id="static-img-42">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Lourvie" id="static-img-42"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-41">
+    <video muted loop playsinline preload="metadata" id="video-42">
       <source src="/assets/clips/Suguitan_Lourvie.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="41">
+  <div class="trainee-info" data-trainee-index="42">
     <h2 data-toc-text="Suguitan, L.">
       Suguitan, Lourvie
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -7213,21 +7362,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="42">
-  <div class="trainee-media-container" id="media-container-42">
-    <img src="/assets/images/class/tabao.webp" alt="Adrian M. Tabao" id="static-img-42">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Adrian" id="static-img-42"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="43">
+  <div class="trainee-media-container" id="media-container-43">
+    <img src="/assets/images/class/tabao.webp" alt="Adrian M. Tabao" id="static-img-43">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Adrian" id="static-img-43"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-42">
+    <video muted loop playsinline preload="metadata" id="video-43">
       <source src="/assets/clips/Tabao_Adrian.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="42">
+  <div class="trainee-info" data-trainee-index="43">
     <h2 data-toc-text="Tabao, A.">
       Tabao, Adrian
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -7362,21 +7511,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="43">
-  <div class="trainee-media-container" id="media-container-43">
-    <img src="/assets/images/class/tininahan.webp" alt="Jeffrey Jr. C. Tininahan" id="static-img-43">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Jeffrey" id="static-img-43"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="44">
+  <div class="trainee-media-container" id="media-container-44">
+    <img src="/assets/images/class/tininahan.webp" alt="Jeffrey Jr. C. Tininahan" id="static-img-44">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Jeffrey" id="static-img-44"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-43">
+    <video muted loop playsinline preload="metadata" id="video-44">
       <source src="/assets/clips/Tininahan_Jeffrey.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="43">
+  <div class="trainee-info" data-trainee-index="44">
     <h2 data-toc-text="Tininahan, J.">
       Tininahan, Jeffrey
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -7511,21 +7660,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="44">
-  <div class="trainee-media-container" id="media-container-44">
-    <img src="/assets/images/class/turija.webp" alt="Cid Jericho C. Turija" id="static-img-44">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Cid" id="static-img-44"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="45">
+  <div class="trainee-media-container" id="media-container-45">
+    <img src="/assets/images/class/turija.webp" alt="Cid Jericho C. Turija" id="static-img-45">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Cid" id="static-img-45"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-44">
+    <video muted loop playsinline preload="metadata" id="video-45">
       <source src="/assets/clips/Turija_Cid.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="44">
+  <div class="trainee-info" data-trainee-index="45">
     <h2 data-toc-text="Turija, C.">
       Turija, Cid
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -7660,21 +7809,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="45">
-  <div class="trainee-media-container" id="media-container-45">
-    <img src="/assets/images/class/valledor.webp" alt="Frenchelle Kate D. Valledor" id="static-img-45">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Frenchelle" id="static-img-45"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="46">
+  <div class="trainee-media-container" id="media-container-46">
+    <img src="/assets/images/class/valledor.webp" alt="Frenchelle Kate D. Valledor" id="static-img-46">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Frenchelle" id="static-img-46"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-45">
+    <video muted loop playsinline preload="metadata" id="video-46">
       <source src="/assets/clips/Valledor_Frenchelle.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="45">
+  <div class="trainee-info" data-trainee-index="46">
     <h2 data-toc-text="Valledor, F.">
       Valledor, Frenchelle
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -7809,21 +7958,21 @@ flex-shrink: 0;
 
 
 
-<div class="trainee-profile-hoverable" data-trainee-index="46">
-  <div class="trainee-media-container" id="media-container-46">
-    <img src="/assets/images/class/villacampo.webp" alt="Renz Adrian S. Villacampo" id="static-img-46">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Renz" id="static-img-46"> -->
+<div class="trainee-profile-hoverable" data-trainee-index="47">
+  <div class="trainee-media-container" id="media-container-47">
+    <img src="/assets/images/class/villacampo.webp" alt="Renz Adrian S. Villacampo" id="static-img-47">
+    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Renz" id="static-img-47"> -->
     
     
     
-    <video muted loop playsinline preload="metadata" id="video-46">
+    <video muted loop playsinline preload="metadata" id="video-47">
       <source src="/assets/clips/Villacampo_Renz.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </source></video>
     
     
   </div>
-  <div class="trainee-info" data-trainee-index="46">
+  <div class="trainee-info" data-trainee-index="47">
     <h2 data-toc-text="Villacampo, R.">
       Villacampo, Renz
       <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
@@ -7837,155 +7986,6 @@ flex-shrink: 0;
     </p>
     <p style="text-align: justify;"></p>
 <p>My journey from ALPT to aspiring CNSSO is rooted in growth. I have learned that service becomes more meaningful when shared with people who support and understand one another. Because someone once stood by me, I also learned to stand by others. As a future CNSSO, I hope to become a dependable presence in the department.</p>
-
-  </div>
-  
-  <div style="clear: both;"></div>
-</div>
-
-
-<script src="/assets/js/meetus.js"></script>
-<style>
-  h2 {
-    color: {
-        {
-        site.brand_color
-      }
-    }
-
-    ;
-  }
-
-  .toc-ignore {
-    color:hsl(from {
-          {
-          site.brand_color
-        }
-      }
-
-      h s calc(l + 100%));
-  }
-
-.trainee-profile-hoverable {
-/* cursor: pointer; */
-transition: background-color 0.2s ease;
-display: flex;
-flex-wrap: nowrap;
-align-items: flex-start;
-}
-
-  .trainee-profile-hoverable:hover {
-    background-color: rgba(0, 0, 0, 0.02);
-  }
-
-.trainee-media-container {
-position: relative;
-width: 45%;
-min-width: 200px;
-max-width: 350px;
-aspect-ratio: 9/16;
-margin: -1rem 20px 50px 15px;
-overflow: hidden;
-border-radius: 8px;
-background-color: #f4f4f4;
-flex-shrink: 0;
-}
-
-  .trainee-media-container img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-    shape-outside: margin-box;
-    transition: opacity 0.3s ease-in-out;
-    background-color: #f4f4f4;
-  }
-
-  .trainee-media-container video,
-  .trainee-media-container img.animated-webp {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    border-radius: 8px;
-  }
-
-  .trainee-media-container.playing video,
-  .trainee-media-container.playing img.animated-webp {
-    opacity: 1;
-  }
-
-  .trainee-media-container.playing>img:not(.animated-webp) {
-    opacity: 0;
-  }
-
-  .trainee-profile-hoverable p {
-    text-align: justify;
-  }
-
-  .trainee-info {
-    flex: 1 1 auto;
-    min-width: 0;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
-
-  @media (max-width: 768px) {
-    .trainee-profile-hoverable {
-      flex-wrap: wrap;
-    }
-
-    .trainee-media-container {
-      width: 100%;
-      max-width: 300px;
-      margin: 5rem auto 1rem auto;
-      flex-shrink: 1;
-    }
-
-    .trainee-info {
-      width: 100%;
-      margin-top: -4rem;
-    }
-  }
-</style>
-
-
-
-<div class="trainee-profile-hoverable" data-trainee-index="47">
-  <div class="trainee-media-container" id="media-container-47">
-    <img src="/assets/images/class/delosangeles.webp" alt="Julie Rica B. Delos Angeles" id="static-img-47">
-    <!-- <img src='/assets/images/class/agumrichmar.JPG' alt="Julie" id="static-img-47"> -->
-    
-    
-    
-    <video muted loop playsinline preload="metadata" id="video-47">
-      <source src="/assets/clips/Delos_Angeles_Julie.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </source></video>
-    
-    
-  </div>
-  <div class="trainee-info" data-trainee-index="47">
-    <h2 data-toc-text="Delos Angeles, J.">
-      Delos Angeles, Julie
-      <span class="toc-ignore" style="font-size: 0.7em; color: #777; font-weight: normal;">
-        Rica B.
-      </span>
-    </h2>
-    <p style="text-align: justify;">
-      <strong>School:</strong> Ateneo de Naga University |
-      <strong>Course:</strong> BS in Electronics Engineering |
-      <strong>Testing Center:</strong> Clark
-    </p>
-    <p style="text-align: justify;"></p>
-<p>This journey has reminded me that it is never too late to pursue a new direction. Coming from a different industry, I stepped into the unfamiliar with faith, hard work, and determination. As I complete my CNSSO training, I am grateful for the lessons and growth along the way. This is not the end, but the takeoff point of a new mission in aviation.</p>
 
   </div>
   
@@ -8188,21 +8188,21 @@ flex-shrink: 0;
   <div class="wrapper">
     <div class="site-footer-inner">
       <div class="site-footer-left">
-<div>BCNSSO45 <span class="copyleft">©</span> 2017-2026</div>
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2026 BCNSSO45</div>
 
         <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
         generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
         another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
       </div>
 <div class="site-footer-links">
-<nav class="site-footer-nav" aria-label="Footer navigation"><a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery/">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a></nav><div class="site-footer-social" aria-label="Social links">
+<nav class="site-footer-nav" aria-label="Footer navigation"><a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery.html">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a></nav><div class="site-footer-social" aria-label="Social links">
 <a class="social-link" href="https://fb.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                   <i class="fa fa-facebook"></i>
                 </a><a class="social-link" href="mailto:dagitlaya@gmail.com" aria-label="Email">
                   <i class="fa fa-envelope"></i>
                 </a><a class="social-link" href="tel:0999838383" aria-label="Phone">
                   <i class="fa fa-phone"></i>
-                </a><a class="social-link" href="https://m.me" target="_blank" rel="noopener noreferrer" aria-label="Messenger">
+                </a><a class="social-link" href="https://%20m.me" target="_blank" rel="noopener noreferrer" aria-label="Messenger">
                   <i class="fa fa-comment"></i>
                 </a>
 </div>
