@@ -840,7 +840,153 @@ function googleTranslateElementInit() {
 
     <div class="post-content e-content" itemprop="articleBody">
 
-      
+      <script>
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+      define(function() {
+        return factory(root);
+      });
+    } else if (typeof exports === 'object') {
+      module.exports = factory;
+    } else {
+      root.echo = factory(root);
+    }
+  })(this, function (root) {
+  
+    'use strict';
+  
+    var echo = {};
+  
+    var callback = function () {};
+  
+    var offset, poll, delay, useDebounce, unload;
+  
+    var isHidden = function (element) {
+      return (element.offsetParent === null);
+    };
+    
+    var inView = function (element, view) {
+      if (isHidden(element)) {
+        return false;
+      }
+  
+      var box = element.getBoundingClientRect();
+      return (box.right >= view.l && box.bottom >= view.t && box.left <= view.r && box.top <= view.b);
+    };
+  
+    var debounceOrThrottle = function () {
+      if(!useDebounce && !!poll) {
+        return;
+      }
+      clearTimeout(poll);
+      poll = setTimeout(function(){
+        echo.render();
+        poll = null;
+      }, delay);
+    };
+  
+    echo.init = function (opts) {
+      opts = opts || {};
+      var offsetAll = opts.offset || 0;
+      var offsetVertical = opts.offsetVertical || offsetAll;
+      var offsetHorizontal = opts.offsetHorizontal || offsetAll;
+      var optionToInt = function (opt, fallback) {
+        return parseInt(opt || fallback, 10);
+      };
+      offset = {
+        t: optionToInt(opts.offsetTop, offsetVertical),
+        b: optionToInt(opts.offsetBottom, offsetVertical),
+        l: optionToInt(opts.offsetLeft, offsetHorizontal),
+        r: optionToInt(opts.offsetRight, offsetHorizontal)
+      };
+      delay = optionToInt(opts.throttle, 250);
+      useDebounce = opts.debounce !== false;
+      unload = !!opts.unload;
+      callback = opts.callback || callback;
+      echo.render();
+      if (document.addEventListener) {
+        root.addEventListener('scroll', debounceOrThrottle, false);
+        root.addEventListener('load', debounceOrThrottle, false);
+      } else {
+        root.attachEvent('onscroll', debounceOrThrottle);
+        root.attachEvent('onload', debounceOrThrottle);
+      }
+    };
+  
+    echo.render = function (context) {
+      var nodes = (context || document).querySelectorAll('[data-echo], [data-echo-background]');
+      var length = nodes.length;
+      var src, elem;
+      var view = {
+        l: 0 - offset.l,
+        t: 0 - offset.t,
+        b: (root.innerHeight || document.documentElement.clientHeight) + offset.b,
+        r: (root.innerWidth || document.documentElement.clientWidth) + offset.r
+      };
+      for (var i = 0; i < length; i++) {
+        elem = nodes[i];
+        if (inView(elem, view)) {
+  
+          if (unload) {
+            elem.setAttribute('data-echo-placeholder', elem.src);
+          }
+  
+          if (elem.getAttribute('data-echo-background') !== null) {
+            elem.style.backgroundImage = 'url(' + elem.getAttribute('data-echo-background') + ')';
+          }
+          else if (elem.src !== (src = elem.getAttribute('data-echo'))) {
+            elem.src = src;
+          }
+  
+          if (!unload) {
+            elem.removeAttribute('data-echo');
+            elem.removeAttribute('data-echo-background');
+          }
+  
+          callback(elem, 'load');
+        }
+        else if (unload && !!(src = elem.getAttribute('data-echo-placeholder'))) {
+  
+          if (elem.getAttribute('data-echo-background') !== null) {
+            elem.style.backgroundImage = 'url(' + src + ')';
+          }
+          else {
+            elem.src = src;
+          }
+  
+          elem.removeAttribute('data-echo-placeholder');
+          callback(elem, 'unload');
+        }
+      }
+      if (!length) {
+        echo.detach();
+      }
+    };
+  
+    echo.detach = function () {
+      if (document.removeEventListener) {
+        root.removeEventListener('scroll', debounceOrThrottle);
+      } else {
+        root.detachEvent('onscroll', debounceOrThrottle);
+      }
+      clearTimeout(poll);
+    };
+  
+    return echo;
+  
+  });
+</script>
+<script>
+    echo.init({
+      offset: 2500,
+      throttle: 250,
+      unload: false,
+      callback: function (element, op) {
+        //console.log(element, 'has been', op + 'ed')
+      }
+    });
+</script>
+
 <script src="/assets/js/meetus.js"></script>
 <style>
   h2 {
@@ -953,10 +1099,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/agum.webp" alt="Richmar" id="static-img-0">
     
     <video muted playsinline preload="metadata" id="video-0">
-      <!-- <source src="/assets/clips/agum.webm" type="video/webm"> -->
+      <source src="/assets/clips/agum.webm" type="video/webm">
       <source src="/assets/clips/agum.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="0">
@@ -1094,10 +1240,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/aromin.webp" alt="Mart Marciano Antonn" id="static-img-1">
     
     <video muted playsinline preload="metadata" id="video-1">
-      <!-- <source src="/assets/clips/aromin.webm" type="video/webm"> -->
+      <source src="/assets/clips/aromin.webm" type="video/webm">
       <source src="/assets/clips/aromin.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="1">
@@ -1235,10 +1381,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/baltazar.webp" alt="Joshua Paul" id="static-img-2">
     
     <video muted playsinline preload="metadata" id="video-2">
-      <!-- <source src="/assets/clips/baltazar.webm" type="video/webm"> -->
+      <source src="/assets/clips/baltazar.webm" type="video/webm">
       <source src="/assets/clips/baltazar.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="2">
@@ -1376,10 +1522,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/bordios.webp" alt="Anni" id="static-img-3">
     
     <video muted playsinline preload="metadata" id="video-3">
-      <!-- <source src="/assets/clips/bordios.webm" type="video/webm"> -->
+      <source src="/assets/clips/bordios.webm" type="video/webm">
       <source src="/assets/clips/bordios.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="3">
@@ -1517,10 +1663,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/buenavista.webp" alt="Juan" id="static-img-4">
     
     <video muted playsinline preload="metadata" id="video-4">
-      <!-- <source src="/assets/clips/buenavista.webm" type="video/webm"> -->
+      <source src="/assets/clips/buenavista.webm" type="video/webm">
       <source src="/assets/clips/buenavista.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="4">
@@ -1658,10 +1804,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/canos.webp" alt="El Shekinah" id="static-img-5">
     
     <video muted playsinline preload="metadata" id="video-5">
-      <!-- <source src="/assets/clips/canos.webm" type="video/webm"> -->
+      <source src="/assets/clips/canos.webm" type="video/webm">
       <source src="/assets/clips/canos.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="5">
@@ -1799,10 +1945,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/catacutan.webp" alt="Gilmour" id="static-img-6">
     
     <video muted playsinline preload="metadata" id="video-6">
-      <!-- <source src="/assets/clips/catacutan.webm" type="video/webm"> -->
+      <source src="/assets/clips/catacutan.webm" type="video/webm">
       <source src="/assets/clips/catacutan.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="6">
@@ -1940,10 +2086,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/cunan.webp" alt="Alexandra" id="static-img-7">
     
     <video muted playsinline preload="metadata" id="video-7">
-      <!-- <source src="/assets/clips/cunan.webm" type="video/webm"> -->
+      <source src="/assets/clips/cunan.webm" type="video/webm">
       <source src="/assets/clips/cunan.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="7">
@@ -2081,10 +2227,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/curiba.webp" alt="Glenn Vincent" id="static-img-8">
     
     <video muted playsinline preload="metadata" id="video-8">
-      <!-- <source src="/assets/clips/curiba.webm" type="video/webm"> -->
+      <source src="/assets/clips/curiba.webm" type="video/webm">
       <source src="/assets/clips/curiba.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="8">
@@ -2222,10 +2368,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/delacuadra.webp" alt="Kenneth" id="static-img-9">
     
     <video muted playsinline preload="metadata" id="video-9">
-      <!-- <source src="/assets/clips/delacuadra.webm" type="video/webm"> -->
+      <source src="/assets/clips/delacuadra.webm" type="video/webm">
       <source src="/assets/clips/delacuadra.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="9">
@@ -2363,10 +2509,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/delosangeles.webp" alt="Julie Rica" id="static-img-10">
     
     <video muted playsinline preload="metadata" id="video-10">
-      <!-- <source src="/assets/clips/delosangeles.webm" type="video/webm"> -->
+      <source src="/assets/clips/delosangeles.webm" type="video/webm">
       <source src="/assets/clips/delosangeles.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="10">
@@ -2504,10 +2650,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/dizon.webp" alt="Christian Gabriel" id="static-img-11">
     
     <video muted playsinline preload="metadata" id="video-11">
-      <!-- <source src="/assets/clips/dizon.webm" type="video/webm"> -->
+      <source src="/assets/clips/dizon.webm" type="video/webm">
       <source src="/assets/clips/dizon.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="11">
@@ -2645,10 +2791,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/fernandez.webp" alt="Matt Asley" id="static-img-12">
     
     <video muted playsinline preload="metadata" id="video-12">
-      <!-- <source src="/assets/clips/fernandez.webm" type="video/webm"> -->
+      <source src="/assets/clips/fernandez.webm" type="video/webm">
       <source src="/assets/clips/fernandez.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="12">
@@ -2786,10 +2932,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/francisco.webp" alt="Eric John" id="static-img-13">
     
     <video muted playsinline preload="metadata" id="video-13">
-      <!-- <source src="/assets/clips/francisco.webm" type="video/webm"> -->
+      <source src="/assets/clips/francisco.webm" type="video/webm">
       <source src="/assets/clips/francisco.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="13">
@@ -2927,10 +3073,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/franco_j.webp" alt="Jericho Martin" id="static-img-14">
     
     <video muted playsinline preload="metadata" id="video-14">
-      <!-- <source src="/assets/clips/franco_j.webm" type="video/webm"> -->
+      <source src="/assets/clips/franco_j.webm" type="video/webm">
       <source src="/assets/clips/franco_j.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="14">
@@ -3068,10 +3214,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/franco_m.webp" alt="Ma. Cristina" id="static-img-15">
     
     <video muted playsinline preload="metadata" id="video-15">
-      <!-- <source src="/assets/clips/franco_m.webm" type="video/webm"> -->
+      <source src="/assets/clips/franco_m.webm" type="video/webm">
       <source src="/assets/clips/franco_m.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="15">
@@ -3209,10 +3355,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/fuentes.webp" alt="Albert Anthony" id="static-img-16">
     
     <video muted playsinline preload="metadata" id="video-16">
-      <!-- <source src="/assets/clips/fuentes.webm" type="video/webm"> -->
+      <source src="/assets/clips/fuentes.webm" type="video/webm">
       <source src="/assets/clips/fuentes.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="16">
@@ -3350,10 +3496,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/go.webp" alt="Eiderf John" id="static-img-17">
     
     <video muted playsinline preload="metadata" id="video-17">
-      <!-- <source src="/assets/clips/go.webm" type="video/webm"> -->
+      <source src="/assets/clips/go.webm" type="video/webm">
       <source src="/assets/clips/go.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="17">
@@ -3491,10 +3637,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/gratol.webp" alt="Junjie" id="static-img-18">
     
     <video muted playsinline preload="metadata" id="video-18">
-      <!-- <source src="/assets/clips/gratol.webm" type="video/webm"> -->
+      <source src="/assets/clips/gratol.webm" type="video/webm">
       <source src="/assets/clips/gratol.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="18">
@@ -3632,10 +3778,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/jalique.webp" alt="Caroline" id="static-img-19">
     
     <video muted playsinline preload="metadata" id="video-19">
-      <!-- <source src="/assets/clips/jalique.webm" type="video/webm"> -->
+      <source src="/assets/clips/jalique.webm" type="video/webm">
       <source src="/assets/clips/jalique.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="19">
@@ -3773,10 +3919,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/jamora.webp" alt="Jethro" id="static-img-20">
     
     <video muted playsinline preload="metadata" id="video-20">
-      <!-- <source src="/assets/clips/jamora.webm" type="video/webm"> -->
+      <source src="/assets/clips/jamora.webm" type="video/webm">
       <source src="/assets/clips/jamora.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="20">
@@ -3914,10 +4060,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/jamoyot.webp" alt="Danica Rose" id="static-img-21">
     
     <video muted playsinline preload="metadata" id="video-21">
-      <!-- <source src="/assets/clips/jamoyot.webm" type="video/webm"> -->
+      <source src="/assets/clips/jamoyot.webm" type="video/webm">
       <source src="/assets/clips/jamoyot.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="21">
@@ -4055,10 +4201,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/jarin.webp" alt="Marc Ernestine" id="static-img-22">
     
     <video muted playsinline preload="metadata" id="video-22">
-      <!-- <source src="/assets/clips/jarin.webm" type="video/webm"> -->
+      <source src="/assets/clips/jarin.webm" type="video/webm">
       <source src="/assets/clips/jarin.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="22">
@@ -4196,10 +4342,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/laguerta.webp" alt="Brenan" id="static-img-23">
     
     <video muted playsinline preload="metadata" id="video-23">
-      <!-- <source src="/assets/clips/laguerta.webm" type="video/webm"> -->
+      <source src="/assets/clips/laguerta.webm" type="video/webm">
       <source src="/assets/clips/laguerta.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="23">
@@ -4337,10 +4483,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/lin.webp" alt="Jan Emernik Cyrus" id="static-img-24">
     
     <video muted playsinline preload="metadata" id="video-24">
-      <!-- <source src="/assets/clips/lin.webm" type="video/webm"> -->
+      <source src="/assets/clips/lin.webm" type="video/webm">
       <source src="/assets/clips/lin.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="24">
@@ -4478,10 +4624,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/lu.webp" alt="John Joseph" id="static-img-25">
     
     <video muted playsinline preload="metadata" id="video-25">
-      <!-- <source src="/assets/clips/lu.webm" type="video/webm"> -->
+      <source src="/assets/clips/lu.webm" type="video/webm">
       <source src="/assets/clips/lu.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="25">
@@ -4619,10 +4765,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/maasin.webp" alt="Aladdin" id="static-img-26">
     
     <video muted playsinline preload="metadata" id="video-26">
-      <!-- <source src="/assets/clips/maasin.webm" type="video/webm"> -->
+      <source src="/assets/clips/maasin.webm" type="video/webm">
       <source src="/assets/clips/maasin.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="26">
@@ -4760,10 +4906,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/manansala.webp" alt="Francis Miguel" id="static-img-27">
     
     <video muted playsinline preload="metadata" id="video-27">
-      <!-- <source src="/assets/clips/manansala.webm" type="video/webm"> -->
+      <source src="/assets/clips/manansala.webm" type="video/webm">
       <source src="/assets/clips/manansala.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="27">
@@ -4901,10 +5047,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/musa.webp" alt="Adzhar" id="static-img-28">
     
     <video muted playsinline preload="metadata" id="video-28">
-      <!-- <source src="/assets/clips/musa.webm" type="video/webm"> -->
+      <source src="/assets/clips/musa.webm" type="video/webm">
       <source src="/assets/clips/musa.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="28">
@@ -5042,10 +5188,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/namoco.webp" alt="Pepe II" id="static-img-29">
     
     <video muted playsinline preload="metadata" id="video-29">
-      <!-- <source src="/assets/clips/namoco.webm" type="video/webm"> -->
+      <source src="/assets/clips/namoco.webm" type="video/webm">
       <source src="/assets/clips/namoco.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="29">
@@ -5183,10 +5329,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/ochoa.webp" alt="Alyanna Mari" id="static-img-30">
     
     <video muted playsinline preload="metadata" id="video-30">
-      <!-- <source src="/assets/clips/ochoa.webm" type="video/webm"> -->
+      <source src="/assets/clips/ochoa.webm" type="video/webm">
       <source src="/assets/clips/ochoa.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="30">
@@ -5324,10 +5470,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/omar.webp" alt="Abdulrafy" id="static-img-31">
     
     <video muted playsinline preload="metadata" id="video-31">
-      <!-- <source src="/assets/clips/omar.webm" type="video/webm"> -->
+      <source src="/assets/clips/omar.webm" type="video/webm">
       <source src="/assets/clips/omar.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="31">
@@ -5465,10 +5611,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/ong.webp" alt="Patrick Miles" id="static-img-32">
     
     <video muted playsinline preload="metadata" id="video-32">
-      <!-- <source src="/assets/clips/ong.webm" type="video/webm"> -->
+      <source src="/assets/clips/ong.webm" type="video/webm">
       <source src="/assets/clips/ong.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="32">
@@ -5606,10 +5752,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/pena.webp" alt="Jana Beatrice" id="static-img-33">
     
     <video muted playsinline preload="metadata" id="video-33">
-      <!-- <source src="/assets/clips/pena.webm" type="video/webm"> -->
+      <source src="/assets/clips/pena.webm" type="video/webm">
       <source src="/assets/clips/pena.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="33">
@@ -5747,10 +5893,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/pinote.webp" alt="Elijah Ray" id="static-img-34">
     
     <video muted playsinline preload="metadata" id="video-34">
-      <!-- <source src="/assets/clips/pinote.webm" type="video/webm"> -->
+      <source src="/assets/clips/pinote.webm" type="video/webm">
       <source src="/assets/clips/pinote.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="34">
@@ -5888,10 +6034,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/rabaja.webp" alt="Ibrahim Cedrick" id="static-img-35">
     
     <video muted playsinline preload="metadata" id="video-35">
-      <!-- <source src="/assets/clips/rabaja.webm" type="video/webm"> -->
+      <source src="/assets/clips/rabaja.webm" type="video/webm">
       <source src="/assets/clips/rabaja.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="35">
@@ -6029,10 +6175,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/reburiano.webp" alt="Anton Jude Seki" id="static-img-36">
     
     <video muted playsinline preload="metadata" id="video-36">
-      <!-- <source src="/assets/clips/reburiano.webm" type="video/webm"> -->
+      <source src="/assets/clips/reburiano.webm" type="video/webm">
       <source src="/assets/clips/reburiano.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="36">
@@ -6170,10 +6316,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/recio.webp" alt="John Francis" id="static-img-37">
     
     <video muted playsinline preload="metadata" id="video-37">
-      <!-- <source src="/assets/clips/recio.webm" type="video/webm"> -->
+      <source src="/assets/clips/recio.webm" type="video/webm">
       <source src="/assets/clips/recio.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="37">
@@ -6311,10 +6457,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/rivas.webp" alt="Patricia" id="static-img-38">
     
     <video muted playsinline preload="metadata" id="video-38">
-      <!-- <source src="/assets/clips/rivas.webm" type="video/webm"> -->
+      <source src="/assets/clips/rivas.webm" type="video/webm">
       <source src="/assets/clips/rivas.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="38">
@@ -6452,10 +6598,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/santiago.webp" alt="John Ryan" id="static-img-39">
     
     <video muted playsinline preload="metadata" id="video-39">
-      <!-- <source src="/assets/clips/santiago.webm" type="video/webm"> -->
+      <source src="/assets/clips/santiago.webm" type="video/webm">
       <source src="/assets/clips/santiago.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="39">
@@ -6593,10 +6739,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/saul.webp" alt="Mary Claire" id="static-img-40">
     
     <video muted playsinline preload="metadata" id="video-40">
-      <!-- <source src="/assets/clips/saul.webm" type="video/webm"> -->
+      <source src="/assets/clips/saul.webm" type="video/webm">
       <source src="/assets/clips/saul.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="40">
@@ -6734,10 +6880,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/sevilla.webp" alt="Jonas" id="static-img-41">
     
     <video muted playsinline preload="metadata" id="video-41">
-      <!-- <source src="/assets/clips/sevilla.webm" type="video/webm"> -->
+      <source src="/assets/clips/sevilla.webm" type="video/webm">
       <source src="/assets/clips/sevilla.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="41">
@@ -6875,10 +7021,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/suguitan.webp" alt="Lourvie Gay" id="static-img-42">
     
     <video muted playsinline preload="metadata" id="video-42">
-      <!-- <source src="/assets/clips/suguitan.webm" type="video/webm"> -->
+      <source src="/assets/clips/suguitan.webm" type="video/webm">
       <source src="/assets/clips/suguitan.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="42">
@@ -7016,10 +7162,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/tabao.webp" alt="Adrian" id="static-img-43">
     
     <video muted playsinline preload="metadata" id="video-43">
-      <!-- <source src="/assets/clips/tabao.webm" type="video/webm"> -->
+      <source src="/assets/clips/tabao.webm" type="video/webm">
       <source src="/assets/clips/tabao.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="43">
@@ -7157,10 +7303,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/tininahan.webp" alt="Jeffrey Jr." id="static-img-44">
     
     <video muted playsinline preload="metadata" id="video-44">
-      <!-- <source src="/assets/clips/tininahan.webm" type="video/webm"> -->
+      <source src="/assets/clips/tininahan.webm" type="video/webm">
       <source src="/assets/clips/tininahan.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="44">
@@ -7298,10 +7444,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/turija.webp" alt="Cid Jericho" id="static-img-45">
     
     <video muted playsinline preload="metadata" id="video-45">
-      <!-- <source src="/assets/clips/turija.webm" type="video/webm"> -->
+      <source src="/assets/clips/turija.webm" type="video/webm">
       <source src="/assets/clips/turija.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="45">
@@ -7439,10 +7585,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/valledor.webp" alt="Frenchelle Kate" id="static-img-46">
     
     <video muted playsinline preload="metadata" id="video-46">
-      <!-- <source src="/assets/clips/valledor.webm" type="video/webm"> -->
+      <source src="/assets/clips/valledor.webm" type="video/webm">
       <source src="/assets/clips/valledor.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="46">
@@ -7580,10 +7726,10 @@ function googleTranslateElementInit() {
     <img src="/assets/images/class/villacampo.webp" alt="Renz Adrian" id="static-img-47">
     
     <video muted playsinline preload="metadata" id="video-47">
-      <!-- <source src="/assets/clips/villacampo.webm" type="video/webm"> -->
+      <source src="/assets/clips/villacampo.webm" type="video/webm">
       <source src="/assets/clips/villacampo.mp4">
       Your browser does not support the video tag.
-    </source></video>
+    </source></source></video>
     
   </div>
   <div class="trainee-info" data-trainee-index="47">
@@ -7607,6 +7753,8 @@ function googleTranslateElementInit() {
 
   <div style="clear: both;"></div>
 </div>
+
+
 
 
 

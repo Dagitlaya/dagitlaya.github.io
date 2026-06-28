@@ -53,13 +53,14 @@
       // Play the media on hover
       if (video) {
         video.onended = function () {
-          video.style.transition = 'opacity 0.5s ease';
+          video.style.transition = 'opacity 2s ease';
           video.style.opacity = '0';
           setTimeout(function () {
             video.style.display = 'none';
-          }, 500);
+          }, 2000);
         };
         playWhenReady(video);
+        container.classList.add('playing');
       }
     });
 
@@ -72,7 +73,7 @@
       // if (video) {
       //   video.pause();
       // }
-      container.classList.remove('playing');
+      // container.classList.remove('playing');
     });
 
     profile.addEventListener('touchend', function () {
