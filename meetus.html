@@ -135,20 +135,20 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <style>
   .pswp .pswp__container .pswp__img {
     background-color: white;
+    image-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 </style>
 
 <script>
   function initPhotoSwipe() {
-    // old-code:js
-    // var mainEl = document.querySelector("section.main");
-    var mainEl = document.querySelector("section.main") || document.querySelector(".page-content");
+    var mainEl = document.querySelector("section.main");
 
-    var imgEls = mainEl.querySelectorAll("img:not(.emoji)");
+    var imgEls = mainEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     imgEls.forEach((imgEl) => {
-      // old-code:js
-      // Skip images already inside anchor tags to avoid breaking navigation links
-      if (imgEl.closest('a')) return;
       imgEl.outerHTML = `
     <a class="photo-swipe"
       href="${imgEl.src}"
@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
           </label>
 
           <div class="trigger">
-<a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery/">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a>
+<a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery.html">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a>
 
 
 
@@ -991,7 +991,8 @@ function googleTranslateElementInit() {
         //console.log(element, 'has been', op + 'ed')
       }
     });
-</script><style>
+</script><script src="/assets/js/meetus.js"></script>
+<style>
   h2 {
     color: #d4af4e;
   }
@@ -1165,22 +1166,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/agum.webp" alt="Richmar">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="0">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-0">
       <!-- <img src='/assets/images/class/agum.webp' data-jpg-src="/assets/images/class/agum.jpg" alt="Richmar" id="static-img-0"> -->
@@ -1189,6 +1184,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-0">
         <source src="/assets/clips/agum.webm" type="video/webm">
         <source src="/assets/clips/agum.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -1224,22 +1220,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/aromin.webp" alt="Mart Marciano Antonn">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="1">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-1">
       <!-- <img src='/assets/images/class/aromin.webp' data-jpg-src="/assets/images/class/aromin.jpg" alt="Mart Marciano Antonn" id="static-img-1"> -->
@@ -1248,6 +1238,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-1">
         <source src="/assets/clips/aromin.webm" type="video/webm">
         <source src="/assets/clips/aromin.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -1283,22 +1274,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/baltazar.webp" alt="Joshua Paul">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="2">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-2">
       <!-- <img src='/assets/images/class/baltazar.webp' data-jpg-src="/assets/images/class/baltazar.jpg" alt="Joshua Paul" id="static-img-2"> -->
@@ -1307,6 +1292,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-2">
         <source src="/assets/clips/baltazar.webm" type="video/webm">
         <source src="/assets/clips/baltazar.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -1342,22 +1328,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/bordios.webp" alt="Anni">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="3">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-3">
       <!-- <img src='/assets/images/class/bordios.webp' data-jpg-src="/assets/images/class/bordios.jpg" alt="Anni" id="static-img-3"> -->
@@ -1366,6 +1346,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-3">
         <source src="/assets/clips/bordios.webm" type="video/webm">
         <source src="/assets/clips/bordios.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -1401,22 +1382,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/buenavista.webp" alt="Juan">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="4">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-4">
       <!-- <img src='/assets/images/class/buenavista.webp' data-jpg-src="/assets/images/class/buenavista.jpg" alt="Juan" id="static-img-4"> -->
@@ -1425,6 +1400,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-4">
         <source src="/assets/clips/buenavista.webm" type="video/webm">
         <source src="/assets/clips/buenavista.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -1460,22 +1436,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/canos.webp" alt="El Shekinah">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="5">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-5">
       <!-- <img src='/assets/images/class/canos.webp' data-jpg-src="/assets/images/class/canos.jpg" alt="El Shekinah" id="static-img-5"> -->
@@ -1484,6 +1454,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-5">
         <source src="/assets/clips/canos.webm" type="video/webm">
         <source src="/assets/clips/canos.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -1519,22 +1490,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/catacutan.webp" alt="Gilmour">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="6">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-6">
       <!-- <img src='/assets/images/class/catacutan.webp' data-jpg-src="/assets/images/class/catacutan.jpg" alt="Gilmour" id="static-img-6"> -->
@@ -1543,6 +1508,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-6">
         <source src="/assets/clips/catacutan.webm" type="video/webm">
         <source src="/assets/clips/catacutan.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -1578,22 +1544,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/cunan.webp" alt="Alexandra">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="7">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-7">
       <!-- <img src='/assets/images/class/cunan.webp' data-jpg-src="/assets/images/class/cunan.jpg" alt="Alexandra" id="static-img-7"> -->
@@ -1602,6 +1562,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-7">
         <source src="/assets/clips/cunan.webm" type="video/webm">
         <source src="/assets/clips/cunan.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -1637,22 +1598,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/curiba.webp" alt="Glenn Vincent">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="8">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-8">
       <!-- <img src='/assets/images/class/curiba.webp' data-jpg-src="/assets/images/class/curiba.jpg" alt="Glenn Vincent" id="static-img-8"> -->
@@ -1661,6 +1616,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-8">
         <source src="/assets/clips/curiba.webm" type="video/webm">
         <source src="/assets/clips/curiba.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -1696,22 +1652,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/delacuadra.webp" alt="Kenneth">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="9">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-9">
       <!-- <img src='/assets/images/class/delacuadra.webp' data-jpg-src="/assets/images/class/delacuadra.jpg" alt="Kenneth" id="static-img-9"> -->
@@ -1720,6 +1670,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-9">
         <source src="/assets/clips/delacuadra.webm" type="video/webm">
         <source src="/assets/clips/delacuadra.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -1755,22 +1706,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/delosangeles.webp" alt="Julie Rica">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="10">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-10">
       <!-- <img src='/assets/images/class/delosangeles.webp' data-jpg-src="/assets/images/class/delosangeles.jpg" alt="Julie Rica" id="static-img-10"> -->
@@ -1779,6 +1724,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-10">
         <source src="/assets/clips/delosangeles.webm" type="video/webm">
         <source src="/assets/clips/delosangeles.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -1814,22 +1760,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/dizon.webp" alt="Christian Gabriel">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="11">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-11">
       <!-- <img src='/assets/images/class/dizon.webp' data-jpg-src="/assets/images/class/dizon.jpg" alt="Christian Gabriel" id="static-img-11"> -->
@@ -1838,6 +1778,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-11">
         <source src="/assets/clips/dizon.webm" type="video/webm">
         <source src="/assets/clips/dizon.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -1873,22 +1814,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/fernandez.webp" alt="Matt Asley">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="12">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-12">
       <!-- <img src='/assets/images/class/fernandez.webp' data-jpg-src="/assets/images/class/fernandez.jpg" alt="Matt Asley" id="static-img-12"> -->
@@ -1897,6 +1832,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-12">
         <source src="/assets/clips/fernandez.webm" type="video/webm">
         <source src="/assets/clips/fernandez.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -1932,22 +1868,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/francisco.webp" alt="Eric John">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="13">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-13">
       <!-- <img src='/assets/images/class/francisco.webp' data-jpg-src="/assets/images/class/francisco.jpg" alt="Eric John" id="static-img-13"> -->
@@ -1956,6 +1886,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-13">
         <source src="/assets/clips/francisco.webm" type="video/webm">
         <source src="/assets/clips/francisco.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -1991,22 +1922,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/franco_j.webp" alt="Jericho Martin">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="14">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-14">
       <!-- <img src='/assets/images/class/franco_j.webp' data-jpg-src="/assets/images/class/franco_j.jpg" alt="Jericho Martin" id="static-img-14"> -->
@@ -2015,6 +1940,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-14">
         <source src="/assets/clips/franco_j.webm" type="video/webm">
         <source src="/assets/clips/franco_j.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2050,22 +1976,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/franco_m.webp" alt="Ma. Cristina">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="15">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-15">
       <!-- <img src='/assets/images/class/franco_m.webp' data-jpg-src="/assets/images/class/franco_m.jpg" alt="Ma. Cristina" id="static-img-15"> -->
@@ -2074,6 +1994,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-15">
         <source src="/assets/clips/franco_m.webm" type="video/webm">
         <source src="/assets/clips/franco_m.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2109,22 +2030,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/fuentes.webp" alt="Albert Anthony">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="16">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-16">
       <!-- <img src='/assets/images/class/fuentes.webp' data-jpg-src="/assets/images/class/fuentes.jpg" alt="Albert Anthony" id="static-img-16"> -->
@@ -2133,6 +2048,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-16">
         <source src="/assets/clips/fuentes.webm" type="video/webm">
         <source src="/assets/clips/fuentes.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2168,22 +2084,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/go.webp" alt="Eiderf John">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="17">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-17">
       <!-- <img src='/assets/images/class/go.webp' data-jpg-src="/assets/images/class/go.jpg" alt="Eiderf John" id="static-img-17"> -->
@@ -2192,6 +2102,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-17">
         <source src="/assets/clips/go.webm" type="video/webm">
         <source src="/assets/clips/go.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2227,22 +2138,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/gratol.webp" alt="Junjie">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="18">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-18">
       <!-- <img src='/assets/images/class/gratol.webp' data-jpg-src="/assets/images/class/gratol.jpg" alt="Junjie" id="static-img-18"> -->
@@ -2251,6 +2156,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-18">
         <source src="/assets/clips/gratol.webm" type="video/webm">
         <source src="/assets/clips/gratol.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2286,22 +2192,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/jalique.webp" alt="Caroline">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="19">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-19">
       <!-- <img src='/assets/images/class/jalique.webp' data-jpg-src="/assets/images/class/jalique.jpg" alt="Caroline" id="static-img-19"> -->
@@ -2310,6 +2210,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-19">
         <source src="/assets/clips/jalique.webm" type="video/webm">
         <source src="/assets/clips/jalique.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2345,22 +2246,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/jamora.webp" alt="Jethro">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="20">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-20">
       <!-- <img src='/assets/images/class/jamora.webp' data-jpg-src="/assets/images/class/jamora.jpg" alt="Jethro" id="static-img-20"> -->
@@ -2369,6 +2264,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-20">
         <source src="/assets/clips/jamora.webm" type="video/webm">
         <source src="/assets/clips/jamora.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2404,22 +2300,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/jamoyot.webp" alt="Danica Rose">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="21">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-21">
       <!-- <img src='/assets/images/class/jamoyot.webp' data-jpg-src="/assets/images/class/jamoyot.jpg" alt="Danica Rose" id="static-img-21"> -->
@@ -2428,6 +2318,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-21">
         <source src="/assets/clips/jamoyot.webm" type="video/webm">
         <source src="/assets/clips/jamoyot.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2463,22 +2354,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/jarin.webp" alt="Marc Ernestine">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="22">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-22">
       <!-- <img src='/assets/images/class/jarin.webp' data-jpg-src="/assets/images/class/jarin.jpg" alt="Marc Ernestine" id="static-img-22"> -->
@@ -2487,6 +2372,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-22">
         <source src="/assets/clips/jarin.webm" type="video/webm">
         <source src="/assets/clips/jarin.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2522,22 +2408,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/laguerta.webp" alt="Brenan">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="23">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-23">
       <!-- <img src='/assets/images/class/laguerta.webp' data-jpg-src="/assets/images/class/laguerta.jpg" alt="Brenan" id="static-img-23"> -->
@@ -2546,6 +2426,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-23">
         <source src="/assets/clips/laguerta.webm" type="video/webm">
         <source src="/assets/clips/laguerta.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2581,22 +2462,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/lin.webp" alt="Jan Emernik Cyrus">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="24">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-24">
       <!-- <img src='/assets/images/class/lin.webp' data-jpg-src="/assets/images/class/lin.jpg" alt="Jan Emernik Cyrus" id="static-img-24"> -->
@@ -2605,6 +2480,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-24">
         <source src="/assets/clips/lin.webm" type="video/webm">
         <source src="/assets/clips/lin.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2640,22 +2516,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/lu.webp" alt="John Joseph">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="25">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-25">
       <!-- <img src='/assets/images/class/lu.webp' data-jpg-src="/assets/images/class/lu.jpg" alt="John Joseph" id="static-img-25"> -->
@@ -2664,6 +2534,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-25">
         <source src="/assets/clips/lu.webm" type="video/webm">
         <source src="/assets/clips/lu.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2699,22 +2570,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/maasin.webp" alt="Aladdin">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="26">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-26">
       <!-- <img src='/assets/images/class/maasin.webp' data-jpg-src="/assets/images/class/maasin.jpg" alt="Aladdin" id="static-img-26"> -->
@@ -2723,6 +2588,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-26">
         <source src="/assets/clips/maasin.webm" type="video/webm">
         <source src="/assets/clips/maasin.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2758,22 +2624,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/manansala.webp" alt="Francis Miguel">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="27">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-27">
       <!-- <img src='/assets/images/class/manansala.webp' data-jpg-src="/assets/images/class/manansala.jpg" alt="Francis Miguel" id="static-img-27"> -->
@@ -2782,6 +2642,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-27">
         <source src="/assets/clips/manansala.webm" type="video/webm">
         <source src="/assets/clips/manansala.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2817,22 +2678,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/musa.webp" alt="Adzhar">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="28">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-28">
       <!-- <img src='/assets/images/class/musa.webp' data-jpg-src="/assets/images/class/musa.jpg" alt="Adzhar" id="static-img-28"> -->
@@ -2841,6 +2696,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-28">
         <source src="/assets/clips/musa.webm" type="video/webm">
         <source src="/assets/clips/musa.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2876,22 +2732,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/namoco.webp" alt="Pepe II">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="29">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-29">
       <!-- <img src='/assets/images/class/namoco.webp' data-jpg-src="/assets/images/class/namoco.jpg" alt="Pepe II" id="static-img-29"> -->
@@ -2900,6 +2750,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-29">
         <source src="/assets/clips/namoco.webm" type="video/webm">
         <source src="/assets/clips/namoco.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2935,22 +2786,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/ochoa.webp" alt="Alyanna Mari">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="30">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-30">
       <!-- <img src='/assets/images/class/ochoa.webp' data-jpg-src="/assets/images/class/ochoa.jpg" alt="Alyanna Mari" id="static-img-30"> -->
@@ -2959,6 +2804,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-30">
         <source src="/assets/clips/ochoa.webm" type="video/webm">
         <source src="/assets/clips/ochoa.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -2994,22 +2840,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/omar.webp" alt="Abdulrafy">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="31">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-31">
       <!-- <img src='/assets/images/class/omar.webp' data-jpg-src="/assets/images/class/omar.jpg" alt="Abdulrafy" id="static-img-31"> -->
@@ -3018,6 +2858,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-31">
         <source src="/assets/clips/omar.webm" type="video/webm">
         <source src="/assets/clips/omar.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3053,22 +2894,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/ong.webp" alt="Patrick Miles">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="32">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-32">
       <!-- <img src='/assets/images/class/ong.webp' data-jpg-src="/assets/images/class/ong.jpg" alt="Patrick Miles" id="static-img-32"> -->
@@ -3077,6 +2912,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-32">
         <source src="/assets/clips/ong.webm" type="video/webm">
         <source src="/assets/clips/ong.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3112,22 +2948,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/pena.webp" alt="Jana Beatrice">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="33">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-33">
       <!-- <img src='/assets/images/class/pena.webp' data-jpg-src="/assets/images/class/pena.jpg" alt="Jana Beatrice" id="static-img-33"> -->
@@ -3136,6 +2966,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-33">
         <source src="/assets/clips/pena.webm" type="video/webm">
         <source src="/assets/clips/pena.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3171,22 +3002,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/pinote.webp" alt="Elijah Ray">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="34">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-34">
       <!-- <img src='/assets/images/class/pinote.webp' data-jpg-src="/assets/images/class/pinote.jpg" alt="Elijah Ray" id="static-img-34"> -->
@@ -3195,6 +3020,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-34">
         <source src="/assets/clips/pinote.webm" type="video/webm">
         <source src="/assets/clips/pinote.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3230,22 +3056,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/rabaja.webp" alt="Ibrahim Cedrick">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="35">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-35">
       <!-- <img src='/assets/images/class/rabaja.webp' data-jpg-src="/assets/images/class/rabaja.jpg" alt="Ibrahim Cedrick" id="static-img-35"> -->
@@ -3254,6 +3074,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-35">
         <source src="/assets/clips/rabaja.webm" type="video/webm">
         <source src="/assets/clips/rabaja.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3289,22 +3110,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/reburiano.webp" alt="Anton Jude Seki">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="36">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-36">
       <!-- <img src='/assets/images/class/reburiano.webp' data-jpg-src="/assets/images/class/reburiano.jpg" alt="Anton Jude Seki" id="static-img-36"> -->
@@ -3313,6 +3128,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-36">
         <source src="/assets/clips/reburiano.webm" type="video/webm">
         <source src="/assets/clips/reburiano.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3348,22 +3164,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/recio.webp" alt="John Francis">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="37">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-37">
       <!-- <img src='/assets/images/class/recio.webp' data-jpg-src="/assets/images/class/recio.jpg" alt="John Francis" id="static-img-37"> -->
@@ -3372,6 +3182,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-37">
         <source src="/assets/clips/recio.webm" type="video/webm">
         <source src="/assets/clips/recio.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3407,22 +3218,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/rivas.webp" alt="Patricia">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="38">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-38">
       <!-- <img src='/assets/images/class/rivas.webp' data-jpg-src="/assets/images/class/rivas.jpg" alt="Patricia" id="static-img-38"> -->
@@ -3431,6 +3236,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-38">
         <source src="/assets/clips/rivas.webm" type="video/webm">
         <source src="/assets/clips/rivas.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3466,22 +3272,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/santiago.webp" alt="John Ryan">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="39">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-39">
       <!-- <img src='/assets/images/class/santiago.webp' data-jpg-src="/assets/images/class/santiago.jpg" alt="John Ryan" id="static-img-39"> -->
@@ -3490,6 +3290,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-39">
         <source src="/assets/clips/santiago.webm" type="video/webm">
         <source src="/assets/clips/santiago.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3525,22 +3326,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/saul.webp" alt="Mary Claire">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="40">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-40">
       <!-- <img src='/assets/images/class/saul.webp' data-jpg-src="/assets/images/class/saul.jpg" alt="Mary Claire" id="static-img-40"> -->
@@ -3549,6 +3344,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-40">
         <source src="/assets/clips/saul.webm" type="video/webm">
         <source src="/assets/clips/saul.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3584,22 +3380,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/sevilla.webp" alt="Jonas">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="41">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-41">
       <!-- <img src='/assets/images/class/sevilla.webp' data-jpg-src="/assets/images/class/sevilla.jpg" alt="Jonas" id="static-img-41"> -->
@@ -3608,6 +3398,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-41">
         <source src="/assets/clips/sevilla.webm" type="video/webm">
         <source src="/assets/clips/sevilla.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3643,22 +3434,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/suguitan.webp" alt="Lourvie Gay">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="42">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-42">
       <!-- <img src='/assets/images/class/suguitan.webp' data-jpg-src="/assets/images/class/suguitan.jpg" alt="Lourvie Gay" id="static-img-42"> -->
@@ -3667,6 +3452,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-42">
         <source src="/assets/clips/suguitan.webm" type="video/webm">
         <source src="/assets/clips/suguitan.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3702,22 +3488,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/tabao.webp" alt="Adrian">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="43">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-43">
       <!-- <img src='/assets/images/class/tabao.webp' data-jpg-src="/assets/images/class/tabao.jpg" alt="Adrian" id="static-img-43"> -->
@@ -3726,6 +3506,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-43">
         <source src="/assets/clips/tabao.webm" type="video/webm">
         <source src="/assets/clips/tabao.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3761,22 +3542,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/tininahan.webp" alt="Jeffrey Jr.">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="44">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-44">
       <!-- <img src='/assets/images/class/tininahan.webp' data-jpg-src="/assets/images/class/tininahan.jpg" alt="Jeffrey Jr." id="static-img-44"> -->
@@ -3785,6 +3560,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-44">
         <source src="/assets/clips/tininahan.webm" type="video/webm">
         <source src="/assets/clips/tininahan.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3820,22 +3596,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/turija.webp" alt="Cid Jericho">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="45">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-45">
       <!-- <img src='/assets/images/class/turija.webp' data-jpg-src="/assets/images/class/turija.jpg" alt="Cid Jericho" id="static-img-45"> -->
@@ -3844,6 +3614,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-45">
         <source src="/assets/clips/turija.webm" type="video/webm">
         <source src="/assets/clips/turija.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3879,22 +3650,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/valledor.webp" alt="Frenchelle Kate">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="46">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-46">
       <!-- <img src='/assets/images/class/valledor.webp' data-jpg-src="/assets/images/class/valledor.jpg" alt="Frenchelle Kate" id="static-img-46"> -->
@@ -3903,6 +3668,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-46">
         <source src="/assets/clips/valledor.webm" type="video/webm">
         <source src="/assets/clips/valledor.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3938,22 +3704,16 @@ function googleTranslateElementInit() {
 
 
 
-
 <div class="trainee-container">
   
-<div class="trainee-pubimg-container">
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/villacampo.webp" alt="Renz Adrian">
-        <div>
-    <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
   </div>
-  </div>
-  
-</div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="47">
     <div>
-      <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-47">
       <!-- <img src='/assets/images/class/villacampo.webp' data-jpg-src="/assets/images/class/villacampo.jpg" alt="Renz Adrian" id="static-img-47"> -->
@@ -3962,6 +3722,7 @@ function googleTranslateElementInit() {
       <video muted playsinline loading="lazy" preload="metadata" id="video-47">
         <source src="/assets/clips/villacampo.webm" type="video/webm">
         <source src="/assets/clips/villacampo.mp4">
+        
         Your browser does not support the video tag.
       </source></source></video>
       
@@ -3994,8 +3755,6 @@ function googleTranslateElementInit() {
 </div>
 
 
-
-<script src="/assets/js/meetus.js"></script>
 
 
 
@@ -4200,7 +3959,7 @@ function googleTranslateElementInit() {
         another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
       </div>
 <div class="site-footer-links">
-<nav class="site-footer-nav" aria-label="Footer navigation"><a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery/">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a></nav><div class="site-footer-social" aria-label="Social links">
+<nav class="site-footer-nav" aria-label="Footer navigation"><a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery.html">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a></nav><div class="site-footer-social" aria-label="Social links">
 <a class="social-link" href="https://fb.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                   <i class="fa fa-facebook"></i>
                 </a><a class="social-link" href="mailto:dagitlaya@gmail.com" aria-label="Email">

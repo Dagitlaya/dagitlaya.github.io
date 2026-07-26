@@ -135,20 +135,20 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <style>
   .pswp .pswp__container .pswp__img {
     background-color: white;
+    image-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 </style>
 
 <script>
   function initPhotoSwipe() {
-    // old-code:js
-    // var mainEl = document.querySelector("section.main");
-    var mainEl = document.querySelector("section.main") || document.querySelector(".page-content");
+    var mainEl = document.querySelector("section.main");
 
-    var imgEls = mainEl.querySelectorAll("img:not(.emoji)");
+    var imgEls = mainEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     imgEls.forEach((imgEl) => {
-      // old-code:js
-      // Skip images already inside anchor tags to avoid breaking navigation links
-      if (imgEl.closest('a')) return;
       imgEl.outerHTML = `
     <a class="photo-swipe"
       href="${imgEl.src}"
@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
           </label>
 
           <div class="trigger">
-<a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery/">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a>
+<a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery.html">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a>
 
 
 
@@ -770,7 +770,7 @@ function googleTranslateElementInit() {
       <img src="/assets/images/baybayin.webp" alt="Baybayin" class="baybayin-image">
 
       <!-- DAGITLAYA Text -->
-      <div class="dagitlaya-vertical-text">DAGITLAYA</div>
+      <div class="dagitlaya-vertical-text" translate="no">DAGITLAYA</div>
 
       <!-- Subtitle -->
       <p class="banner-subtitle">Dagitab ng Pag-asa tungo sa Ligtas at Malayang Paggabay sa Himpapawid</p>
@@ -810,8 +810,8 @@ function googleTranslateElementInit() {
 
 .banner-content {
   position: relative;
-  width: 90%;
-  padding: 40px 0rem;
+  width: 100%;
+  padding: 40px 1rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -901,8 +901,6 @@ width: 35%;
     .banner-content {
       flex-direction: column;
       gap: 20px;
-      margin-top: 3rem;
-      margin-bottom: 3rem;
     }
 
     .banner-logo {
@@ -917,14 +915,10 @@ width: 35%;
 
   .banner-subtitle {
     font-size: 12px;
-          /* margin-left: 2rem;
-      margin-right: 2rem; */
   }
 
   .batch-info {
     font-size: 14px;
-          /* margin-left: 2rem;
-      margin-right: 2rem; */
   }
 
   .baybayin-image {
@@ -1448,608 +1442,307 @@ margin-bottom: 3rem;
     </div>
   </div>
 </div>
-<script>
-(function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-      define(function() {
-        return factory(root);
-      });
-    } else if (typeof exports === 'object') {
-      module.exports = factory;
-    } else {
-      root.echo = factory(root);
-    }
-  })(this, function (root) {
-  
-    'use strict';
-  
-    var echo = {};
-  
-    var callback = function () {};
-  
-    var offset, poll, delay, useDebounce, unload;
-  
-    var isHidden = function (element) {
-      return (element.offsetParent === null);
-    };
-    
-    var inView = function (element, view) {
-      if (isHidden(element)) {
-        return false;
-      }
-  
-      var box = element.getBoundingClientRect();
-      return (box.right >= view.l && box.bottom >= view.t && box.left <= view.r && box.top <= view.b);
-    };
-  
-    var debounceOrThrottle = function () {
-      if(!useDebounce && !!poll) {
-        return;
-      }
-      clearTimeout(poll);
-      poll = setTimeout(function(){
-        echo.render();
-        poll = null;
-      }, delay);
-    };
-  
-    echo.init = function (opts) {
-      opts = opts || {};
-      var offsetAll = opts.offset || 0;
-      var offsetVertical = opts.offsetVertical || offsetAll;
-      var offsetHorizontal = opts.offsetHorizontal || offsetAll;
-      var optionToInt = function (opt, fallback) {
-        return parseInt(opt || fallback, 10);
-      };
-      offset = {
-        t: optionToInt(opts.offsetTop, offsetVertical),
-        b: optionToInt(opts.offsetBottom, offsetVertical),
-        l: optionToInt(opts.offsetLeft, offsetHorizontal),
-        r: optionToInt(opts.offsetRight, offsetHorizontal)
-      };
-      delay = optionToInt(opts.throttle, 250);
-      useDebounce = opts.debounce !== false;
-      unload = !!opts.unload;
-      callback = opts.callback || callback;
-      echo.render();
-      if (document.addEventListener) {
-        root.addEventListener('scroll', debounceOrThrottle, false);
-        root.addEventListener('load', debounceOrThrottle, false);
-      } else {
-        root.attachEvent('onscroll', debounceOrThrottle);
-        root.attachEvent('onload', debounceOrThrottle);
-      }
-    };
-  
-    echo.render = function (context) {
-      var nodes = (context || document).querySelectorAll('[data-echo], [data-echo-background]');
-      var length = nodes.length;
-      var src, elem;
-      var view = {
-        l: 0 - offset.l,
-        t: 0 - offset.t,
-        b: (root.innerHeight || document.documentElement.clientHeight) + offset.b,
-        r: (root.innerWidth || document.documentElement.clientWidth) + offset.r
-      };
-      for (var i = 0; i < length; i++) {
-        elem = nodes[i];
-        if (inView(elem, view)) {
-  
-          if (unload) {
-            elem.setAttribute('data-echo-placeholder', elem.src);
-          }
-  
-          if (elem.getAttribute('data-echo-background') !== null) {
-            elem.style.backgroundImage = 'url(' + elem.getAttribute('data-echo-background') + ')';
-          }
-          else if (elem.src !== (src = elem.getAttribute('data-echo'))) {
-            elem.src = src;
-          }
-  
-          if (!unload) {
-            elem.removeAttribute('data-echo');
-            elem.removeAttribute('data-echo-background');
-          }
-  
-          callback(elem, 'load');
-        }
-        else if (unload && !!(src = elem.getAttribute('data-echo-placeholder'))) {
-  
-          if (elem.getAttribute('data-echo-background') !== null) {
-            elem.style.backgroundImage = 'url(' + src + ')';
-          }
-          else {
-            elem.src = src;
-          }
-  
-          elem.removeAttribute('data-echo-placeholder');
-          callback(elem, 'unload');
-        }
-      }
-      if (!length) {
-        echo.detach();
-      }
-    };
-  
-    echo.detach = function () {
-      if (document.removeEventListener) {
-        root.removeEventListener('scroll', debounceOrThrottle);
-      } else {
-        root.detachEvent('onscroll', debounceOrThrottle);
-      }
-      clearTimeout(poll);
-    };
-  
-    return echo;
-  
-  });
-</script>
-<script>
-    echo.init({
-      offset: 2500,
-      throttle: 250,
-      unload: false,
-      callback: function (element, op) {
-        //console.log(element, 'has been', op + 'ed')
-      }
-    });
-</script>
-<h1>Batch 45 Trainees</h1>
+<h1>BCNSSO45 Trainees</h1>
 
 <div class="horizontal-carousel">
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/agum.webp" alt="Richmar" href="/meetus.html#h-auto-heading-0"> --->
-    <a href="/trainees/Agum_Richmar.html">
-      <img src="/assets/images/class/agum.webp" alt="Richmar" loading="lazy">
-    </a>
-    <p>Richmar</p>
+    <img src="/assets/images/class/agum.webp" alt="">
+    <p>Agum</p>
+    <p>Richmar, V.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/aromin.webp" alt="Mart Marciano Antonn" href="/meetus.html#h-auto-heading-1"> --->
-    <a href="/trainees/Aromin_Mart.html">
-      <img src="/assets/images/class/aromin.webp" alt="Mart Marciano Antonn" loading="lazy">
-    </a>
-    <p>Mart Marciano Antonn</p>
+    <img src="/assets/images/class/aromin.webp" alt="">
+    <p>Aromin</p>
+    <p>Mart Marciano Antonn, A.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/baltazar.webp" alt="Joshua Paul" href="/meetus.html#h-auto-heading-2"> --->
-    <a href="/trainees/Baltazar_Joshua.html">
-      <img src="/assets/images/class/baltazar.webp" alt="Joshua Paul" loading="lazy">
-    </a>
-    <p>Joshua Paul</p>
+    <img src="/assets/images/class/baltazar.webp" alt="">
+    <p>Baltazar</p>
+    <p>Joshua Paul, S.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/bordios.webp" alt="Anni" href="/meetus.html#h-auto-heading-3"> --->
-    <a href="/trainees/Bordios_Anni.html">
-      <img src="/assets/images/class/bordios.webp" alt="Anni" loading="lazy">
-    </a>
-    <p>Anni</p>
+    <img src="/assets/images/class/bordios.webp" alt="">
+    <p>Bordios</p>
+    <p>Anni, Lou D</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/buenavista.webp" alt="Juan" href="/meetus.html#h-auto-heading-4"> --->
-    <a href="/trainees/Buenavista_Juan.html">
-      <img src="/assets/images/class/buenavista.webp" alt="Juan" loading="lazy">
-    </a>
-    <p>Juan</p>
+    <img src="/assets/images/class/buenavista.webp" alt="">
+    <p>Buenavista</p>
+    <p>Juan, Carlos A.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/canos.webp" alt="El Shekinah" href="/meetus.html#h-auto-heading-5"> --->
-    <a href="/trainees/Canos_El.html">
-      <img src="/assets/images/class/canos.webp" alt="El Shekinah" loading="lazy">
-    </a>
-    <p>El Shekinah</p>
+    <img src="/assets/images/class/canos.webp" alt="">
+    <p>Caños</p>
+    <p>El Shekinah, M.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/catacutan.webp" alt="Gilmour" href="/meetus.html#h-auto-heading-6"> --->
-    <a href="/trainees/Catacutan_Gilmour.html">
-      <img src="/assets/images/class/catacutan.webp" alt="Gilmour" loading="lazy">
-    </a>
-    <p>Gilmour</p>
+    <img src="/assets/images/class/catacutan.webp" alt="">
+    <p>Catacutan</p>
+    <p>Gilmour, C.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/cunan.webp" alt="Alexandra" href="/meetus.html#h-auto-heading-7"> --->
-    <a href="/trainees/Cunan_Alexandra.html">
-      <img src="/assets/images/class/cunan.webp" alt="Alexandra" loading="lazy">
-    </a>
-    <p>Alexandra</p>
+    <img src="/assets/images/class/cunan.webp" alt="">
+    <p>Cunan</p>
+    <p>Alexandra, F.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/curiba.webp" alt="Glenn Vincent" href="/meetus.html#h-auto-heading-8"> --->
-    <a href="/trainees/Curiba_Glenn.html">
-      <img src="/assets/images/class/curiba.webp" alt="Glenn Vincent" loading="lazy">
-    </a>
-    <p>Glenn Vincent</p>
+    <img src="/assets/images/class/curiba.webp" alt="">
+    <p>Curiba</p>
+    <p>Glenn Vincent, M.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/delacuadra.webp" alt="Kenneth" href="/meetus.html#h-auto-heading-9"> --->
-    <a href="/trainees/Dela_Cuadra_Kenneth.html">
-      <img src="/assets/images/class/delacuadra.webp" alt="Kenneth" loading="lazy">
-    </a>
-    <p>Kenneth</p>
+    <img src="/assets/images/class/delacuadra.webp" alt="">
+    <p>Dela Cuadra</p>
+    <p>Kenneth, T.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/delosangeles.webp" alt="Julie Rica" href="/meetus.html#h-auto-heading-10"> --->
-    <a href="/trainees/Delos_Angeles_Julie.html">
-      <img src="/assets/images/class/delosangeles.webp" alt="Julie Rica" loading="lazy">
-    </a>
-    <p>Julie Rica</p>
+    <img src="/assets/images/class/delosangeles.webp" alt="">
+    <p>Delos Angeles</p>
+    <p>Julie Rica, B.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/dizon.webp" alt="Christian Gabriel" href="/meetus.html#h-auto-heading-11"> --->
-    <a href="/trainees/Dizon_Christian.html">
-      <img src="/assets/images/class/dizon.webp" alt="Christian Gabriel" loading="lazy">
-    </a>
-    <p>Christian Gabriel</p>
+    <img src="/assets/images/class/dizon.webp" alt="">
+    <p>Dizon</p>
+    <p>Christian Gabriel, M.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/fernandez.webp" alt="Matt Asley" href="/meetus.html#h-auto-heading-12"> --->
-    <a href="/trainees/Fernandez_Matt.html">
-      <img src="/assets/images/class/fernandez.webp" alt="Matt Asley" loading="lazy">
-    </a>
-    <p>Matt Asley</p>
+    <img src="/assets/images/class/fernandez.webp" alt="">
+    <p>Fernandez</p>
+    <p>Matt Asley, D.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/francisco.webp" alt="Eric John" href="/meetus.html#h-auto-heading-13"> --->
-    <a href="/trainees/Francisco_Eric.html">
-      <img src="/assets/images/class/francisco.webp" alt="Eric John" loading="lazy">
-    </a>
-    <p>Eric John</p>
+    <img src="/assets/images/class/francisco.webp" alt="">
+    <p>Francisco</p>
+    <p>Eric John, M.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/franco_j.webp" alt="Jericho Martin" href="/meetus.html#h-auto-heading-14"> --->
-    <a href="/trainees/Franco_Jericho.html">
-      <img src="/assets/images/class/franco_j.webp" alt="Jericho Martin" loading="lazy">
-    </a>
-    <p>Jericho Martin</p>
+    <img src="/assets/images/class/franco_j.webp" alt="">
+    <p>Franco</p>
+    <p>Jericho Martin, C.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/franco_m.webp" alt="Ma. Cristina" href="/meetus.html#h-auto-heading-15"> --->
-    <a href="/trainees/Franco_Ma_.html">
-      <img src="/assets/images/class/franco_m.webp" alt="Ma. Cristina" loading="lazy">
-    </a>
-    <p>Ma. Cristina</p>
+    <img src="/assets/images/class/franco_m.webp" alt="">
+    <p>Franco</p>
+    <p>Ma. Cristina, S.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/fuentes.webp" alt="Albert Anthony" href="/meetus.html#h-auto-heading-16"> --->
-    <a href="/trainees/Fuentes_Albert.html">
-      <img src="/assets/images/class/fuentes.webp" alt="Albert Anthony" loading="lazy">
-    </a>
-    <p>Albert Anthony</p>
+    <img src="/assets/images/class/fuentes.webp" alt="">
+    <p>Fuentes</p>
+    <p>Albert Anthony, O.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/go.webp" alt="Eiderf John" href="/meetus.html#h-auto-heading-17"> --->
-    <a href="/trainees/Go_Eiderf.html">
-      <img src="/assets/images/class/go.webp" alt="Eiderf John" loading="lazy">
-    </a>
-    <p>Eiderf John</p>
+    <img src="/assets/images/class/go.webp" alt="">
+    <p>Go</p>
+    <p>Eiderf John, C.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/gratol.webp" alt="Junjie" href="/meetus.html#h-auto-heading-18"> --->
-    <a href="/trainees/Gratol_Junjie.html">
-      <img src="/assets/images/class/gratol.webp" alt="Junjie" loading="lazy">
-    </a>
-    <p>Junjie</p>
+    <img src="/assets/images/class/gratol.webp" alt="">
+    <p>Gratol</p>
+    <p>Junjie, N.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/jalique.webp" alt="Caroline" href="/meetus.html#h-auto-heading-19"> --->
-    <a href="/trainees/Jalique_Caroline.html">
-      <img src="/assets/images/class/jalique.webp" alt="Caroline" loading="lazy">
-    </a>
-    <p>Caroline</p>
+    <img src="/assets/images/class/jalique.webp" alt="">
+    <p>Jalique</p>
+    <p>Caroline, T.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/jamora.webp" alt="Jethro" href="/meetus.html#h-auto-heading-20"> --->
-    <a href="/trainees/Jamora_Jethro.html">
-      <img src="/assets/images/class/jamora.webp" alt="Jethro" loading="lazy">
-    </a>
-    <p>Jethro</p>
+    <img src="/assets/images/class/jamora.webp" alt="">
+    <p>Jamora</p>
+    <p>Jethro, S.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/jamoyot.webp" alt="Danica Rose" href="/meetus.html#h-auto-heading-21"> --->
-    <a href="/trainees/Jamoyot_Danica.html">
-      <img src="/assets/images/class/jamoyot.webp" alt="Danica Rose" loading="lazy">
-    </a>
-    <p>Danica Rose</p>
+    <img src="/assets/images/class/jamoyot.webp" alt="">
+    <p>Jamoyot</p>
+    <p>Danica Rose, V.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/jarin.webp" alt="Marc Ernestine" href="/meetus.html#h-auto-heading-22"> --->
-    <a href="/trainees/Jarin_Marc.html">
-      <img src="/assets/images/class/jarin.webp" alt="Marc Ernestine" loading="lazy">
-    </a>
-    <p>Marc Ernestine</p>
+    <img src="/assets/images/class/jarin.webp" alt="">
+    <p>Jarin</p>
+    <p>Marc Ernestine, S.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/laguerta.webp" alt="Brenan" href="/meetus.html#h-auto-heading-23"> --->
-    <a href="/trainees/Laguerta_Brenan.html">
-      <img src="/assets/images/class/laguerta.webp" alt="Brenan" loading="lazy">
-    </a>
-    <p>Brenan</p>
+    <img src="/assets/images/class/laguerta.webp" alt="">
+    <p>Laguerta</p>
+    <p>Brenan, S.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/lin.webp" alt="Jan Emernik Cyrus" href="/meetus.html#h-auto-heading-24"> --->
-    <a href="/trainees/Lin_Jan.html">
-      <img src="/assets/images/class/lin.webp" alt="Jan Emernik Cyrus" loading="lazy">
-    </a>
-    <p>Jan Emernik Cyrus</p>
+    <img src="/assets/images/class/lin.webp" alt="">
+    <p>Lin</p>
+    <p>Jan Emernik Cyrus, A.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/lu.webp" alt="John Joseph" href="/meetus.html#h-auto-heading-25"> --->
-    <a href="/trainees/Lu_John.html">
-      <img src="/assets/images/class/lu.webp" alt="John Joseph" loading="lazy">
-    </a>
-    <p>John Joseph</p>
+    <img src="/assets/images/class/lu.webp" alt="">
+    <p>Lu</p>
+    <p>John Joseph, V.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/maasin.webp" alt="Aladdin" href="/meetus.html#h-auto-heading-26"> --->
-    <a href="/trainees/Maasin_Aladdin.html">
-      <img src="/assets/images/class/maasin.webp" alt="Aladdin" loading="lazy">
-    </a>
-    <p>Aladdin</p>
+    <img src="/assets/images/class/maasin.webp" alt="">
+    <p>Maasin</p>
+    <p>Aladdin, V.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/manansala.webp" alt="Francis Miguel" href="/meetus.html#h-auto-heading-27"> --->
-    <a href="/trainees/Manansala_Francis.html">
-      <img src="/assets/images/class/manansala.webp" alt="Francis Miguel" loading="lazy">
-    </a>
-    <p>Francis Miguel</p>
+    <img src="/assets/images/class/manansala.webp" alt="">
+    <p>Manansala</p>
+    <p>Francis Miguel, B.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/musa.webp" alt="Adzhar" href="/meetus.html#h-auto-heading-28"> --->
-    <a href="/trainees/Musa_Adzhar.html">
-      <img src="/assets/images/class/musa.webp" alt="Adzhar" loading="lazy">
-    </a>
-    <p>Adzhar</p>
+    <img src="/assets/images/class/musa.webp" alt="">
+    <p>Musa</p>
+    <p>Adzhar, A.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/namoco.webp" alt="Pepe II" href="/meetus.html#h-auto-heading-29"> --->
-    <a href="/trainees/Namoco_Pepe.html">
-      <img src="/assets/images/class/namoco.webp" alt="Pepe II" loading="lazy">
-    </a>
-    <p>Pepe II</p>
+    <img src="/assets/images/class/namoco.webp" alt="">
+    <p>Namoco</p>
+    <p>Pepe II, S.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/ochoa.webp" alt="Alyanna Mari" href="/meetus.html#h-auto-heading-30"> --->
-    <a href="/trainees/Ochoa_Alyanna.html">
-      <img src="/assets/images/class/ochoa.webp" alt="Alyanna Mari" loading="lazy">
-    </a>
-    <p>Alyanna Mari</p>
+    <img src="/assets/images/class/ochoa.webp" alt="">
+    <p>Ochoa</p>
+    <p>Alyanna Mari, B.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/omar.webp" alt="Abdulrafy" href="/meetus.html#h-auto-heading-31"> --->
-    <a href="/trainees/Omar_Abdulrafy.html">
-      <img src="/assets/images/class/omar.webp" alt="Abdulrafy" loading="lazy">
-    </a>
-    <p>Abdulrafy</p>
+    <img src="/assets/images/class/omar.webp" alt="">
+    <p>Omar</p>
+    <p>Abdulrafy, G.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/ong.webp" alt="Patrick Miles" href="/meetus.html#h-auto-heading-32"> --->
-    <a href="/trainees/Ong_Patrick.html">
-      <img src="/assets/images/class/ong.webp" alt="Patrick Miles" loading="lazy">
-    </a>
-    <p>Patrick Miles</p>
+    <img src="/assets/images/class/ong.webp" alt="">
+    <p>Ong</p>
+    <p>Patrick Miles, A.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/pena.webp" alt="Jana Beatrice" href="/meetus.html#h-auto-heading-33"> --->
-    <a href="/trainees/Pena_Jana.html">
-      <img src="/assets/images/class/pena.webp" alt="Jana Beatrice" loading="lazy">
-    </a>
-    <p>Jana Beatrice</p>
+    <img src="/assets/images/class/pena.webp" alt="">
+    <p>Peña</p>
+    <p>Jana Beatrice, T.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/pinote.webp" alt="Elijah Ray" href="/meetus.html#h-auto-heading-34"> --->
-    <a href="/trainees/Pinote_Elijah.html">
-      <img src="/assets/images/class/pinote.webp" alt="Elijah Ray" loading="lazy">
-    </a>
-    <p>Elijah Ray</p>
+    <img src="/assets/images/class/pinote.webp" alt="">
+    <p>Pinote</p>
+    <p>Elijah Ray, R.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/rabaja.webp" alt="Ibrahim Cedrick" href="/meetus.html#h-auto-heading-35"> --->
-    <a href="/trainees/Rabaja_Ibrahim.html">
-      <img src="/assets/images/class/rabaja.webp" alt="Ibrahim Cedrick" loading="lazy">
-    </a>
-    <p>Ibrahim Cedrick</p>
+    <img src="/assets/images/class/rabaja.webp" alt="">
+    <p>Rabaja</p>
+    <p>Ibrahim Cedrick, T.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/reburiano.webp" alt="Anton Jude Seki" href="/meetus.html#h-auto-heading-36"> --->
-    <a href="/trainees/Reburiano_Anton.html">
-      <img src="/assets/images/class/reburiano.webp" alt="Anton Jude Seki" loading="lazy">
-    </a>
-    <p>Anton Jude Seki</p>
+    <img src="/assets/images/class/reburiano.webp" alt="">
+    <p>Reburiano</p>
+    <p>Anton Jude Seki, T.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/recio.webp" alt="John Francis" href="/meetus.html#h-auto-heading-37"> --->
-    <a href="/trainees/Recio_John.html">
-      <img src="/assets/images/class/recio.webp" alt="John Francis" loading="lazy">
-    </a>
-    <p>John Francis</p>
+    <img src="/assets/images/class/recio.webp" alt="">
+    <p>Recio</p>
+    <p>John Francis, T.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/rivas.webp" alt="Patricia" href="/meetus.html#h-auto-heading-38"> --->
-    <a href="/trainees/Rivas_Patricia.html">
-      <img src="/assets/images/class/rivas.webp" alt="Patricia" loading="lazy">
-    </a>
-    <p>Patricia</p>
+    <img src="/assets/images/class/rivas.webp" alt="">
+    <p>Rivas</p>
+    <p>Patricia, V.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/santiago.webp" alt="John Ryan" href="/meetus.html#h-auto-heading-39"> --->
-    <a href="/trainees/Santiago_John.html">
-      <img src="/assets/images/class/santiago.webp" alt="John Ryan" loading="lazy">
-    </a>
-    <p>John Ryan</p>
+    <img src="/assets/images/class/santiago.webp" alt="">
+    <p>Santiago</p>
+    <p>John Ryan, C.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/saul.webp" alt="Mary Claire" href="/meetus.html#h-auto-heading-40"> --->
-    <a href="/trainees/Saul_Mary.html">
-      <img src="/assets/images/class/saul.webp" alt="Mary Claire" loading="lazy">
-    </a>
-    <p>Mary Claire</p>
+    <img src="/assets/images/class/saul.webp" alt="">
+    <p>Saul</p>
+    <p>Mary Claire, S.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/sevilla.webp" alt="Jonas" href="/meetus.html#h-auto-heading-41"> --->
-    <a href="/trainees/Sevilla_Jonas.html">
-      <img src="/assets/images/class/sevilla.webp" alt="Jonas" loading="lazy">
-    </a>
-    <p>Jonas</p>
+    <img src="/assets/images/class/sevilla.webp" alt="">
+    <p>Sevilla</p>
+    <p>Jonas, G.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/suguitan.webp" alt="Lourvie Gay" href="/meetus.html#h-auto-heading-42"> --->
-    <a href="/trainees/Suguitan_Lourvie.html">
-      <img src="/assets/images/class/suguitan.webp" alt="Lourvie Gay" loading="lazy">
-    </a>
-    <p>Lourvie Gay</p>
+    <img src="/assets/images/class/suguitan.webp" alt="">
+    <p>Suguitan</p>
+    <p>Lourvie Gay, L.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/tabao.webp" alt="Adrian" href="/meetus.html#h-auto-heading-43"> --->
-    <a href="/trainees/Tabao_Adrian.html">
-      <img src="/assets/images/class/tabao.webp" alt="Adrian" loading="lazy">
-    </a>
-    <p>Adrian</p>
+    <img src="/assets/images/class/tabao.webp" alt="">
+    <p>Tabao</p>
+    <p>Adrian, M.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/tininahan.webp" alt="Jeffrey Jr." href="/meetus.html#h-auto-heading-44"> --->
-    <a href="/trainees/Tininahan_Jeffrey.html">
-      <img src="/assets/images/class/tininahan.webp" alt="Jeffrey Jr." loading="lazy">
-    </a>
-    <p>Jeffrey Jr.</p>
+    <img src="/assets/images/class/tininahan.webp" alt="">
+    <p>Tininahan</p>
+    <p>Jeffrey Jr., C.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/turija.webp" alt="Cid Jericho" href="/meetus.html#h-auto-heading-45"> --->
-    <a href="/trainees/Turija_Cid.html">
-      <img src="/assets/images/class/turija.webp" alt="Cid Jericho" loading="lazy">
-    </a>
-    <p>Cid Jericho</p>
+    <img src="/assets/images/class/turija.webp" alt="">
+    <p>Turija</p>
+    <p>Cid Jericho, C.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/valledor.webp" alt="Frenchelle Kate" href="/meetus.html#h-auto-heading-46"> --->
-    <a href="/trainees/Valledor_Frenchelle.html">
-      <img src="/assets/images/class/valledor.webp" alt="Frenchelle Kate" loading="lazy">
-    </a>
-    <p>Frenchelle Kate</p>
+    <img src="/assets/images/class/valledor.webp" alt="">
+    <p>Valledor</p>
+    <p>Frenchelle Kate, D.</p>
   </div>
   
   <div class="carousel-item">
-    <!--- old-code:html --->
-    <!--- <img src="/assets/images/class/villacampo.webp" alt="Renz Adrian" href="/meetus.html#h-auto-heading-47"> --->
-    <a href="/trainees/Villacampo_Renz.html">
-      <img src="/assets/images/class/villacampo.webp" alt="Renz Adrian" loading="lazy">
-    </a>
-    <p>Renz Adrian</p>
+    <img src="/assets/images/class/villacampo.webp" alt="">
+    <p>Villacampo</p>
+    <p>Renz Adrian, S.</p>
   </div>
   
 </div>
 
 <style>
-/* old-code:css
-.horizontal-carousel {
-  display: flex;
-  overflow-x: auto;
-  gap: 16px;
-  padding: 16px 0;
-  scroll-behavior: smooth;
-  align-items: flex-start
-}
-*/
 .horizontal-carousel {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
   padding: 16px 0;
-  justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 .carousel-item {
   flex: 0 0 auto;
@@ -2068,6 +1761,7 @@ margin-bottom: 3rem;
   font-size: 14px;
 }
 </style>
+
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
@@ -2082,7 +1776,7 @@ margin-bottom: 3rem;
         another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
       </div>
 <div class="site-footer-links">
-<nav class="site-footer-nav" aria-label="Footer navigation"><a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery/">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a></nav><div class="site-footer-social" aria-label="Social links">
+<nav class="site-footer-nav" aria-label="Footer navigation"><a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery.html">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a></nav><div class="site-footer-social" aria-label="Social links">
 <a class="social-link" href="https://fb.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                   <i class="fa fa-facebook"></i>
                 </a><a class="social-link" href="mailto:dagitlaya@gmail.com" aria-label="Email">

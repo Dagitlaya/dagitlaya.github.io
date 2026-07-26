@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_development_dependency "bundler"
-  spec.add_development_dependency "rake", ">= 12.0", "< 13.0"
+  spec.add_development_dependency "rake", ">= 12.0", "< 13.4.2"
 
   spec.add_runtime_dependency "jekyll", "> 3.5", "< 5.0"
   spec.add_runtime_dependency "jekyll-feed", "~> 0.9"
@@ -27,5 +27,9 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "jekyll-spaceship", "~> 0.2"
   spec.add_runtime_dependency "bigdecimal"
   spec.add_runtime_dependency "ostruct"
-  spec.add_runtime_dependency "jekyll-gallery-generator"
+  # spec.add_runtime_dependency "jekyll-gallery-generator"
+  spec.add_runtime_dependency "google-protobuf", "~> 4.29"
+  spec.add_runtime_dependency 'erb', '~> 4.0'
+  spec.add_runtime_dependency "observer"
+  spec.add_runtime_dependency "rmagick"
 end

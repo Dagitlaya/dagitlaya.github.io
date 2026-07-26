@@ -135,20 +135,20 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <style>
   .pswp .pswp__container .pswp__img {
     background-color: white;
+    image-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 </style>
 
 <script>
   function initPhotoSwipe() {
-    // old-code:js
-    // var mainEl = document.querySelector("section.main");
-    var mainEl = document.querySelector("section.main") || document.querySelector(".page-content");
+    var mainEl = document.querySelector("section.main");
 
-    var imgEls = mainEl.querySelectorAll("img:not(.emoji)");
+    var imgEls = mainEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     imgEls.forEach((imgEl) => {
-      // old-code:js
-      // Skip images already inside anchor tags to avoid breaking navigation links
-      if (imgEl.closest('a')) return;
       imgEl.outerHTML = `
     <a class="photo-swipe"
       href="${imgEl.src}"
@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
           </label>
 
           <div class="trigger">
-<a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery/">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a>
+<a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery.html">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a>
 
 
 
@@ -918,7 +918,7 @@ function googleTranslateElementInit() {
         another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
       </div>
 <div class="site-footer-links">
-<nav class="site-footer-nav" aria-label="Footer navigation"><a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery/">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a></nav><div class="site-footer-social" aria-label="Social links">
+<nav class="site-footer-nav" aria-label="Footer navigation"><a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery.html">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a></nav><div class="site-footer-social" aria-label="Social links">
 <a class="social-link" href="https://fb.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                   <i class="fa fa-facebook"></i>
                 </a><a class="social-link" href="mailto:dagitlaya@gmail.com" aria-label="Email">
