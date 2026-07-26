@@ -992,175 +992,6 @@ function googleTranslateElementInit() {
       }
     });
 </script><script src="/assets/js/meetus.js"></script>
-<style>
-  h2 {
-    color: #d4af4e;
-  }
-
-  .toc-ignore {
-    /* color:hsl(from #d4af4eh s calc(l + 100%)); */
-  }
-
-  b {
-    
-  }
-
-  .trainee-container {
-    position: relative;
-    display:inline;
-    align-items: center;
-
-  }
-
-  .trainee-profile-hoverable {
-    /* cursor: pointer; */
-    transition: background-color 0.2s ease, transform 0.5s ease, opacity 0.5s ease;
-    display: flex;
-    flex-wrap: nowrap;
-    /* align-items: flex-start; */
-    align-items: center;
-  }
-
-  .trainee-profile-hoverable:hover {
-    background-color: rgba(0, 0, 0, 0.02);
-  }
-
-  .trainee-media-container {
-    position: relative;
-    width: 45%;
-    min-width: 200px;
-    max-width: 350px;
-    aspect-ratio: 9/16;
-    margin: 0rem 20px 20px 15px;
-    overflow: hidden;
-    border-radius: 8px;
-    background-color: #f4f4f4;
-    flex-shrink: 0;
-
-  }
-
-  .trainee-media-container img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-    shape-outside: margin-box;
-    transition: opacity 0.3s ease-in-out;
-    background-color: #f4f4f4;
-  }
-
-  .trainee-media-container video,
-  .trainee-media-container img.animated-webp {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    border-radius: 8px;
-  }
-
-  .trainee-media-container.playing video,
-  .trainee-media-container.playing img.animated-webp {
-    opacity: 1;
-  }
-
-  .trainee-media-container.playing>img:not(.animated-webp) {
-    opacity: 0;
-  }
-
-  .trainee-profile-hoverable p {
-    text-align: justify;
-  }
-
-  .trainee-info {
-    flex: 1 1 auto;
-    min-width: 0;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
-
-  .trainee-arrow {
-    color: #00295d;
-    display: flex;
-    background-color: #d4af4e;
-    border-radius: 0.25rem;
-  }
-
-  .trainee-profile-hoverable:hover {
-    opacity: 1;
-  }
-
-  /* --- old-code:css ---
-  .trainee-pubimg {
-    position: absolute;
-    z-index: -1;
-    object-fit: contain;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-  --- end-old-code --- */
-
-  .trainee-pubimg {
-    position: absolute;
-    z-index: -1;
-    object-fit: contain;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-  }
-
-  /* --- old-code:css ---
-  .trainee-pubimg.visible {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  --- end-old-code --- */
-  .trainee-pubimg.visible {
-    opacity: 1;
-    pointer-events: auto;
-    z-index: 10;
-  }
-
-
-  /* --- old-code:css ---
-  .trainee-profile-hoverable.revealed {
-    transform: translateX(100px);
-    opacity: 0;
-    pointer-events: none;
-  }
-  --- end-old-code --- */
-  .trainee-profile-hoverable.revealed {
-    transform: translateX(100px);
-    opacity: 0;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-
-  @media (max-width: 768px) {
-    .trainee-profile-hoverable {
-      flex-wrap: wrap;
-    }
-
-    .trainee-media-container {
-      width: 100%;
-      max-width: 300px;
-      margin: 5rem auto 1rem auto;
-      flex-shrink: 1;
-    }
-
-    .trainee-info {
-      width: 100%;
-      margin-top: 0rem;
-    }
-  }
-</style>
 
 
 
@@ -1175,7 +1006,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="0">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-0">
       <!-- <img src='/assets/images/class/agum.webp' data-jpg-src="/assets/images/class/agum.jpg" alt="Richmar" id="static-img-0"> -->
@@ -1229,7 +1060,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="1">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-1">
       <!-- <img src='/assets/images/class/aromin.webp' data-jpg-src="/assets/images/class/aromin.jpg" alt="Mart Marciano Antonn" id="static-img-1"> -->
@@ -1283,7 +1114,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="2">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-2">
       <!-- <img src='/assets/images/class/baltazar.webp' data-jpg-src="/assets/images/class/baltazar.jpg" alt="Joshua Paul" id="static-img-2"> -->
@@ -1337,7 +1168,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="3">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-3">
       <!-- <img src='/assets/images/class/bordios.webp' data-jpg-src="/assets/images/class/bordios.jpg" alt="Anni" id="static-img-3"> -->
@@ -1391,7 +1222,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="4">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-4">
       <!-- <img src='/assets/images/class/buenavista.webp' data-jpg-src="/assets/images/class/buenavista.jpg" alt="Juan" id="static-img-4"> -->
@@ -1445,7 +1276,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="5">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-5">
       <!-- <img src='/assets/images/class/canos.webp' data-jpg-src="/assets/images/class/canos.jpg" alt="El Shekinah" id="static-img-5"> -->
@@ -1499,7 +1330,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="6">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-6">
       <!-- <img src='/assets/images/class/catacutan.webp' data-jpg-src="/assets/images/class/catacutan.jpg" alt="Gilmour" id="static-img-6"> -->
@@ -1553,7 +1384,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="7">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-7">
       <!-- <img src='/assets/images/class/cunan.webp' data-jpg-src="/assets/images/class/cunan.jpg" alt="Alexandra" id="static-img-7"> -->
@@ -1607,7 +1438,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="8">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-8">
       <!-- <img src='/assets/images/class/curiba.webp' data-jpg-src="/assets/images/class/curiba.jpg" alt="Glenn Vincent" id="static-img-8"> -->
@@ -1661,7 +1492,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="9">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-9">
       <!-- <img src='/assets/images/class/delacuadra.webp' data-jpg-src="/assets/images/class/delacuadra.jpg" alt="Kenneth" id="static-img-9"> -->
@@ -1715,7 +1546,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="10">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-10">
       <!-- <img src='/assets/images/class/delosangeles.webp' data-jpg-src="/assets/images/class/delosangeles.jpg" alt="Julie Rica" id="static-img-10"> -->
@@ -1769,7 +1600,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="11">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-11">
       <!-- <img src='/assets/images/class/dizon.webp' data-jpg-src="/assets/images/class/dizon.jpg" alt="Christian Gabriel" id="static-img-11"> -->
@@ -1823,7 +1654,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="12">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-12">
       <!-- <img src='/assets/images/class/fernandez.webp' data-jpg-src="/assets/images/class/fernandez.jpg" alt="Matt Asley" id="static-img-12"> -->
@@ -1877,7 +1708,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="13">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-13">
       <!-- <img src='/assets/images/class/francisco.webp' data-jpg-src="/assets/images/class/francisco.jpg" alt="Eric John" id="static-img-13"> -->
@@ -1931,7 +1762,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="14">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-14">
       <!-- <img src='/assets/images/class/franco_j.webp' data-jpg-src="/assets/images/class/franco_j.jpg" alt="Jericho Martin" id="static-img-14"> -->
@@ -1985,7 +1816,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="15">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-15">
       <!-- <img src='/assets/images/class/franco_m.webp' data-jpg-src="/assets/images/class/franco_m.jpg" alt="Ma. Cristina" id="static-img-15"> -->
@@ -2039,7 +1870,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="16">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-16">
       <!-- <img src='/assets/images/class/fuentes.webp' data-jpg-src="/assets/images/class/fuentes.jpg" alt="Albert Anthony" id="static-img-16"> -->
@@ -2093,7 +1924,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="17">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-17">
       <!-- <img src='/assets/images/class/go.webp' data-jpg-src="/assets/images/class/go.jpg" alt="Eiderf John" id="static-img-17"> -->
@@ -2147,7 +1978,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="18">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-18">
       <!-- <img src='/assets/images/class/gratol.webp' data-jpg-src="/assets/images/class/gratol.jpg" alt="Junjie" id="static-img-18"> -->
@@ -2201,7 +2032,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="19">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-19">
       <!-- <img src='/assets/images/class/jalique.webp' data-jpg-src="/assets/images/class/jalique.jpg" alt="Caroline" id="static-img-19"> -->
@@ -2255,7 +2086,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="20">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-20">
       <!-- <img src='/assets/images/class/jamora.webp' data-jpg-src="/assets/images/class/jamora.jpg" alt="Jethro" id="static-img-20"> -->
@@ -2309,7 +2140,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="21">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-21">
       <!-- <img src='/assets/images/class/jamoyot.webp' data-jpg-src="/assets/images/class/jamoyot.jpg" alt="Danica Rose" id="static-img-21"> -->
@@ -2363,7 +2194,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="22">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-22">
       <!-- <img src='/assets/images/class/jarin.webp' data-jpg-src="/assets/images/class/jarin.jpg" alt="Marc Ernestine" id="static-img-22"> -->
@@ -2417,7 +2248,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="23">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-23">
       <!-- <img src='/assets/images/class/laguerta.webp' data-jpg-src="/assets/images/class/laguerta.jpg" alt="Brenan" id="static-img-23"> -->
@@ -2471,7 +2302,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="24">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-24">
       <!-- <img src='/assets/images/class/lin.webp' data-jpg-src="/assets/images/class/lin.jpg" alt="Jan Emernik Cyrus" id="static-img-24"> -->
@@ -2525,7 +2356,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="25">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-25">
       <!-- <img src='/assets/images/class/lu.webp' data-jpg-src="/assets/images/class/lu.jpg" alt="John Joseph" id="static-img-25"> -->
@@ -2579,7 +2410,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="26">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-26">
       <!-- <img src='/assets/images/class/maasin.webp' data-jpg-src="/assets/images/class/maasin.jpg" alt="Aladdin" id="static-img-26"> -->
@@ -2633,7 +2464,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="27">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-27">
       <!-- <img src='/assets/images/class/manansala.webp' data-jpg-src="/assets/images/class/manansala.jpg" alt="Francis Miguel" id="static-img-27"> -->
@@ -2687,7 +2518,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="28">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-28">
       <!-- <img src='/assets/images/class/musa.webp' data-jpg-src="/assets/images/class/musa.jpg" alt="Adzhar" id="static-img-28"> -->
@@ -2741,7 +2572,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="29">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-29">
       <!-- <img src='/assets/images/class/namoco.webp' data-jpg-src="/assets/images/class/namoco.jpg" alt="Pepe II" id="static-img-29"> -->
@@ -2795,7 +2626,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="30">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-30">
       <!-- <img src='/assets/images/class/ochoa.webp' data-jpg-src="/assets/images/class/ochoa.jpg" alt="Alyanna Mari" id="static-img-30"> -->
@@ -2849,7 +2680,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="31">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-31">
       <!-- <img src='/assets/images/class/omar.webp' data-jpg-src="/assets/images/class/omar.jpg" alt="Abdulrafy" id="static-img-31"> -->
@@ -2903,7 +2734,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="32">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-32">
       <!-- <img src='/assets/images/class/ong.webp' data-jpg-src="/assets/images/class/ong.jpg" alt="Patrick Miles" id="static-img-32"> -->
@@ -2957,7 +2788,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="33">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-33">
       <!-- <img src='/assets/images/class/pena.webp' data-jpg-src="/assets/images/class/pena.jpg" alt="Jana Beatrice" id="static-img-33"> -->
@@ -3011,7 +2842,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="34">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-34">
       <!-- <img src='/assets/images/class/pinote.webp' data-jpg-src="/assets/images/class/pinote.jpg" alt="Elijah Ray" id="static-img-34"> -->
@@ -3065,7 +2896,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="35">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-35">
       <!-- <img src='/assets/images/class/rabaja.webp' data-jpg-src="/assets/images/class/rabaja.jpg" alt="Ibrahim Cedrick" id="static-img-35"> -->
@@ -3119,7 +2950,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="36">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-36">
       <!-- <img src='/assets/images/class/reburiano.webp' data-jpg-src="/assets/images/class/reburiano.jpg" alt="Anton Jude Seki" id="static-img-36"> -->
@@ -3173,7 +3004,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="37">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-37">
       <!-- <img src='/assets/images/class/recio.webp' data-jpg-src="/assets/images/class/recio.jpg" alt="John Francis" id="static-img-37"> -->
@@ -3227,7 +3058,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="38">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-38">
       <!-- <img src='/assets/images/class/rivas.webp' data-jpg-src="/assets/images/class/rivas.jpg" alt="Patricia" id="static-img-38"> -->
@@ -3281,7 +3112,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="39">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-39">
       <!-- <img src='/assets/images/class/santiago.webp' data-jpg-src="/assets/images/class/santiago.jpg" alt="John Ryan" id="static-img-39"> -->
@@ -3335,7 +3166,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="40">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-40">
       <!-- <img src='/assets/images/class/saul.webp' data-jpg-src="/assets/images/class/saul.jpg" alt="Mary Claire" id="static-img-40"> -->
@@ -3389,7 +3220,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="41">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-41">
       <!-- <img src='/assets/images/class/sevilla.webp' data-jpg-src="/assets/images/class/sevilla.jpg" alt="Jonas" id="static-img-41"> -->
@@ -3443,7 +3274,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="42">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-42">
       <!-- <img src='/assets/images/class/suguitan.webp' data-jpg-src="/assets/images/class/suguitan.jpg" alt="Lourvie Gay" id="static-img-42"> -->
@@ -3497,7 +3328,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="43">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-43">
       <!-- <img src='/assets/images/class/tabao.webp' data-jpg-src="/assets/images/class/tabao.jpg" alt="Adrian" id="static-img-43"> -->
@@ -3551,7 +3382,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="44">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-44">
       <!-- <img src='/assets/images/class/tininahan.webp' data-jpg-src="/assets/images/class/tininahan.jpg" alt="Jeffrey Jr." id="static-img-44"> -->
@@ -3605,7 +3436,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="45">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-45">
       <!-- <img src='/assets/images/class/turija.webp' data-jpg-src="/assets/images/class/turija.jpg" alt="Cid Jericho" id="static-img-45"> -->
@@ -3659,7 +3490,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="46">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-46">
       <!-- <img src='/assets/images/class/valledor.webp' data-jpg-src="/assets/images/class/valledor.jpg" alt="Frenchelle Kate" id="static-img-46"> -->
@@ -3713,7 +3544,7 @@ function googleTranslateElementInit() {
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="47">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
     </div>
     <div class="trainee-media-container" id="media-container-47">
       <!-- <img src='/assets/images/class/villacampo.webp' data-jpg-src="/assets/images/class/villacampo.jpg" alt="Renz Adrian" id="static-img-47"> -->

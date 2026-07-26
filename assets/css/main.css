@@ -1555,6 +1555,135 @@ html[data-theme=dark] .click-to-top {
   }
 }
 
+h2 {
+  color: #d4af4e;
+}
+
+.trainee-container {
+  position: relative;
+  display: inline;
+  align-items: center;
+}
+
+.trainee-profile-hoverable {
+  transition: background-color 0.2s ease, transform 0.5s ease, opacity 0.5s ease;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.trainee-profile-hoverable:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+  opacity: 1;
+}
+
+.trainee-media-container {
+  position: relative;
+  width: 45%;
+  min-width: 200px;
+  max-width: 350px;
+  aspect-ratio: 9/16;
+  margin: 0rem 20px 20px 15px;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #f4f4f4;
+  flex-shrink: 0;
+}
+
+.trainee-media-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  shape-outside: margin-box;
+  transition: opacity 0.3s ease-in-out;
+  background-color: #f4f4f4;
+}
+
+.trainee-media-container video,
+.trainee-media-container img.animated-webp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 8px;
+}
+
+.trainee-media-container.playing video,
+.trainee-media-container.playing img.animated-webp {
+  opacity: 1;
+}
+
+.trainee-media-container.playing > img:not(.animated-webp) {
+  opacity: 0;
+}
+
+.trainee-profile-hoverable p {
+  text-align: justify;
+}
+
+.trainee-info {
+  flex: 1 1 auto;
+  min-width: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.trainee-arrow {
+  color: #00295d;
+  display: flex;
+  background-color: #d4af4e;
+  border-radius: 0.25rem;
+}
+
+.trainee-arrow-right {
+  margin-top: 1rem;
+}
+
+.trainee-pubimg {
+  position: absolute;
+  z-index: -1;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.trainee-pubimg.visible {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.trainee-profile-hoverable.revealed {
+  transform: translateX(100px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .trainee-profile-hoverable {
+    flex-wrap: wrap;
+  }
+  .trainee-media-container {
+    width: 100%;
+    max-width: 300px;
+    margin: 5rem auto 1rem auto;
+    flex-shrink: 1;
+  }
+  .trainee-info {
+    width: 100%;
+    margin-top: 0rem;
+  }
+}
 :root {
   --mb-0-25: 0.25rem;
   --mb-0-5: 0.5rem;
