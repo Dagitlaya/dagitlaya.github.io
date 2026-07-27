@@ -1691,14 +1691,14 @@ strong {
 
 .trainee-statement p {
   position: relative;
+  overflow: auto;
 }
 
 .trainee-statement p::before {
   content: "“";
-  display: block;
-  position: relative;
-  top: 0.25rem;
-  left: 0.5rem;
+  float: left;
+  margin-right: 0.25rem;
+  margin-top: -0.25rem;
   font-size: 3rem;
   font-family: Georgia, serif;
   color: var(--primary-color, #3b82f6);
@@ -1709,10 +1709,9 @@ strong {
 
 .trainee-statement p::after {
   content: "”";
-  display: block;
-  position: relative;
-  bottom: -0.5rem;
-  right: 0.5rem;
+  float: right;
+  margin-left: 0.25rem;
+  margin-top: -0.25rem;
   font-size: 3rem;
   font-family: Georgia, serif;
   color: var(--primary-color, #3b82f6);
