@@ -1691,6 +1691,10 @@ strong {
   overflow: auto;
 }
 
+p {
+  margin-bottom: 24px;
+}
+
 .trainee-statement p::before {
   content: "“";
   float: left;

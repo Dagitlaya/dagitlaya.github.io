@@ -992,7 +992,7 @@ Over the course of eight weeks (June 29 – August 21, 2026), BCNSSO 45 underwen
       // 1. Handle missing IDs
       var headingId = h.getAttribute('id');
       if (!headingId) {
-        headingId = 'auto-heading-' + i;
+        headingId = 'h-auto-heading-' + i;
         h.setAttribute('id', headingId);
       }
 
@@ -1012,7 +1012,7 @@ Over the course of eight weeks (June 29 – August 21, 2026), BCNSSO 45 underwen
       // 4. Build the menu item
       menuHTML += (
         '<li class="h-' + h.tagName.toLowerCase() + '">'
-        + '<a href="#h-' + headingId + '">' + tocText + '</a></li>');
+        + '<a href="#' + headingId + '">' + tocText + '</a></li>');
     }
 
     menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
@@ -1080,7 +1080,7 @@ Over the course of eight weeks (June 29 – August 21, 2026), BCNSSO 45 underwen
         var headerHeight = Math.floor(headerRect.height);
         var headerHeight = headerTop + headerHeight + 20;
         if (headingRect.top <= headerHeight) {
-          var id = 'h-' + h.getAttribute('id');
+          var id = h.getAttribute('id');
           var a = menuContent.querySelector('a[href="#' + id + '"]');
           var curActive = a.parentNode;
           if (curActive) {
@@ -1102,8 +1102,13 @@ Over the course of eight weeks (June 29 – August 21, 2026), BCNSSO 45 underwen
       event.preventDefault();
     });
   }
-  generateContent();
-</script></section>
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', generateContent);
+  } else {
+    generateContent();
+  }
+</script>
+</section>
 </div>
 
       </div>
