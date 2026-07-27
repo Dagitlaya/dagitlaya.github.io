@@ -1684,6 +1684,28 @@ h2 {
     margin-top: 0rem;
   }
 }
+.section {
+  padding: 4rem 0;
+}
+
+.section + .section {
+  border-top: 1px solid #e0e0e0;
+}
+
+.section:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+.section:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.section h1,
+.section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
 :root {
   --mb-0-25: 0.25rem;
   --mb-0-5: 0.5rem;
