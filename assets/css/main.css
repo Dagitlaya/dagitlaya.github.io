@@ -1689,15 +1689,15 @@ h2 {
 }
 
 .section + .section {
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid #3b82f6;
 }
 
 .section:nth-child(even) {
-  background-color: #f8f8f8;
+  background-color: rgba(248, 248, 248, 0.0862745098);
 }
 
 .section:nth-child(odd) {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.0862745098);
 }
 
 .section h1,
