@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * Custom Font Faces
  * Add your custom font files to the assets/fonts/ directory
@@ -1686,6 +1687,35 @@ h2 {
 }
 strong {
   color: #3b82f6;
+}
+
+.trainee-statement p {
+  position: relative;
+}
+
+.trainee-statement p::before {
+  content: "“";
+  display: block;
+  position: relative;
+  top: 0.25rem;
+  left: 0.5rem;
+  font-size: 3rem;
+  font-family: Georgia, serif;
+  color: var(--primary-color, #3b82f6);
+  opacity: 0.6;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.trainee-statement p::after {
+  content: "”";
+  display: block;
+  position: relative;
+  bottom: -0.5rem;
+  right: 0.5rem;
+  font-size: 3rem;
+  font-family: Georgia, serif;
+  color: var(--primary-color, #3b82f6);
 }
 
 .section {
