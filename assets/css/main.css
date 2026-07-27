@@ -1684,6 +1684,10 @@ h2 {
     margin-top: 0rem;
   }
 }
+strong {
+  color: #3b82f6;
+}
+
 .section {
   padding: 4rem 0;
 }
