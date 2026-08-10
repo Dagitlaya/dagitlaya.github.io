@@ -38,7 +38,6 @@ body {
   font-display: swap;
   line-height: 1.6;
   color: #D4AF4E;
-  background: linear-gradient(to bottom, #00295d, #002693 25%, #00295d 75%);
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "kern" 1;
   -moz-font-feature-settings: "kern" 1;
@@ -85,6 +84,21 @@ body {
   z-index: 1;
 }
 */
+/**
+ * Fixed gradient background layer
+ * position: fixed keeps the gradient constant (never scrolls) and works
+ * correctly on WebKit/iOS (iPad Brave). bgf.webp parallax layer sits at
+ * z-index: -1 above this and is the only element that moves on scroll.
+ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(to bottom, #00295d, #002693 25%, #00295d 75%);
+  pointer-events: none;
+}
+
 /**
  * New parallax animation (scroll-timeline based)
  */
