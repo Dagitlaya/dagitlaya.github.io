@@ -39,7 +39,6 @@ body {
   line-height: 1.6;
   color: #D4AF4E;
   background: linear-gradient(to bottom, #00295d, #002693 25%, #00295d 75%);
-  background-attachment: fixed;
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "kern" 1;
   -moz-font-feature-settings: "kern" 1;
@@ -97,12 +96,13 @@ body {
     transform: translateY(-150px);
   }
 }
-.parallax-element {
-  animation: parallax-move linear;
-  animation-timeline: scroll();
-  animation-range: 0% 100%;
+@supports (animation-timeline: scroll()) {
+  .parallax-element {
+    animation: parallax-move linear;
+    animation-timeline: scroll();
+    animation-range: 0% 100%;
+  }
 }
-
 /**
  * Set `margin-bottom` to maintain vertical rhythm
  */
