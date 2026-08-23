@@ -790,9 +790,8 @@ function googleTranslateElementInit() {
     <!-- Right Side Logo -->
     <div class="banner-logo">
       <img src="/assets/images/logo.webp" alt="Logo" class="banner-logo-img">
-      <video class="banner-logo-video" muted loop playsinline preload="none" role="img" aria-label="Animated Logo">
+      <video class="banner-logo-video" muted autoplay loop playsinline preload="auto">
         <source src="/assets/logo02.webm" type="video/webm">
-        Your browser does not support the video tag.
       </source></video>
     </div>
   </div>
@@ -852,23 +851,23 @@ display: block;
 flex: 1;
 }
 
-.banner-logo .banner-logo-img,
-.banner-logo .banner-logo-video {
+.banner-logo-img,
+.banner-logo-video {
   width: 100%;
   height: auto;
   display: block;
 }
 
-.banner-logo .banner-logo-video {
+.banner-logo-video {
   display: none;
 }
 
-.banner-logo.active .banner-logo-video {
+.banner-logo.is-loaded .banner-logo-img {
+  display: none;
+}
+
+.banner-logo.is-loaded .banner-logo-video {
   display: block;
-}
-
-.banner-logo.active .banner-logo-img {
-  display: none;
 }
 
 .baybayin-image {
@@ -972,7 +971,42 @@ order: -1;
 }
 }
 </style>
+
 <script>
+(function() {
+  var logo = document.querySelector('.banner-logo');
+  if (!logo) return;
+  var video = logo.querySelector('video');
+  if (!video) return;
+
+  var swapped = false;
+
+  function swapToVideo() {
+    if (swapped) return;
+    // The video has buffered enough data; swap image -> video
+    logo.classList.add('is-loaded');
+    swapped = true;
+    // Ensure playback starts (autoplay may have been blocked)
+    var playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(function() {
+        // Autoplay blocked: keep static frame of the video, still an improvement
+      });
+    }
+  }
+
+  // Swap once the browser has loaded enough of the WebM to play
+  video.addEventListener('loadeddata', swapToVideo);
+  video.addEventListener('canplay', swapToVideo);
+
+  // If the WebM fails to load or play, keep the static image as fallback
+  video.addEventListener('error', function() {
+    if (!swapped) {
+      logo.classList.remove('is-loaded');
+    }
+  });
+})();
+</script><script>
   function hashLocate(hashValue) {
     hashValue = hashValue.replace(/^.*#h-/, '');
     hashValue = decodeURIComponent(hashValue);
