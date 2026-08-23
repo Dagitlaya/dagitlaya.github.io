@@ -23,21 +23,21 @@
 <meta property="og:locale" content="en_US">
 <meta name="description" content="BCNSSO Batch 45 e-yearbook.">
 <meta name="twitter:description" property="og:description" content="BCNSSO Batch 45 e-yearbook.">
-<link rel="canonical" href="http://0.0.0.0:4000/meetus.html">
-<meta property="og:url" content="http://0.0.0.0:4000/meetus.html">
+<link rel="canonical" href="http://localhost:4000/meetus.html">
+<meta property="og:url" content="http://localhost:4000/meetus.html">
 <meta property="og:site_name" content="Dagitlaya">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Meet Us">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"BCNSSO45"},"description":"BCNSSO Batch 45 e-yearbook.","headline":"Meet Us","url":"http://0.0.0.0:4000/meetus.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"BCNSSO45"},"description":"BCNSSO Batch 45 e-yearbook.","headline":"Meet Us","url":"http://localhost:4000/meetus.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="icon" href="/assets/images/favicon.webp">
   <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
   <script defer src="https://kit.fontawesome.com/d5775d112f.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/assets/css/main.css">
-  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Dagitlaya">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Dagitlaya">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
 <!-- and it's easy to individually load additional languages -->
@@ -849,170 +849,24 @@ function googleTranslateElementInit() {
 
     <div class="post-content e-content" itemprop="articleBody">
 
-      <script>
-(function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-      define(function() {
-        return factory(root);
-      });
-    } else if (typeof exports === 'object') {
-      module.exports = factory;
-    } else {
-      root.echo = factory(root);
-    }
-  })(this, function (root) {
-  
-    'use strict';
-  
-    var echo = {};
-  
-    var callback = function () {};
-  
-    var offset, poll, delay, useDebounce, unload;
-  
-    var isHidden = function (element) {
-      return (element.offsetParent === null);
-    };
-    
-    var inView = function (element, view) {
-      if (isHidden(element)) {
-        return false;
-      }
-  
-      var box = element.getBoundingClientRect();
-      return (box.right >= view.l && box.bottom >= view.t && box.left <= view.r && box.top <= view.b);
-    };
-  
-    var debounceOrThrottle = function () {
-      if(!useDebounce && !!poll) {
-        return;
-      }
-      clearTimeout(poll);
-      poll = setTimeout(function(){
-        echo.render();
-        poll = null;
-      }, delay);
-    };
-  
-    echo.init = function (opts) {
-      opts = opts || {};
-      var offsetAll = opts.offset || 0;
-      var offsetVertical = opts.offsetVertical || offsetAll;
-      var offsetHorizontal = opts.offsetHorizontal || offsetAll;
-      var optionToInt = function (opt, fallback) {
-        return parseInt(opt || fallback, 10);
-      };
-      offset = {
-        t: optionToInt(opts.offsetTop, offsetVertical),
-        b: optionToInt(opts.offsetBottom, offsetVertical),
-        l: optionToInt(opts.offsetLeft, offsetHorizontal),
-        r: optionToInt(opts.offsetRight, offsetHorizontal)
-      };
-      delay = optionToInt(opts.throttle, 250);
-      useDebounce = opts.debounce !== false;
-      unload = !!opts.unload;
-      callback = opts.callback || callback;
-      echo.render();
-      if (document.addEventListener) {
-        root.addEventListener('scroll', debounceOrThrottle, false);
-        root.addEventListener('load', debounceOrThrottle, false);
-      } else {
-        root.attachEvent('onscroll', debounceOrThrottle);
-        root.attachEvent('onload', debounceOrThrottle);
-      }
-    };
-  
-    echo.render = function (context) {
-      var nodes = (context || document).querySelectorAll('[data-echo], [data-echo-background]');
-      var length = nodes.length;
-      var src, elem;
-      var view = {
-        l: 0 - offset.l,
-        t: 0 - offset.t,
-        b: (root.innerHeight || document.documentElement.clientHeight) + offset.b,
-        r: (root.innerWidth || document.documentElement.clientWidth) + offset.r
-      };
-      for (var i = 0; i < length; i++) {
-        elem = nodes[i];
-        if (inView(elem, view)) {
-  
-          if (unload) {
-            elem.setAttribute('data-echo-placeholder', elem.src);
-          }
-  
-          if (elem.getAttribute('data-echo-background') !== null) {
-            elem.style.backgroundImage = 'url(' + elem.getAttribute('data-echo-background') + ')';
-          }
-          else if (elem.src !== (src = elem.getAttribute('data-echo'))) {
-            elem.src = src;
-          }
-  
-          if (!unload) {
-            elem.removeAttribute('data-echo');
-            elem.removeAttribute('data-echo-background');
-          }
-  
-          callback(elem, 'load');
-        }
-        else if (unload && !!(src = elem.getAttribute('data-echo-placeholder'))) {
-  
-          if (elem.getAttribute('data-echo-background') !== null) {
-            elem.style.backgroundImage = 'url(' + src + ')';
-          }
-          else {
-            elem.src = src;
-          }
-  
-          elem.removeAttribute('data-echo-placeholder');
-          callback(elem, 'unload');
-        }
-      }
-      if (!length) {
-        echo.detach();
-      }
-    };
-  
-    echo.detach = function () {
-      if (document.removeEventListener) {
-        root.removeEventListener('scroll', debounceOrThrottle);
-      } else {
-        root.detachEvent('onscroll', debounceOrThrottle);
-      }
-      clearTimeout(poll);
-    };
-  
-    return echo;
-  
-  });
-</script>
-<script>
-    echo.init({
-      offset: 2500,
-      throttle: 250,
-      unload: false,
-      callback: function (element, op) {
-        //console.log(element, 'has been', op + 'ed')
-      }
-    });
-</script><script src="/assets/js/meetus.js"></script>
+      <script defer src="/assets/js/meetus.js"></script>
 
 
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/agum.webp" alt="Richmar">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="0">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-0">
-      <!-- <img src='/assets/images/class/agum.webp' data-jpg-src="/assets/images/class/agum.jpg" alt="Richmar" id="static-img-0"> -->
       <img src="/assets/images/class/agum.webp" loading="lazy" alt="Richmar" id="static-img-0">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-0">
@@ -1024,7 +878,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="0">
-      <h2 data-toc-text="Agum, R." style="margin-top: 0rem;">
+      <h2 data-toc-text="Agum, R.">
         <a href="/trainees/Agum_Richmar.html">
           Agum, Richmar
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1032,7 +886,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Mindanao State University - General Santos
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -1047,8 +901,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1057,19 +909,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/aromin.webp" alt="Mart Marciano Antonn">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="1">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-1">
-      <!-- <img src='/assets/images/class/aromin.webp' data-jpg-src="/assets/images/class/aromin.jpg" alt="Mart Marciano Antonn" id="static-img-1"> -->
       <img src="/assets/images/class/aromin.webp" loading="lazy" alt="Mart Marciano Antonn" id="static-img-1">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-1">
@@ -1081,7 +932,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="1">
-      <h2 data-toc-text="Aromin, M." style="margin-top: 0rem;">
+      <h2 data-toc-text="Aromin, M.">
         <a href="/trainees/Aromin_Mart.html">
           Aromin, Mart Marciano Antonn
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1089,7 +940,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Saint Louis University - Baguio City
       </p>
       <p><b><strong>Program:</strong></b> BS Electronics Engineering</p>
@@ -1104,8 +955,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1114,19 +963,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/baltazar.webp" alt="Joshua Paul">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="2">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-2">
-      <!-- <img src='/assets/images/class/baltazar.webp' data-jpg-src="/assets/images/class/baltazar.jpg" alt="Joshua Paul" id="static-img-2"> -->
       <img src="/assets/images/class/baltazar.webp" loading="lazy" alt="Joshua Paul" id="static-img-2">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-2">
@@ -1138,7 +986,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="2">
-      <h2 data-toc-text="Baltazar, J." style="margin-top: 0rem;">
+      <h2 data-toc-text="Baltazar, J.">
         <a href="/trainees/Baltazar_Joshua.html">
           Baltazar, Joshua Paul
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1146,7 +994,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Central Philippine University- Iloilo
       </p>
       <p><b><strong>Program:</strong></b> BS Electrical Engineering</p>
@@ -1161,8 +1009,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1171,19 +1017,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/bordios.webp" alt="Anni Lou">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="3">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-3">
-      <!-- <img src='/assets/images/class/bordios.webp' data-jpg-src="/assets/images/class/bordios.jpg" alt="Anni Lou" id="static-img-3"> -->
       <img src="/assets/images/class/bordios.webp" loading="lazy" alt="Anni Lou" id="static-img-3">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-3">
@@ -1195,7 +1040,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="3">
-      <h2 data-toc-text="Bordios, A." style="margin-top: 0rem;">
+      <h2 data-toc-text="Bordios, A.">
         <a href="/trainees/Bordios_Anni.html">
           Bordios, Anni Lou
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1203,7 +1048,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Eastern Visayas State University
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -1218,8 +1063,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1228,19 +1071,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/buenavista.webp" alt="Juan Carlos">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="4">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-4">
-      <!-- <img src='/assets/images/class/buenavista.webp' data-jpg-src="/assets/images/class/buenavista.jpg" alt="Juan Carlos" id="static-img-4"> -->
       <img src="/assets/images/class/buenavista.webp" loading="lazy" alt="Juan Carlos" id="static-img-4">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-4">
@@ -1252,7 +1094,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="4">
-      <h2 data-toc-text="Buenavista, J." style="margin-top: 0rem;">
+      <h2 data-toc-text="Buenavista, J.">
         <a href="/trainees/Buenavista_Juan.html">
           Buenavista, Juan Carlos
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1260,7 +1102,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> De La Salle University - Manila
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -1275,8 +1117,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1285,19 +1125,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/canos.webp" alt="El Shekinah">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="5">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-5">
-      <!-- <img src='/assets/images/class/canos.webp' data-jpg-src="/assets/images/class/canos.jpg" alt="El Shekinah" id="static-img-5"> -->
       <img src="/assets/images/class/canos.webp" loading="lazy" alt="El Shekinah" id="static-img-5">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-5">
@@ -1309,7 +1148,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="5">
-      <h2 data-toc-text="Caños, E." style="margin-top: 0rem;">
+      <h2 data-toc-text="Caños, E.">
         <a href="/trainees/Canos_El.html">
           Caños, El Shekinah
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1317,7 +1156,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Technological University of the Philippines Visayas
       </p>
       <p><b><strong>Program:</strong></b> BS Electronics Engineering</p>
@@ -1332,8 +1171,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1342,19 +1179,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/catacutan.webp" alt="Gilmour">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="6">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-6">
-      <!-- <img src='/assets/images/class/catacutan.webp' data-jpg-src="/assets/images/class/catacutan.jpg" alt="Gilmour" id="static-img-6"> -->
       <img src="/assets/images/class/catacutan.webp" loading="lazy" alt="Gilmour" id="static-img-6">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-6">
@@ -1366,7 +1202,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="6">
-      <h2 data-toc-text="Catacutan, G." style="margin-top: 0rem;">
+      <h2 data-toc-text="Catacutan, G.">
         <a href="/trainees/Catacutan_Gilmour.html">
           Catacutan, Gilmour
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1374,7 +1210,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Bataan Peninsula State University
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -1389,8 +1225,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1399,19 +1233,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/cunan.webp" alt="Alexandra">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="7">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-7">
-      <!-- <img src='/assets/images/class/cunan.webp' data-jpg-src="/assets/images/class/cunan.jpg" alt="Alexandra" id="static-img-7"> -->
       <img src="/assets/images/class/cunan.webp" loading="lazy" alt="Alexandra" id="static-img-7">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-7">
@@ -1423,7 +1256,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="7">
-      <h2 data-toc-text="Cunan, A." style="margin-top: 0rem;">
+      <h2 data-toc-text="Cunan, A.">
         <a href="/trainees/Cunan_Alexandra.html">
           Cunan, Alexandra
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1431,7 +1264,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Holy Angel University
       </p>
       <p><b><strong>Program:</strong></b> BS Electronics Engineering</p>
@@ -1446,8 +1279,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1456,19 +1287,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/curiba.webp" alt="Glenn Vincent">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="8">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-8">
-      <!-- <img src='/assets/images/class/curiba.webp' data-jpg-src="/assets/images/class/curiba.jpg" alt="Glenn Vincent" id="static-img-8"> -->
       <img src="/assets/images/class/curiba.webp" loading="lazy" alt="Glenn Vincent" id="static-img-8">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-8">
@@ -1480,7 +1310,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="8">
-      <h2 data-toc-text="Curiba, G." style="margin-top: 0rem;">
+      <h2 data-toc-text="Curiba, G.">
         <a href="/trainees/Curiba_Glenn.html">
           Curiba, Glenn Vincent
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1488,7 +1318,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> University of Science and Technology of Southern Philippines - Cagayan de Oro Campus
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -1503,8 +1333,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1513,19 +1341,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/delacuadra.webp" alt="Kenneth">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="9">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-9">
-      <!-- <img src='/assets/images/class/delacuadra.webp' data-jpg-src="/assets/images/class/delacuadra.jpg" alt="Kenneth" id="static-img-9"> -->
       <img src="/assets/images/class/delacuadra.webp" loading="lazy" alt="Kenneth" id="static-img-9">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-9">
@@ -1537,7 +1364,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="9">
-      <h2 data-toc-text="Dela Cuadra, K." style="margin-top: 0rem;">
+      <h2 data-toc-text="Dela Cuadra, K.">
         <a href="/trainees/Dela_Cuadra_Kenneth.html">
           Dela Cuadra, Kenneth
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1545,7 +1372,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> University of the Philippines - Diliman
       </p>
       <p><b><strong>Program:</strong></b> BS Electronics Engineering</p>
@@ -1560,8 +1387,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1570,19 +1395,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/delosangeles.webp" alt="Julie Rica">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="10">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-10">
-      <!-- <img src='/assets/images/class/delosangeles.webp' data-jpg-src="/assets/images/class/delosangeles.jpg" alt="Julie Rica" id="static-img-10"> -->
       <img src="/assets/images/class/delosangeles.webp" loading="lazy" alt="Julie Rica" id="static-img-10">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-10">
@@ -1594,7 +1418,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="10">
-      <h2 data-toc-text="Delos Angeles, J." style="margin-top: 0rem;">
+      <h2 data-toc-text="Delos Angeles, J.">
         <a href="/trainees/Delos_Angeles_Julie.html">
           Delos Angeles, Julie Rica
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1602,7 +1426,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Ateneo de Naga University
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -1617,8 +1441,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1627,19 +1449,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/dizon.webp" alt="Christian Gabriel">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="11">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-11">
-      <!-- <img src='/assets/images/class/dizon.webp' data-jpg-src="/assets/images/class/dizon.jpg" alt="Christian Gabriel" id="static-img-11"> -->
       <img src="/assets/images/class/dizon.webp" loading="lazy" alt="Christian Gabriel" id="static-img-11">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-11">
@@ -1651,7 +1472,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="11">
-      <h2 data-toc-text="Dizon, C." style="margin-top: 0rem;">
+      <h2 data-toc-text="Dizon, C.">
         <a href="/trainees/Dizon_Christian.html">
           Dizon, Christian Gabriel
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1659,7 +1480,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Angeles University Foundation
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -1674,8 +1495,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1684,19 +1503,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/fernandez.webp" alt="Matt Asley">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="12">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-12">
-      <!-- <img src='/assets/images/class/fernandez.webp' data-jpg-src="/assets/images/class/fernandez.jpg" alt="Matt Asley" id="static-img-12"> -->
       <img src="/assets/images/class/fernandez.webp" loading="lazy" alt="Matt Asley" id="static-img-12">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-12">
@@ -1708,7 +1526,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="12">
-      <h2 data-toc-text="Fernandez, M." style="margin-top: 0rem;">
+      <h2 data-toc-text="Fernandez, M.">
         <a href="/trainees/Fernandez_Matt.html">
           Fernandez, Matt Asley
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1716,7 +1534,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Saint Louis University
       </p>
       <p><b><strong>Program:</strong></b> BS Electronics Engineering</p>
@@ -1731,8 +1549,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1741,19 +1557,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/francisco.webp" alt="Eric John">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="13">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-13">
-      <!-- <img src='/assets/images/class/francisco.webp' data-jpg-src="/assets/images/class/francisco.jpg" alt="Eric John" id="static-img-13"> -->
       <img src="/assets/images/class/francisco.webp" loading="lazy" alt="Eric John" id="static-img-13">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-13">
@@ -1765,7 +1580,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="13">
-      <h2 data-toc-text="Francisco, E." style="margin-top: 0rem;">
+      <h2 data-toc-text="Francisco, E.">
         <a href="/trainees/Francisco_Eric.html">
           Francisco, Eric John
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1773,7 +1588,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Western Philippines University
       </p>
       <p><b><strong>Program:</strong></b> BS IN Electrical Engineering</p>
@@ -1788,8 +1603,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1798,19 +1611,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/franco_j.webp" alt="Jericho Martin">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="14">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-14">
-      <!-- <img src='/assets/images/class/franco_j.webp' data-jpg-src="/assets/images/class/franco_j.jpg" alt="Jericho Martin" id="static-img-14"> -->
       <img src="/assets/images/class/franco_j.webp" loading="lazy" alt="Jericho Martin" id="static-img-14">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-14">
@@ -1822,7 +1634,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="14">
-      <h2 data-toc-text="Franco, J." style="margin-top: 0rem;">
+      <h2 data-toc-text="Franco, J.">
         <a href="/trainees/Franco_Jericho.html">
           Franco, Jericho Martin
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1830,7 +1642,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Technological University of the Philippines - Manila
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -1845,8 +1657,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1855,19 +1665,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/franco_m.webp" alt="Ma. Cristina">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="15">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-15">
-      <!-- <img src='/assets/images/class/franco_m.webp' data-jpg-src="/assets/images/class/franco_m.jpg" alt="Ma. Cristina" id="static-img-15"> -->
       <img src="/assets/images/class/franco_m.webp" loading="lazy" alt="Ma. Cristina" id="static-img-15">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-15">
@@ -1879,7 +1688,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="15">
-      <h2 data-toc-text="Franco, M." style="margin-top: 0rem;">
+      <h2 data-toc-text="Franco, M.">
         <a href="/trainees/Franco_Ma_.html">
           Franco, Ma. Cristina
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1887,7 +1696,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Mariano Marcos State University
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -1902,8 +1711,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1912,19 +1719,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/fuentes.webp" alt="Albert Anthony">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="16">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-16">
-      <!-- <img src='/assets/images/class/fuentes.webp' data-jpg-src="/assets/images/class/fuentes.jpg" alt="Albert Anthony" id="static-img-16"> -->
       <img src="/assets/images/class/fuentes.webp" loading="lazy" alt="Albert Anthony" id="static-img-16">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-16">
@@ -1936,7 +1742,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="16">
-      <h2 data-toc-text="Fuentes, A." style="margin-top: 0rem;">
+      <h2 data-toc-text="Fuentes, A.">
         <a href="/trainees/Fuentes_Albert.html">
           Fuentes, Albert Anthony
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -1944,7 +1750,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> University of St. La Salle - Bacolod
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -1959,8 +1765,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -1969,19 +1773,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/go.webp" alt="Eiderf John">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="17">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-17">
-      <!-- <img src='/assets/images/class/go.webp' data-jpg-src="/assets/images/class/go.jpg" alt="Eiderf John" id="static-img-17"> -->
       <img src="/assets/images/class/go.webp" loading="lazy" alt="Eiderf John" id="static-img-17">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-17">
@@ -1993,7 +1796,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="17">
-      <h2 data-toc-text="Go, E." style="margin-top: 0rem;">
+      <h2 data-toc-text="Go, E.">
         <a href="/trainees/Go_Eiderf.html">
           Go, Eiderf John
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2001,7 +1804,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Eastern Visayas State University - Tacloban City
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -2016,8 +1819,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2026,19 +1827,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/gratol.webp" alt="Junjie">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="18">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-18">
-      <!-- <img src='/assets/images/class/gratol.webp' data-jpg-src="/assets/images/class/gratol.jpg" alt="Junjie" id="static-img-18"> -->
       <img src="/assets/images/class/gratol.webp" loading="lazy" alt="Junjie" id="static-img-18">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-18">
@@ -2050,7 +1850,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="18">
-      <h2 data-toc-text="Gratol, J." style="margin-top: 0rem;">
+      <h2 data-toc-text="Gratol, J.">
         <a href="/trainees/Gratol_Junjie.html">
           Gratol, Junjie
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2058,7 +1858,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Eastern Visayas State University - Tacloban City
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics and Communication Engineering</p>
@@ -2073,8 +1873,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2083,19 +1881,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/jalique.webp" alt="Caroline">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="19">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-19">
-      <!-- <img src='/assets/images/class/jalique.webp' data-jpg-src="/assets/images/class/jalique.jpg" alt="Caroline" id="static-img-19"> -->
       <img src="/assets/images/class/jalique.webp" loading="lazy" alt="Caroline" id="static-img-19">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-19">
@@ -2107,7 +1904,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="19">
-      <h2 data-toc-text="Jalique, C." style="margin-top: 0rem;">
+      <h2 data-toc-text="Jalique, C.">
         <a href="/trainees/Jalique_Caroline.html">
           Jalique, Caroline
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2115,7 +1912,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Technological University of the Philippines Visayas
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -2130,8 +1927,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2140,19 +1935,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/jamora.webp" alt="Jethro">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="20">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-20">
-      <!-- <img src='/assets/images/class/jamora.webp' data-jpg-src="/assets/images/class/jamora.jpg" alt="Jethro" id="static-img-20"> -->
       <img src="/assets/images/class/jamora.webp" loading="lazy" alt="Jethro" id="static-img-20">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-20">
@@ -2164,7 +1958,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="20">
-      <h2 data-toc-text="Jamora, J." style="margin-top: 0rem;">
+      <h2 data-toc-text="Jamora, J.">
         <a href="/trainees/Jamora_Jethro.html">
           Jamora, Jethro
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2172,7 +1966,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Technological University of the Philippines - Visayas
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -2187,8 +1981,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2197,19 +1989,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/jamoyot.webp" alt="Danica Rose">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="21">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-21">
-      <!-- <img src='/assets/images/class/jamoyot.webp' data-jpg-src="/assets/images/class/jamoyot.jpg" alt="Danica Rose" id="static-img-21"> -->
       <img src="/assets/images/class/jamoyot.webp" loading="lazy" alt="Danica Rose" id="static-img-21">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-21">
@@ -2221,7 +2012,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="21">
-      <h2 data-toc-text="Jamoyot, D." style="margin-top: 0rem;">
+      <h2 data-toc-text="Jamoyot, D.">
         <a href="/trainees/Jamoyot_Danica.html">
           Jamoyot, Danica Rose
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2229,7 +2020,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Iloilo Science and Technology University
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -2244,8 +2035,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2254,19 +2043,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/jarin.webp" alt="Marc Ernestine">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="22">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-22">
-      <!-- <img src='/assets/images/class/jarin.webp' data-jpg-src="/assets/images/class/jarin.jpg" alt="Marc Ernestine" id="static-img-22"> -->
       <img src="/assets/images/class/jarin.webp" loading="lazy" alt="Marc Ernestine" id="static-img-22">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-22">
@@ -2278,7 +2066,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="22">
-      <h2 data-toc-text="Jarin, M." style="margin-top: 0rem;">
+      <h2 data-toc-text="Jarin, M.">
         <a href="/trainees/Jarin_Marc.html">
           Jarin, Marc Ernestine
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2286,7 +2074,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> De La Salle University Dasmarinas
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -2295,13 +2083,11 @@ function googleTranslateElementInit() {
       </p>
       
       <div class="trainee-statement">
-        <p>Keep walking</p>
+        <p>Keep on walking despite falling several times, I wouldn’t have completed this journey without the support of my friends, family and instructors. As a Future CNSSO, I aspire to keep the skies safe for the public and for OFWs who have supported their families like how my sister has supported my journey.</p>
 
       </div>
       
     </div>
-  
-    <div style="clear: both;"></div>
   
   </div>
   
@@ -2311,19 +2097,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/laguerta.webp" alt="Brenan">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="23">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-23">
-      <!-- <img src='/assets/images/class/laguerta.webp' data-jpg-src="/assets/images/class/laguerta.jpg" alt="Brenan" id="static-img-23"> -->
       <img src="/assets/images/class/laguerta.webp" loading="lazy" alt="Brenan" id="static-img-23">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-23">
@@ -2335,7 +2120,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="23">
-      <h2 data-toc-text="Laguerta, B." style="margin-top: 0rem;">
+      <h2 data-toc-text="Laguerta, B.">
         <a href="/trainees/Laguerta_Brenan.html">
           Laguerta, Brenan
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2343,7 +2128,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Iloilo Science and Technology University
       </p>
       <p><b><strong>Program:</strong></b> BS Electronics Engineering</p>
@@ -2358,8 +2143,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2368,19 +2151,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/lin.webp" alt="Jan Emernik Cyrus">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="24">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-24">
-      <!-- <img src='/assets/images/class/lin.webp' data-jpg-src="/assets/images/class/lin.jpg" alt="Jan Emernik Cyrus" id="static-img-24"> -->
       <img src="/assets/images/class/lin.webp" loading="lazy" alt="Jan Emernik Cyrus" id="static-img-24">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-24">
@@ -2392,7 +2174,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="24">
-      <h2 data-toc-text="Lin, J." style="margin-top: 0rem;">
+      <h2 data-toc-text="Lin, J.">
         <a href="/trainees/Lin_Jan.html">
           Lin, Jan Emernik Cyrus
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2400,7 +2182,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Bicol State College of Applied Sciences and Technology
       </p>
       <p><b><strong>Program:</strong></b> BS ECE</p>
@@ -2415,8 +2197,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2425,19 +2205,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/lu.webp" alt="John Joseph">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="25">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-25">
-      <!-- <img src='/assets/images/class/lu.webp' data-jpg-src="/assets/images/class/lu.jpg" alt="John Joseph" id="static-img-25"> -->
       <img src="/assets/images/class/lu.webp" loading="lazy" alt="John Joseph" id="static-img-25">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-25">
@@ -2449,7 +2228,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="25">
-      <h2 data-toc-text="Lu, J." style="margin-top: 0rem;">
+      <h2 data-toc-text="Lu, J.">
         <a href="/trainees/Lu_John.html">
           Lu, John Joseph
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2457,7 +2236,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Iloilo Science and Technology University - Iloilo City
       </p>
       <p><b><strong>Program:</strong></b> BS Electronics Engineering (ECE)</p>
@@ -2472,8 +2251,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2482,19 +2259,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/maasin.webp" alt="Aladdin">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="26">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-26">
-      <!-- <img src='/assets/images/class/maasin.webp' data-jpg-src="/assets/images/class/maasin.jpg" alt="Aladdin" id="static-img-26"> -->
       <img src="/assets/images/class/maasin.webp" loading="lazy" alt="Aladdin" id="static-img-26">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-26">
@@ -2506,7 +2282,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="26">
-      <h2 data-toc-text="Maasin, A." style="margin-top: 0rem;">
+      <h2 data-toc-text="Maasin, A.">
         <a href="/trainees/Maasin_Aladdin.html">
           Maasin, Aladdin
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2514,7 +2290,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Palawan State University
       </p>
       <p><b><strong>Program:</strong></b> BS in Mechanical Engineering</p>
@@ -2529,8 +2305,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2539,19 +2313,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/manansala.webp" alt="Francis Miguel">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="27">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-27">
-      <!-- <img src='/assets/images/class/manansala.webp' data-jpg-src="/assets/images/class/manansala.jpg" alt="Francis Miguel" id="static-img-27"> -->
       <img src="/assets/images/class/manansala.webp" loading="lazy" alt="Francis Miguel" id="static-img-27">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-27">
@@ -2563,7 +2336,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="27">
-      <h2 data-toc-text="Manansala, F." style="margin-top: 0rem;">
+      <h2 data-toc-text="Manansala, F.">
         <a href="/trainees/Manansala_Francis.html">
           Manansala, Francis Miguel
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2571,7 +2344,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> De La Salle University Dasmariñas
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -2586,8 +2359,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2596,19 +2367,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/musa.webp" alt="Adzhar">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="28">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-28">
-      <!-- <img src='/assets/images/class/musa.webp' data-jpg-src="/assets/images/class/musa.jpg" alt="Adzhar" id="static-img-28"> -->
       <img src="/assets/images/class/musa.webp" loading="lazy" alt="Adzhar" id="static-img-28">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-28">
@@ -2620,7 +2390,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="28">
-      <h2 data-toc-text="Musa, A." style="margin-top: 0rem;">
+      <h2 data-toc-text="Musa, A.">
         <a href="/trainees/Musa_Adzhar.html">
           Musa, Adzhar
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2628,7 +2398,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Ateneo De Zamboanga UNIVERSITY
       </p>
       <p><b><strong>Program:</strong></b> BS Electronics and Communications Engineering</p>
@@ -2643,8 +2413,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2653,19 +2421,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/namoco.webp" alt="Pepe II">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="29">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-29">
-      <!-- <img src='/assets/images/class/namoco.webp' data-jpg-src="/assets/images/class/namoco.jpg" alt="Pepe II" id="static-img-29"> -->
       <img src="/assets/images/class/namoco.webp" loading="lazy" alt="Pepe II" id="static-img-29">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-29">
@@ -2677,7 +2444,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="29">
-      <h2 data-toc-text="Namoco, P." style="margin-top: 0rem;">
+      <h2 data-toc-text="Namoco, P.">
         <a href="/trainees/Namoco_Pepe.html">
           Namoco, Pepe II
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2685,7 +2452,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> University of Science and Technology of Southern Philippines
       </p>
       <p><b><strong>Program:</strong></b> Electronics Engineering</p>
@@ -2700,8 +2467,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2710,19 +2475,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/ochoa.webp" alt="Alyanna Mari">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="30">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-30">
-      <!-- <img src='/assets/images/class/ochoa.webp' data-jpg-src="/assets/images/class/ochoa.jpg" alt="Alyanna Mari" id="static-img-30"> -->
       <img src="/assets/images/class/ochoa.webp" loading="lazy" alt="Alyanna Mari" id="static-img-30">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-30">
@@ -2734,7 +2498,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="30">
-      <h2 data-toc-text="Ochoa, A." style="margin-top: 0rem;">
+      <h2 data-toc-text="Ochoa, A.">
         <a href="/trainees/Ochoa_Alyanna.html">
           Ochoa, Alyanna Mari
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2742,7 +2506,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> University of Saint Louis Tuguegarao
       </p>
       <p><b><strong>Program:</strong></b> BS Electronics Engineering</p>
@@ -2757,8 +2521,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2767,19 +2529,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/omar.webp" alt="Abdulrafy">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="31">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-31">
-      <!-- <img src='/assets/images/class/omar.webp' data-jpg-src="/assets/images/class/omar.jpg" alt="Abdulrafy" id="static-img-31"> -->
       <img src="/assets/images/class/omar.webp" loading="lazy" alt="Abdulrafy" id="static-img-31">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-31">
@@ -2791,7 +2552,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="31">
-      <h2 data-toc-text="Omar, A." style="margin-top: 0rem;">
+      <h2 data-toc-text="Omar, A.">
         <a href="/trainees/Omar_Abdulrafy.html">
           Omar, Abdulrafy
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2799,7 +2560,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Mindanao State University - Marawi
       </p>
       <p><b><strong>Program:</strong></b> BS in Electrical Engineering</p>
@@ -2814,8 +2575,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2824,19 +2583,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/ong.webp" alt="Patrick Miles">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="32">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-32">
-      <!-- <img src='/assets/images/class/ong.webp' data-jpg-src="/assets/images/class/ong.jpg" alt="Patrick Miles" id="static-img-32"> -->
       <img src="/assets/images/class/ong.webp" loading="lazy" alt="Patrick Miles" id="static-img-32">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-32">
@@ -2848,7 +2606,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="32">
-      <h2 data-toc-text="Ong, P." style="margin-top: 0rem;">
+      <h2 data-toc-text="Ong, P.">
         <a href="/trainees/Ong_Patrick.html">
           Ong, Patrick Miles
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2856,7 +2614,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Mindanao State University - General Santos
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -2871,8 +2629,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2881,19 +2637,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/pena.webp" alt="Jana Beatrice">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="33">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-33">
-      <!-- <img src='/assets/images/class/pena.webp' data-jpg-src="/assets/images/class/pena.jpg" alt="Jana Beatrice" id="static-img-33"> -->
       <img src="/assets/images/class/pena.webp" loading="lazy" alt="Jana Beatrice" id="static-img-33">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-33">
@@ -2905,7 +2660,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="33">
-      <h2 data-toc-text="Peña, J." style="margin-top: 0rem;">
+      <h2 data-toc-text="Peña, J.">
         <a href="/trainees/Pena_Jana.html">
           Peña, Jana Beatrice
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2913,7 +2668,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> University of St. La Salle-Bacolod
       </p>
       <p><b><strong>Program:</strong></b> BS Electronics Engineering</p>
@@ -2928,8 +2683,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2938,19 +2691,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/pinote.webp" alt="Elijah Ray">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="34">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-34">
-      <!-- <img src='/assets/images/class/pinote.webp' data-jpg-src="/assets/images/class/pinote.jpg" alt="Elijah Ray" id="static-img-34"> -->
       <img src="/assets/images/class/pinote.webp" loading="lazy" alt="Elijah Ray" id="static-img-34">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-34">
@@ -2962,7 +2714,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="34">
-      <h2 data-toc-text="Pinote, E." style="margin-top: 0rem;">
+      <h2 data-toc-text="Pinote, E.">
         <a href="/trainees/Pinote_Elijah.html">
           Pinote, Elijah Ray
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -2970,7 +2722,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> University of Mindanao - Davao City
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -2985,8 +2737,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -2995,19 +2745,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/rabaja.webp" alt="Ibrahim Cedrick">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="35">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-35">
-      <!-- <img src='/assets/images/class/rabaja.webp' data-jpg-src="/assets/images/class/rabaja.jpg" alt="Ibrahim Cedrick" id="static-img-35"> -->
       <img src="/assets/images/class/rabaja.webp" loading="lazy" alt="Ibrahim Cedrick" id="static-img-35">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-35">
@@ -3019,7 +2768,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="35">
-      <h2 data-toc-text="Rabaja, I." style="margin-top: 0rem;">
+      <h2 data-toc-text="Rabaja, I.">
         <a href="/trainees/Rabaja_Ibrahim.html">
           Rabaja, Ibrahim Cedrick
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -3027,7 +2776,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Mondriaan Aura College- Subic Bay
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -3042,8 +2791,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -3052,19 +2799,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/reburiano.webp" alt="Anton Jude Seki">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="36">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-36">
-      <!-- <img src='/assets/images/class/reburiano.webp' data-jpg-src="/assets/images/class/reburiano.jpg" alt="Anton Jude Seki" id="static-img-36"> -->
       <img src="/assets/images/class/reburiano.webp" loading="lazy" alt="Anton Jude Seki" id="static-img-36">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-36">
@@ -3076,7 +2822,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="36">
-      <h2 data-toc-text="Reburiano, A." style="margin-top: 0rem;">
+      <h2 data-toc-text="Reburiano, A.">
         <a href="/trainees/Reburiano_Anton.html">
           Reburiano, Anton Jude Seki
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -3084,7 +2830,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> University of Santo Tomas
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineerin</p>
@@ -3099,8 +2845,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -3109,19 +2853,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/recio.webp" alt="John Francis">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="37">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-37">
-      <!-- <img src='/assets/images/class/recio.webp' data-jpg-src="/assets/images/class/recio.jpg" alt="John Francis" id="static-img-37"> -->
       <img src="/assets/images/class/recio.webp" loading="lazy" alt="John Francis" id="static-img-37">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-37">
@@ -3133,7 +2876,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="37">
-      <h2 data-toc-text="Recio, J." style="margin-top: 0rem;">
+      <h2 data-toc-text="Recio, J.">
         <a href="/trainees/Recio_John.html">
           Recio, John Francis
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -3141,7 +2884,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Camarines Sur Polytechnic Colleges
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -3156,8 +2899,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -3166,19 +2907,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/rivas.webp" alt="Patricia">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="38">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-38">
-      <!-- <img src='/assets/images/class/rivas.webp' data-jpg-src="/assets/images/class/rivas.jpg" alt="Patricia" id="static-img-38"> -->
       <img src="/assets/images/class/rivas.webp" loading="lazy" alt="Patricia" id="static-img-38">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-38">
@@ -3190,7 +2930,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="38">
-      <h2 data-toc-text="Rivas, P." style="margin-top: 0rem;">
+      <h2 data-toc-text="Rivas, P.">
         <a href="/trainees/Rivas_Patricia.html">
           Rivas, Patricia
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -3198,7 +2938,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> University of Southeastern Philippines
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -3213,8 +2953,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -3223,19 +2961,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/santiago.webp" alt="John Ryan">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="39">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-39">
-      <!-- <img src='/assets/images/class/santiago.webp' data-jpg-src="/assets/images/class/santiago.jpg" alt="John Ryan" id="static-img-39"> -->
       <img src="/assets/images/class/santiago.webp" loading="lazy" alt="John Ryan" id="static-img-39">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-39">
@@ -3247,7 +2984,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="39">
-      <h2 data-toc-text="Santiago, J." style="margin-top: 0rem;">
+      <h2 data-toc-text="Santiago, J.">
         <a href="/trainees/Santiago_John.html">
           Santiago, John Ryan
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -3255,7 +2992,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Mariano Marcos State University
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -3270,8 +3007,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -3280,19 +3015,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/saul.webp" alt="Mary Claire">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="40">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-40">
-      <!-- <img src='/assets/images/class/saul.webp' data-jpg-src="/assets/images/class/saul.jpg" alt="Mary Claire" id="static-img-40"> -->
       <img src="/assets/images/class/saul.webp" loading="lazy" alt="Mary Claire" id="static-img-40">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-40">
@@ -3304,7 +3038,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="40">
-      <h2 data-toc-text="Saul, M." style="margin-top: 0rem;">
+      <h2 data-toc-text="Saul, M.">
         <a href="/trainees/Saul_Mary.html">
           Saul, Mary Claire
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -3312,7 +3046,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Polytechnic University of the Philippines - Sta.Mesa
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -3327,8 +3061,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -3337,19 +3069,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/sevilla.webp" alt="Jonas">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="41">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-41">
-      <!-- <img src='/assets/images/class/sevilla.webp' data-jpg-src="/assets/images/class/sevilla.jpg" alt="Jonas" id="static-img-41"> -->
       <img src="/assets/images/class/sevilla.webp" loading="lazy" alt="Jonas" id="static-img-41">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-41">
@@ -3361,7 +3092,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="41">
-      <h2 data-toc-text="Sevilla, J." style="margin-top: 0rem;">
+      <h2 data-toc-text="Sevilla, J.">
         <a href="/trainees/Sevilla_Jonas.html">
           Sevilla, Jonas
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -3369,7 +3100,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> University of Santo Tomas - Manila
       </p>
       <p><b><strong>Program:</strong></b> BS in electronics Engineering</p>
@@ -3384,8 +3115,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -3394,19 +3123,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/suguitan.webp" alt="Lourvie Gay">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="42">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-42">
-      <!-- <img src='/assets/images/class/suguitan.webp' data-jpg-src="/assets/images/class/suguitan.jpg" alt="Lourvie Gay" id="static-img-42"> -->
       <img src="/assets/images/class/suguitan.webp" loading="lazy" alt="Lourvie Gay" id="static-img-42">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-42">
@@ -3418,7 +3146,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="42">
-      <h2 data-toc-text="Suguitan, L." style="margin-top: 0rem;">
+      <h2 data-toc-text="Suguitan, L.">
         <a href="/trainees/Suguitan_Lourvie.html">
           Suguitan, Lourvie Gay
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -3426,7 +3154,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Mariano Marcos State University
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -3441,8 +3169,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -3451,19 +3177,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/tabao.webp" alt="Adrian">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="43">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-43">
-      <!-- <img src='/assets/images/class/tabao.webp' data-jpg-src="/assets/images/class/tabao.jpg" alt="Adrian" id="static-img-43"> -->
       <img src="/assets/images/class/tabao.webp" loading="lazy" alt="Adrian" id="static-img-43">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-43">
@@ -3475,7 +3200,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="43">
-      <h2 data-toc-text="Tabao, A." style="margin-top: 0rem;">
+      <h2 data-toc-text="Tabao, A.">
         <a href="/trainees/Tabao_Adrian.html">
           Tabao, Adrian
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -3483,7 +3208,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Cagayan State University - Tuguegarao CITY
       </p>
       <p><b><strong>Program:</strong></b> BS in Electrical Engineering</p>
@@ -3498,8 +3223,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -3508,19 +3231,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/tininahan.webp" alt="Jeffrey Jr.">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="44">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-44">
-      <!-- <img src='/assets/images/class/tininahan.webp' data-jpg-src="/assets/images/class/tininahan.jpg" alt="Jeffrey Jr." id="static-img-44"> -->
       <img src="/assets/images/class/tininahan.webp" loading="lazy" alt="Jeffrey Jr." id="static-img-44">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-44">
@@ -3532,7 +3254,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="44">
-      <h2 data-toc-text="Tininahan, J." style="margin-top: 0rem;">
+      <h2 data-toc-text="Tininahan, J.">
         <a href="/trainees/Tininahan_Jeffrey.html">
           Tininahan, Jeffrey Jr.
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -3540,7 +3262,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Technological University of the Philippines Visayas
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -3555,8 +3277,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -3565,19 +3285,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/turija.webp" alt="Cid Jericho">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="45">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-45">
-      <!-- <img src='/assets/images/class/turija.webp' data-jpg-src="/assets/images/class/turija.jpg" alt="Cid Jericho" id="static-img-45"> -->
       <img src="/assets/images/class/turija.webp" loading="lazy" alt="Cid Jericho" id="static-img-45">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-45">
@@ -3589,7 +3308,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="45">
-      <h2 data-toc-text="Turija, C." style="margin-top: 0rem;">
+      <h2 data-toc-text="Turija, C.">
         <a href="/trainees/Turija_Cid.html">
           Turija, Cid Jericho
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -3597,7 +3316,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Mindanao State University - General Santos
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -3612,8 +3331,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -3622,19 +3339,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/valledor.webp" alt="Frenchelle Kate">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="46">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-46">
-      <!-- <img src='/assets/images/class/valledor.webp' data-jpg-src="/assets/images/class/valledor.jpg" alt="Frenchelle Kate" id="static-img-46"> -->
       <img src="/assets/images/class/valledor.webp" loading="lazy" alt="Frenchelle Kate" id="static-img-46">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-46">
@@ -3646,7 +3362,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="46">
-      <h2 data-toc-text="Valledor, F." style="margin-top: 0rem;">
+      <h2 data-toc-text="Valledor, F.">
         <a href="/trainees/Valledor_Frenchelle.html">
           Valledor, Frenchelle Kate
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -3654,7 +3370,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> University of Science and Technology of Southern Philippines - CDO
       </p>
       <p><b><strong>Program:</strong></b> BS in Electronics Engineering</p>
@@ -3669,8 +3385,6 @@ function googleTranslateElementInit() {
       
     </div>
   
-    <div style="clear: both;"></div>
-  
   </div>
   
 </div>
@@ -3679,19 +3393,18 @@ function googleTranslateElementInit() {
 
 
 
-<div class="trainee-container">
+<div class="trainee-container scroll-reveal">
   
   <div class="trainee-pubimg">
     <img src="/assets/images/pub/villacampo.webp" alt="Renz Adrian">
-  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+  <i class="fa-solid fa-chevron-right trainee-arrow-right trainee-arrow"></i>
   </div>
   
   <div class="trainee-profile-hoverable trainee-profile" data-trainee-index="47">
     <div>
-        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow" style="font-size: xx-large; font-weight: bolder;"></i>
+        <i class="fa-solid fa-chevron-left trainee-arrow-left trainee-arrow"></i>
     </div>
     <div class="trainee-media-container" id="media-container-47">
-      <!-- <img src='/assets/images/class/villacampo.webp' data-jpg-src="/assets/images/class/villacampo.jpg" alt="Renz Adrian" id="static-img-47"> -->
       <img src="/assets/images/class/villacampo.webp" loading="lazy" alt="Renz Adrian" id="static-img-47">
       
       <video muted playsinline loading="lazy" preload="metadata" id="video-47">
@@ -3703,7 +3416,7 @@ function googleTranslateElementInit() {
       
     </div>
     <div class="trainee-info" data-trainee-index="47">
-      <h2 data-toc-text="Villacampo, R." style="margin-top: 0rem;">
+      <h2 data-toc-text="Villacampo, R.">
         <a href="/trainees/Villacampo_Renz.html">
           Villacampo, Renz Adrian
           <span class="toc-ignore" style="font-size: 0.7em; color: #d4d4d4; font-weight: normal;">
@@ -3711,7 +3424,7 @@ function googleTranslateElementInit() {
           </span>
         </a>
       </h2>
-      <p style="text-align: justify;">
+      <p>
         <b><strong>School:</strong></b> Mindanao State University - General Santos
       </p>
       <p><b><strong>Program:</strong></b> BS in Electrical Engineering</p>
@@ -3725,8 +3438,6 @@ function googleTranslateElementInit() {
       </div>
       
     </div>
-  
-    <div style="clear: both;"></div>
   
   </div>
   

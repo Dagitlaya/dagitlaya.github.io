@@ -23,21 +23,21 @@
 <meta property="og:locale" content="en_US">
 <meta name="description" content="BCNSSO Batch 45 e-yearbook.">
 <meta name="twitter:description" property="og:description" content="BCNSSO Batch 45 e-yearbook.">
-<link rel="canonical" href="http://0.0.0.0:4000/">
-<meta property="og:url" content="http://0.0.0.0:4000/">
+<link rel="canonical" href="http://localhost:4000/">
+<meta property="og:url" content="http://localhost:4000/">
 <meta property="og:site_name" content="Dagitlaya">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dagitlaya">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"BCNSSO45"},"description":"BCNSSO Batch 45 e-yearbook.","headline":"Dagitlaya","name":"Dagitlaya","url":"http://0.0.0.0:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"BCNSSO45"},"description":"BCNSSO Batch 45 e-yearbook.","headline":"Dagitlaya","name":"Dagitlaya","url":"http://localhost:4000/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="icon" href="/assets/images/favicon.webp">
   <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
   <script defer src="https://kit.fontawesome.com/d5775d112f.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/assets/css/main.css">
-  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Dagitlaya">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Dagitlaya">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
 <!-- and it's easy to individually load additional languages -->
@@ -788,7 +788,13 @@ function googleTranslateElementInit() {
     </div>
 
     <!-- Right Side Logo -->
-    <img src="/assets/images/logo.webp" alt="Logo" class="banner-logo">
+    <div class="banner-logo">
+      <img src="/assets/images/logo.webp" alt="Logo" class="banner-logo-img">
+      <video class="banner-logo-video" muted loop playsinline preload="none" role="img" aria-label="Animated Logo">
+        <source src="/assets/logo02.webm" type="video/webm">
+        Your browser does not support the video tag.
+      </source></video>
+    </div>
   </div>
   
   <!-- Bottom Banner Image -->
@@ -844,6 +850,25 @@ margin-left: auto;
 /* margin-right: 5rem; */
 display: block;
 flex: 1;
+}
+
+.banner-logo .banner-logo-img,
+.banner-logo .banner-logo-video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.banner-logo .banner-logo-video {
+  display: none;
+}
+
+.banner-logo.active .banner-logo-video {
+  display: block;
+}
+
+.banner-logo.active .banner-logo-img {
+  display: none;
 }
 
 .baybayin-image {
@@ -1049,7 +1074,7 @@ h1 {
 <script src="/assets/js/index-page.js"></script>
 
 <!-- YouTube Video Section -->
-<section class="section">
+<section class="section scroll-reveal">
   <div class="container youtube-video-section">
     <h1>Batch AVP</h1>
     <div class="video-wrapper">
@@ -1059,7 +1084,7 @@ h1 {
 </section>
 
 <!-- Batch Photo Section -->
-<section class="section">
+<section class="section scroll-reveal">
   <div class="container batch-photo-section">
     <h1>Batch Photo</h1>
     <img src="/assets/images/batchpic.webp" alt="Class Batch Photo" class="batch-photo">
@@ -1068,7 +1093,7 @@ h1 {
 
 
 <!-- Journey & Sidebar Cards Section -->
-<section class="section">
+<section class="section scroll-reveal">
   <div class="container">
     <div class="journey-with-cards">
       <div class="journey-section">
@@ -1453,7 +1478,7 @@ h1 {
 </section>
 
 <!-- Trainees Section -->
-<section class="section">
+<section class="section scroll-reveal">
   <div class="container">
     <h1>BCNSSO45 Trainees</h1>
 <div class="carousel">

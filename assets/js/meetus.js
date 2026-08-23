@@ -30,101 +30,10 @@
     }
 
 
-    document.querySelectorAll('.trainee-profile-hoverable').forEach(function (profile) {
-      if (profile.dataset.bound) return;
-      profile.dataset.bound = '1';
-      profile.addEventListener('mouseenter', function () {
-        const index = this.getAttribute('data-trainee-index');
-        stopAllVideos(index);
-        const container = document.getElementById('media-container-' + index);
-        const video = document.getElementById('video-' + index);
-
-        // Play the media on hover
-        if (video) {
-          video.onended = function () {
-            video.style.transition = 'opacity 2s ease';
-            video.style.opacity = '0';
-            setTimeout(function () {
-              video.style.display = 'none';
-            }, 2000);
-          };
-          playWhenReady(video);
-          container.classList.add('playing');
-        }
-      });
-
-      // profile.addEventListener('mouseleave', function () {
-      //   const index = this.getAttribute('data-trainee-index');
-      //   const container = document.getElementById('media-container-' + index);
-      //   const video = document.getElementById('video-' + index);
-
-      //   // Pause the media on mouse leave
-      //   // if (video) {
-      //   //   video.pause();
-      //   // }
-      //   // container.classList.remove('playing');
-      // });
-
-      profile.addEventListener('touchend', function () {
-        const index = this.getAttribute('data-trainee-index');
-        stopAllVideos(index);
-        const container = document.getElementById('media-container-' + index);
-        const video = document.getElementById('video-' + index);
-
-        // Play the media on touch
-        if (video) {
-          video.onended = function () {
-            video.style.transition = 'opacity 0.5s ease';
-            video.style.opacity = '0';
-            setTimeout(function () {
-              video.style.display = 'none';
-            }, 500);
-          };
-          playWhenReady(video);
-          container.classList.add('playing');
-        }
-      });
-    });
-
-    /* --- old-code:js ---
-    // Original file ended here before reveal-toggle feature
-    --- end-old-code --- */
-
-    /* --- old-code:js ---
-    // Reveal toggle: arrow click moves profile right/fades, shows pubimg
-    document.querySelectorAll('.trainee-arrow-left').forEach(function (arrow) {
-      if (arrow.dataset.bound) return;
-      arrow.dataset.bound = '1';
-      arrow.style.cursor = 'pointer';
-      arrow.addEventListener('click', function () {
-        var container = this.closest('.trainee-container');
-        if (!container) return;
-
-        var profile = container.querySelector('.trainee-profile-hoverable');
-        var pubImg = container.querySelector('.trainee-pubimg');
-
-        if (profile) {
-          profile.classList.toggle('revealed');
-        }
-        if (pubImg) {
-          pubImg.classList.toggle('visible');
-        }
-      });
-    });
-    --- end-old-code --- */
-
-    /* --- old-code:js ---
-    // Reveal toggle: delegated click handler (survives DOM replacement/bfcache)
-    document.addEventListener('click', function (e) {
-      var arrow = e.target.closest('.trainee-arrow-left');
-      if (!arrow) return;
-
-      arrow.style.cursor = 'pointer';
-      var container = arrow.closest('.trainee-container');
-      if (!container) return;
-
-      var profile = container.querySelector('.trainee-profile-hoverable');
-      var pubImg = container.querySelector('.trainee-pubimg');
+    // Toggle the profile and pubimg reveal state for the given container
+    function toggleReveal(container) {
+      const profile = container.querySelector('.trainee-profile-hoverable');
+      const pubImg = container.querySelector('.trainee-pubimg');
 
       if (profile) {
         profile.classList.toggle('revealed');
@@ -132,26 +41,75 @@
       if (pubImg) {
         pubImg.classList.toggle('visible');
       }
-    });
-    --- end-old-code --- */
+    }
 
     // Reveal toggle: delegated click handler for left/right arrows
     document.addEventListener('click', function (e) {
-      var arrow = e.target.closest('.trainee-arrow-left, .trainee-arrow-right');
+      const arrow = e.target.closest('.trainee-arrow-left, .trainee-arrow-right');
       if (!arrow) return;
 
       arrow.style.cursor = 'pointer';
-      var container = arrow.closest('.trainee-container');
+      const container = arrow.closest('.trainee-container');
       if (!container) return;
 
-      var profile = container.querySelector('.trainee-profile-hoverable');
-      var pubImg = container.querySelector('.trainee-pubimg');
+      toggleReveal(container);
+    });
 
-      if (profile) {
-        profile.classList.toggle('revealed');
+    // Track the currently hovered profile so we only trigger on entry
+    let activeProfile = null;
+
+    // Delegate mouseover: play a profile's video when hovered
+    document.addEventListener('mouseover', function (e) {
+      if (!e.target.closest) return;
+      const profile = e.target.closest('.trainee-profile-hoverable');
+      if (!profile || profile === activeProfile) return;
+
+      activeProfile = profile;
+      const index = profile.getAttribute('data-trainee-index');
+      if (index === null) return;
+
+      stopAllVideos(index);
+      const container = document.getElementById('media-container-' + index);
+      const video = document.getElementById('video-' + index);
+
+      // Play the media on hover
+      if (video) {
+        video.onended = function () {
+          video.style.transition = 'opacity 2s ease';
+          video.style.opacity = '0';
+          setTimeout(function () {
+            video.style.display = 'none';
+          }, 2000);
+        };
+        playWhenReady(video);
+        container.classList.add('playing');
       }
-      if (pubImg) {
-        pubImg.classList.toggle('visible');
+    });
+
+    // Delegate touchend: play a profile's video on touch
+    document.addEventListener('touchend', function (e) {
+      if (!e.target.closest) return;
+      const profile = e.target.closest('.trainee-profile-hoverable');
+      if (!profile) return;
+
+      const index = profile.getAttribute('data-trainee-index');
+      if (index === null) return;
+
+      stopAllVideos(index);
+      const container = document.getElementById('media-container-' + index);
+      const video = document.getElementById('video-' + index);
+
+      // Play the media on touch
+      if (video) {
+        video.onended = function () {
+          video.style.transition = 'opacity 0.5s ease';
+          video.style.opacity = '0';
+          setTimeout(function () {
+            video.style.display = 'none';
+          }, 500);
+        };
+        playWhenReady(video);
+        container.classList.add('playing');
       }
     });
   }
