@@ -1,7 +1,18 @@
 (function () {
   function initMeetUsVideos() {
+    // Make sure the browser is actually fetching this video before playing.
+    // Videos start with preload="none" until the lazy loader requests metadata.
+    function ensureVideoLoaded(video) {
+      if (video.readyState >= 3) return; // enough data buffered to play
+      video.setAttribute('data-video-loaded', '1'); // tells lazy loader: already handled
+      video.preload = 'auto';
+      video.load();
+    }
+
     // Helper function to play video when ready
     function playWhenReady(video) {
+      ensureVideoLoaded(video);
+
       if (video.readyState >= 3) {
         video.play().catch(function (error) {
           console.log('Video autoplay failed:', error);
@@ -13,6 +24,46 @@
             console.log('Video autoplay failed:', error);
           });
         });
+      }
+    }
+
+    // Lazy-load each video's metadata only as it approaches the viewport.
+    // The page renders many profiles at once; letting every video fetch data
+    // on page load saturates the browser's per-origin connection limit (worst
+    // on GitHub Pages), so the video you jump to via the TOC never gets data.
+    // Full video data is fetched on hover via ensureVideoLoaded().
+    function initLazyVideoLoading() {
+      var videos = document.querySelectorAll('.trainee-media-container video');
+      if (!videos.length) return;
+
+      // Older browsers without IntersectionObserver: fall back to today's
+      // behavior (metadata for every video, no full downloads).
+      if (!('IntersectionObserver' in window)) {
+        for (var i = 0; i < videos.length; i++) {
+          videos[i].preload = 'metadata';
+        }
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        for (var i = 0; i < entries.length; i++) {
+          var entry = entries[i];
+          if (!entry.isIntersecting) continue;
+          var video = entry.target;
+          if (video.getAttribute('data-video-loaded')) continue;
+          video.setAttribute('data-video-loaded', '1');
+          video.preload = 'metadata'; // cheap range request; full data on hover
+          video.load();
+          observer.unobserve(video);
+        }
+      }, {
+        rootMargin: '600px 0px 600px 0px',
+        threshold: 0
+      });
+
+      for (var i = 0; i < videos.length; i++) {
+        videos[i].preload = 'none';
+        observer.observe(videos[i]);
       }
     }
 
@@ -112,6 +163,9 @@
         container.classList.add('playing');
       }
     });
+
+    // Start lazy-loading videos only as they approach the viewport.
+    initLazyVideoLoading();
   }
 
   if (document.readyState === 'loading') {
