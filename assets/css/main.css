@@ -1574,7 +1574,7 @@ h2 {
 
 .trainee-container {
   position: relative;
-  display: inline;
+  display: inline-block;
   align-items: center;
 }
 
@@ -1664,11 +1664,20 @@ h2 {
 
 .trainee-pubimg {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: -1;
   object-fit: contain;
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
+}
+
+.trainee-pubimg img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .trainee-pubimg.visible {
