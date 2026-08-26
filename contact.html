@@ -842,73 +842,85 @@ function googleTranslateElementInit() {
         display: grid;
         gap: 1.5rem;
     }
-    
-    /* Old selector was .content_label but HTML uses content__label */
-    .content__label {
-        color: #545454;
+
+    .contact__social {
+        display: flex;
+        gap: 0.75rem;
+        font-size: var(--normal-font-size);
     }
 </style>
 
 <section class="contact section scroll-reveal" id="contact">
     <h1 class="section__title">Get in Touch</h1>
 
-    <div class="contact__container container grid" style="display:flex">
-        <div style="flex:50%">
-            <div class="contact__information">
-                <i class="fa-solid fa-phone contact__icon"></i>
+    <div class="contact__container container grid" style="display:flex; flex-wrap:wrap">
+        <div style="flex: 1 1 300px">
+            
 
-                <div>
-                    <h3 class="contact__title">Contact Us</h3>
-                    <span class="contact__subtitle"><a href="tel:090909090909"></a>090909090909</span>
-                </div>
-            </div>
-
+            
             <div class="contact__information">
-                <i class="fa-solid fa-map contact__icon"></i>
+                <i class="fa-solid fa-envelope contact__icon"></i>
 
                 <div>
                     <h3 class="contact__title">Email</h3>
-                    <span class="contact__subtitle">bcnsso45@gmail.com</span>
+                    <span class="contact__subtitle"><a href="mailto:dagitlaya@gmail.com">dagitlaya@gmail.com</a></span>
                 </div>
             </div>
+            
 
+            
+
+            
             <div class="contact__information">
-                <i class="fa-solid fa-at contact__icon"></i>
+                <i class="fa-solid fa-share-nodes contact__icon"></i>
 
                 <div>
-                    <h3 class="contact__title">Location</h3>
-                    <span class="contact__subtitle">Pasay City</span>
+                    <h3 class="contact__title">Follow Us</h3>
+                    <span class="contact__subtitle contact__social">
+                        
+                        <a href="https://www.facebook.com/Dagitlaya" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook contact__icon"></i>
+                        </a>
+                        
+                        
+                        <a href="https://m.me/@Dagitlaya" target="_blank" rel="noopener noreferrer" aria-label="Messenger">
+                            <i class="fa-brands fa-facebook-messenger contact__icon"></i>
+                        </a>
+                        
+                    </span>
                 </div>
             </div>
+            
         </div>
 
-        <form action="" class="contact__form grid" style="float:50%">
+        <form action="mailto:dagitlaya@gmail.com" method="post" enctype="text/plain" class="contact__form grid" style="flex: 1 1 300px">
             <div class="contact__inputs grid">
                 <div class="contact__content">
-                    <label for="" class="content__label">Name</label>
-                    <input type="text" class="contact__input">
+                    <label for="contact-name" class="contact__label">Name</label>
+                    <input type="text" id="contact-name" name="name" class="contact__input">
                 </div>
 
                 <div class="contact__content">
-                    <label for="" class="content__label">Email</label>
-                    <input type="Email" class="contact__input">
+                    <label for="contact-email" class="contact__label">Email</label>
+                    <input type="email" id="contact-email" name="email" class="contact__input">
                 </div>
             </div>
 
             <div class="contact__content">
-                <label for="" class="content__label">Message</label>
-                <textarea name="" id="" cols="0" rows="7" class="contact__input"></textarea>
+                <label for="contact-message" class="contact__label">Message</label>
+                <textarea name="message" id="contact-message" rows="7" class="contact__input"></textarea>
             </div>
 
             <div>
-                <a href="mailto:%20batch@gmail.com?subject=Dagitlaya%20Contact%20Forms%20&amp;body=This%20is%20only%20a%20test!" class="button button--flex">
+                <button type="submit" class="button button--flex">
                     Send Message
                     <i class="uil uil-message button__icon"></i>
-                </a>
+                </button>
             </div>
         </form>
     </div>
 </section>
+
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
@@ -924,13 +936,11 @@ function googleTranslateElementInit() {
       </div>
 <div class="site-footer-links">
 <nav class="site-footer-nav" aria-label="Footer navigation"><a class="page-link" href="/about.html">ABOUT US</a><a class="page-link" href="/gallery.html">GALLERY</a><a class="page-link" href="/meetus.html">MEET US</a><a class="page-link" href="/contact.html">GET IN TOUCH</a></nav><div class="site-footer-social" aria-label="Social links">
-<a class="social-link" href="https://fb.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+<a class="social-link" href="https://www.facebook.com/Dagitlaya" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                   <i class="fa fa-facebook"></i>
                 </a><a class="social-link" href="mailto:dagitlaya@gmail.com" aria-label="Email">
                   <i class="fa fa-envelope"></i>
-                </a><a class="social-link" href="tel:0999838383" aria-label="Phone">
-                  <i class="fa fa-phone"></i>
-                </a><a class="social-link" href="https://m.me" target="_blank" rel="noopener noreferrer" aria-label="Messenger">
+                </a><a class="social-link" href="https://m.me/@Dagitlaya" target="_blank" rel="noopener noreferrer" aria-label="Messenger">
                   <i class="fa fa-comment"></i>
                 </a>
 </div>

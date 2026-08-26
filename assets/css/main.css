@@ -1660,9 +1660,9 @@ h2 {
 
 .trainee-arrow-right {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  margin-top: 0;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
 }
 
 .trainee-pubimg {
@@ -1680,10 +1680,19 @@ h2 {
   pointer-events: none;
 }
 
-.trainee-pubimg img {
+.trainee-pubimg-media {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.trainee-pubimg-media img {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
 }
 
